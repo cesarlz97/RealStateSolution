@@ -16,5 +16,10 @@ namespace RealState
         {
             InitializeComponent();
         }
+
+        private void linkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }

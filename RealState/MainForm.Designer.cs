@@ -28,7 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControlMain = new System.Windows.Forms.TabControl();
+            this.tabPageInit = new System.Windows.Forms.TabPage();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.linkLabelSelectTab = new System.Windows.Forms.LinkLabel();
+            this.labelWelcomeTilte = new System.Windows.Forms.Label();
             this.tabPageBuildings = new System.Windows.Forms.TabPage();
             this.buttonNewBuidling = new System.Windows.Forms.Button();
             this.buttonPaginationPreviousBuilding = new System.Windows.Forms.Button();
@@ -46,18 +52,21 @@
             this.textBoxSearchClient = new System.Windows.Forms.TextBox();
             this.labelSearchClient = new System.Windows.Forms.Label();
             this.tabPageSocialMedia = new System.Windows.Forms.TabPage();
-            this.labelInstagramProfile = new System.Windows.Forms.Label();
-            this.labelCredentials = new System.Windows.Forms.Label();
-            this.labelInstagramUser = new System.Windows.Forms.Label();
-            this.labelInstagramPassword = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.buttonSaveInstagramCredentials = new System.Windows.Forms.Button();
-            this.labelInstagramConfiguration = new System.Windows.Forms.Label();
-            this.checkBoxPublishAutomatic = new System.Windows.Forms.CheckBox();
-            this.labelPublishedBuildings = new System.Windows.Forms.Label();
             this.listViewInstagramPublishedBuildings = new System.Windows.Forms.ListView();
+            this.labelPublishedBuildings = new System.Windows.Forms.Label();
+            this.checkBoxPublishAutomatic = new System.Windows.Forms.CheckBox();
+            this.labelInstagramConfiguration = new System.Windows.Forms.Label();
+            this.buttonSaveInstagramCredentials = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelInstagramPassword = new System.Windows.Forms.Label();
+            this.labelInstagramUser = new System.Windows.Forms.Label();
+            this.labelCredentials = new System.Windows.Forms.Label();
+            this.labelInstagramProfile = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControlMain.SuspendLayout();
+            this.tabPageInit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.tabPageBuildings.SuspendLayout();
             this.tabPageClients.SuspendLayout();
             this.tabPageSocialMedia.SuspendLayout();
@@ -65,6 +74,7 @@
             // 
             // tabControlMain
             // 
+            this.tabControlMain.Controls.Add(this.tabPageInit);
             this.tabControlMain.Controls.Add(this.tabPageBuildings);
             this.tabControlMain.Controls.Add(this.tabPageClients);
             this.tabControlMain.Controls.Add(this.tabPageSocialMedia);
@@ -73,6 +83,49 @@
             this.tabControlMain.SelectedIndex = 0;
             this.tabControlMain.Size = new System.Drawing.Size(776, 426);
             this.tabControlMain.TabIndex = 0;
+            // 
+            // tabPageInit
+            // 
+            this.tabPageInit.Controls.Add(this.pictureBoxLogo);
+            this.tabPageInit.Controls.Add(this.linkLabelSelectTab);
+            this.tabPageInit.Controls.Add(this.labelWelcomeTilte);
+            this.tabPageInit.Location = new System.Drawing.Point(4, 22);
+            this.tabPageInit.Name = "tabPageInit";
+            this.tabPageInit.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageInit.Size = new System.Drawing.Size(768, 400);
+            this.tabPageInit.TabIndex = 3;
+            this.tabPageInit.Text = "Inicio";
+            this.tabPageInit.UseVisualStyleBackColor = true;
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
+            this.pictureBoxLogo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.InitialImage")));
+            this.pictureBoxLogo.Location = new System.Drawing.Point(264, 315);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(253, 68);
+            this.pictureBoxLogo.TabIndex = 3;
+            this.pictureBoxLogo.TabStop = false;
+            // 
+            // linkLabelSelectTab
+            // 
+            this.linkLabelSelectTab.AutoSize = true;
+            this.linkLabelSelectTab.Location = new System.Drawing.Point(292, 146);
+            this.linkLabelSelectTab.Name = "linkLabelSelectTab";
+            this.linkLabelSelectTab.Size = new System.Drawing.Size(193, 13);
+            this.linkLabelSelectTab.TabIndex = 1;
+            this.linkLabelSelectTab.TabStop = true;
+            this.linkLabelSelectTab.Text = "Seleccione una pestaña para continuar";
+            // 
+            // labelWelcomeTilte
+            // 
+            this.labelWelcomeTilte.AutoSize = true;
+            this.labelWelcomeTilte.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWelcomeTilte.Location = new System.Drawing.Point(247, 98);
+            this.labelWelcomeTilte.Name = "labelWelcomeTilte";
+            this.labelWelcomeTilte.Size = new System.Drawing.Size(287, 24);
+            this.labelWelcomeTilte.TabIndex = 0;
+            this.labelWelcomeTilte.Text = "BIENVENIDO A REAL STATE";
             // 
             // tabPageBuildings
             // 
@@ -249,86 +302,14 @@
             this.tabPageSocialMedia.Text = "RRSS";
             this.tabPageSocialMedia.UseVisualStyleBackColor = true;
             // 
-            // labelInstagramProfile
+            // listViewInstagramPublishedBuildings
             // 
-            this.labelInstagramProfile.AutoSize = true;
-            this.labelInstagramProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInstagramProfile.Location = new System.Drawing.Point(26, 20);
-            this.labelInstagramProfile.Name = "labelInstagramProfile";
-            this.labelInstagramProfile.Size = new System.Drawing.Size(137, 24);
-            this.labelInstagramProfile.TabIndex = 0;
-            this.labelInstagramProfile.Text = "Perfil Instagram";
-            // 
-            // labelCredentials
-            // 
-            this.labelCredentials.AutoSize = true;
-            this.labelCredentials.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCredentials.Location = new System.Drawing.Point(28, 66);
-            this.labelCredentials.Name = "labelCredentials";
-            this.labelCredentials.Size = new System.Drawing.Size(101, 13);
-            this.labelCredentials.TabIndex = 1;
-            this.labelCredentials.Text = "CREDENCIALES";
-            // 
-            // labelInstagramUser
-            // 
-            this.labelInstagramUser.AutoSize = true;
-            this.labelInstagramUser.Location = new System.Drawing.Point(28, 111);
-            this.labelInstagramUser.Name = "labelInstagramUser";
-            this.labelInstagramUser.Size = new System.Drawing.Size(43, 13);
-            this.labelInstagramUser.TabIndex = 2;
-            this.labelInstagramUser.Text = "Usuario";
-            // 
-            // labelInstagramPassword
-            // 
-            this.labelInstagramPassword.AutoSize = true;
-            this.labelInstagramPassword.Location = new System.Drawing.Point(27, 150);
-            this.labelInstagramPassword.Name = "labelInstagramPassword";
-            this.labelInstagramPassword.Size = new System.Drawing.Size(61, 13);
-            this.labelInstagramPassword.TabIndex = 3;
-            this.labelInstagramPassword.Text = "Contraseña";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(94, 108);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 20);
-            this.textBox1.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(94, 147);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(174, 20);
-            this.textBox2.TabIndex = 5;
-            // 
-            // buttonSaveInstagramCredentials
-            // 
-            this.buttonSaveInstagramCredentials.Location = new System.Drawing.Point(193, 173);
-            this.buttonSaveInstagramCredentials.Name = "buttonSaveInstagramCredentials";
-            this.buttonSaveInstagramCredentials.Size = new System.Drawing.Size(75, 23);
-            this.buttonSaveInstagramCredentials.TabIndex = 6;
-            this.buttonSaveInstagramCredentials.Text = "Guardar";
-            this.buttonSaveInstagramCredentials.UseVisualStyleBackColor = true;
-            // 
-            // labelInstagramConfiguration
-            // 
-            this.labelInstagramConfiguration.AutoSize = true;
-            this.labelInstagramConfiguration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInstagramConfiguration.Location = new System.Drawing.Point(28, 221);
-            this.labelInstagramConfiguration.Name = "labelInstagramConfiguration";
-            this.labelInstagramConfiguration.Size = new System.Drawing.Size(109, 13);
-            this.labelInstagramConfiguration.TabIndex = 7;
-            this.labelInstagramConfiguration.Text = "CONFIGURACIÓN";
-            // 
-            // checkBoxPublishAutomatic
-            // 
-            this.checkBoxPublishAutomatic.AutoSize = true;
-            this.checkBoxPublishAutomatic.Location = new System.Drawing.Point(30, 251);
-            this.checkBoxPublishAutomatic.Name = "checkBoxPublishAutomatic";
-            this.checkBoxPublishAutomatic.Size = new System.Drawing.Size(198, 17);
-            this.checkBoxPublishAutomatic.TabIndex = 8;
-            this.checkBoxPublishAutomatic.Text = "Publicar inmuebles automáticamente";
-            this.checkBoxPublishAutomatic.UseVisualStyleBackColor = true;
+            this.listViewInstagramPublishedBuildings.HideSelection = false;
+            this.listViewInstagramPublishedBuildings.Location = new System.Drawing.Point(367, 108);
+            this.listViewInstagramPublishedBuildings.Name = "listViewInstagramPublishedBuildings";
+            this.listViewInstagramPublishedBuildings.Size = new System.Drawing.Size(382, 126);
+            this.listViewInstagramPublishedBuildings.TabIndex = 10;
+            this.listViewInstagramPublishedBuildings.UseCompatibleStateImageBehavior = false;
             // 
             // labelPublishedBuildings
             // 
@@ -340,14 +321,92 @@
             this.labelPublishedBuildings.TabIndex = 9;
             this.labelPublishedBuildings.Text = "INMUEBLES PUBLICADOS";
             // 
-            // listViewInstagramPublishedBuildings
+            // checkBoxPublishAutomatic
             // 
-            this.listViewInstagramPublishedBuildings.HideSelection = false;
-            this.listViewInstagramPublishedBuildings.Location = new System.Drawing.Point(367, 108);
-            this.listViewInstagramPublishedBuildings.Name = "listViewInstagramPublishedBuildings";
-            this.listViewInstagramPublishedBuildings.Size = new System.Drawing.Size(382, 126);
-            this.listViewInstagramPublishedBuildings.TabIndex = 10;
-            this.listViewInstagramPublishedBuildings.UseCompatibleStateImageBehavior = false;
+            this.checkBoxPublishAutomatic.AutoSize = true;
+            this.checkBoxPublishAutomatic.Location = new System.Drawing.Point(30, 251);
+            this.checkBoxPublishAutomatic.Name = "checkBoxPublishAutomatic";
+            this.checkBoxPublishAutomatic.Size = new System.Drawing.Size(198, 17);
+            this.checkBoxPublishAutomatic.TabIndex = 8;
+            this.checkBoxPublishAutomatic.Text = "Publicar inmuebles automáticamente";
+            this.checkBoxPublishAutomatic.UseVisualStyleBackColor = true;
+            // 
+            // labelInstagramConfiguration
+            // 
+            this.labelInstagramConfiguration.AutoSize = true;
+            this.labelInstagramConfiguration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInstagramConfiguration.Location = new System.Drawing.Point(28, 221);
+            this.labelInstagramConfiguration.Name = "labelInstagramConfiguration";
+            this.labelInstagramConfiguration.Size = new System.Drawing.Size(109, 13);
+            this.labelInstagramConfiguration.TabIndex = 7;
+            this.labelInstagramConfiguration.Text = "CONFIGURACIÓN";
+            // 
+            // buttonSaveInstagramCredentials
+            // 
+            this.buttonSaveInstagramCredentials.Location = new System.Drawing.Point(193, 173);
+            this.buttonSaveInstagramCredentials.Name = "buttonSaveInstagramCredentials";
+            this.buttonSaveInstagramCredentials.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveInstagramCredentials.TabIndex = 6;
+            this.buttonSaveInstagramCredentials.Text = "Guardar";
+            this.buttonSaveInstagramCredentials.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(94, 147);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(174, 20);
+            this.textBox2.TabIndex = 5;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(94, 108);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(174, 20);
+            this.textBox1.TabIndex = 4;
+            // 
+            // labelInstagramPassword
+            // 
+            this.labelInstagramPassword.AutoSize = true;
+            this.labelInstagramPassword.Location = new System.Drawing.Point(27, 150);
+            this.labelInstagramPassword.Name = "labelInstagramPassword";
+            this.labelInstagramPassword.Size = new System.Drawing.Size(61, 13);
+            this.labelInstagramPassword.TabIndex = 3;
+            this.labelInstagramPassword.Text = "Contraseña";
+            // 
+            // labelInstagramUser
+            // 
+            this.labelInstagramUser.AutoSize = true;
+            this.labelInstagramUser.Location = new System.Drawing.Point(28, 111);
+            this.labelInstagramUser.Name = "labelInstagramUser";
+            this.labelInstagramUser.Size = new System.Drawing.Size(43, 13);
+            this.labelInstagramUser.TabIndex = 2;
+            this.labelInstagramUser.Text = "Usuario";
+            // 
+            // labelCredentials
+            // 
+            this.labelCredentials.AutoSize = true;
+            this.labelCredentials.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCredentials.Location = new System.Drawing.Point(28, 66);
+            this.labelCredentials.Name = "labelCredentials";
+            this.labelCredentials.Size = new System.Drawing.Size(101, 13);
+            this.labelCredentials.TabIndex = 1;
+            this.labelCredentials.Text = "CREDENCIALES";
+            // 
+            // labelInstagramProfile
+            // 
+            this.labelInstagramProfile.AutoSize = true;
+            this.labelInstagramProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInstagramProfile.Location = new System.Drawing.Point(26, 20);
+            this.labelInstagramProfile.Name = "labelInstagramProfile";
+            this.labelInstagramProfile.Size = new System.Drawing.Size(137, 24);
+            this.labelInstagramProfile.TabIndex = 0;
+            this.labelInstagramProfile.Text = "Perfil Instagram";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // MainForm
             // 
@@ -358,6 +417,9 @@
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.tabControlMain.ResumeLayout(false);
+            this.tabPageInit.ResumeLayout(false);
+            this.tabPageInit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.tabPageBuildings.ResumeLayout(false);
             this.tabPageBuildings.PerformLayout();
             this.tabPageClients.ResumeLayout(false);
@@ -399,5 +461,10 @@
         private System.Windows.Forms.Label labelInstagramUser;
         private System.Windows.Forms.Label labelCredentials;
         private System.Windows.Forms.Label labelInstagramProfile;
+        private System.Windows.Forms.TabPage tabPageInit;
+        private System.Windows.Forms.LinkLabel linkLabelSelectTab;
+        private System.Windows.Forms.Label labelWelcomeTilte;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.PictureBox pictureBoxLogo;
     }
 }
