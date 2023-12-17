@@ -63,7 +63,7 @@ namespace RealState.CustomControls
 
     }
 
-    class ExListBoxItem
+    public class ExListBoxItem
     {
         private string _title;
         private string _details;

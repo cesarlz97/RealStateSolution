@@ -466,6 +466,7 @@
             this.buttonSaveBuilding.TabIndex = 50;
             this.buttonSaveBuilding.Text = "Guardar cambios";
             this.buttonSaveBuilding.UseVisualStyleBackColor = true;
+            this.buttonSaveBuilding.Click += new System.EventHandler(this.buttonSaveBuilding_Click);
             // 
             // BuildingDetailForm
             // 

@@ -376,6 +376,7 @@
             this.buttonSaveClient.TabIndex = 55;
             this.buttonSaveClient.Text = "Guardar cambios";
             this.buttonSaveClient.UseVisualStyleBackColor = true;
+            this.buttonSaveClient.Click += new System.EventHandler(this.buttonSaveClient_Click);
             // 
             // ClientDetailForm
             // 

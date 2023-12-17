@@ -48,9 +48,9 @@
             this.buttonPaginationPreviousClient = new System.Windows.Forms.Button();
             this.labelPaginationClient = new System.Windows.Forms.Label();
             this.buttonPaginationNextClient = new System.Windows.Forms.Button();
-            this.exListBoxUserControlClient = new RealState.CustomControls.ExListBoxUserControl();
             this.textBoxSearchClient = new System.Windows.Forms.TextBox();
             this.labelSearchClient = new System.Windows.Forms.Label();
+            this.exListBoxUserControlClient = new RealState.CustomControls.ExListBoxUserControl();
             this.tabPageSocialMedia = new System.Windows.Forms.TabPage();
             this.listViewInstagramPublishedBuildings = new System.Windows.Forms.ListView();
             this.labelPublishedBuildings = new System.Windows.Forms.Label();
@@ -152,6 +152,7 @@
             this.buttonNewBuidling.TabIndex = 6;
             this.buttonNewBuidling.Text = "Nuevo";
             this.buttonNewBuidling.UseVisualStyleBackColor = true;
+            this.buttonNewBuidling.Click += new System.EventHandler(this.buttonNewBuidling_Click);
             // 
             // buttonPaginationPreviousBuilding
             // 
@@ -182,11 +183,14 @@
             // 
             // exListBoxUserControlBuilding
             // 
+            this.exListBoxUserControlBuilding.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.exListBoxUserControlBuilding.FormattingEnabled = true;
-            this.exListBoxUserControlBuilding.Location = new System.Drawing.Point(6, 42);
+            this.exListBoxUserControlBuilding.ItemHeight = 66;
+            this.exListBoxUserControlBuilding.Location = new System.Drawing.Point(6, 32);
             this.exListBoxUserControlBuilding.Name = "exListBoxUserControlBuilding";
-            this.exListBoxUserControlBuilding.Size = new System.Drawing.Size(756, 303);
+            this.exListBoxUserControlBuilding.Size = new System.Drawing.Size(756, 300);
             this.exListBoxUserControlBuilding.TabIndex = 2;
+            this.exListBoxUserControlBuilding.SelectedValueChanged += new System.EventHandler(this.ExListBoxUserControlBuilding_ItemSelectionChanged);
             // 
             // textBoxSearchBuilding
             // 
@@ -210,9 +214,9 @@
             this.tabPageClients.Controls.Add(this.buttonPaginationPreviousClient);
             this.tabPageClients.Controls.Add(this.labelPaginationClient);
             this.tabPageClients.Controls.Add(this.buttonPaginationNextClient);
-            this.tabPageClients.Controls.Add(this.exListBoxUserControlClient);
             this.tabPageClients.Controls.Add(this.textBoxSearchClient);
             this.tabPageClients.Controls.Add(this.labelSearchClient);
+            this.tabPageClients.Controls.Add(this.exListBoxUserControlClient);
             this.tabPageClients.Location = new System.Drawing.Point(4, 22);
             this.tabPageClients.Name = "tabPageClients";
             this.tabPageClients.Padding = new System.Windows.Forms.Padding(3);
@@ -229,6 +233,7 @@
             this.buttonNewClient.TabIndex = 13;
             this.buttonNewClient.Text = "Nuevo";
             this.buttonNewClient.UseVisualStyleBackColor = true;
+            this.buttonNewClient.Click += new System.EventHandler(this.buttonNewClient_Click);
             // 
             // buttonPaginationPreviousClient
             // 
@@ -257,14 +262,6 @@
             this.buttonPaginationNextClient.Text = ">>";
             this.buttonPaginationNextClient.UseVisualStyleBackColor = true;
             // 
-            // exListBoxUserControlClient
-            // 
-            this.exListBoxUserControlClient.FormattingEnabled = true;
-            this.exListBoxUserControlClient.Location = new System.Drawing.Point(6, 42);
-            this.exListBoxUserControlClient.Name = "exListBoxUserControlClient";
-            this.exListBoxUserControlClient.Size = new System.Drawing.Size(756, 303);
-            this.exListBoxUserControlClient.TabIndex = 9;
-            // 
             // textBoxSearchClient
             // 
             this.textBoxSearchClient.Location = new System.Drawing.Point(210, 6);
@@ -280,6 +277,17 @@
             this.labelSearchClient.Size = new System.Drawing.Size(58, 13);
             this.labelSearchClient.TabIndex = 7;
             this.labelSearchClient.Text = "Búsqueda:";
+            // 
+            // exListBoxUserControlClient
+            // 
+            this.exListBoxUserControlClient.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.exListBoxUserControlClient.FormattingEnabled = true;
+            this.exListBoxUserControlClient.ItemHeight = 66;
+            this.exListBoxUserControlClient.Location = new System.Drawing.Point(6, 32);
+            this.exListBoxUserControlClient.Name = "exListBoxUserControlClient";
+            this.exListBoxUserControlClient.Size = new System.Drawing.Size(756, 300);
+            this.exListBoxUserControlClient.TabIndex = 9;
+            this.exListBoxUserControlClient.SelectedValueChanged += new System.EventHandler(this.ExListBoxUserControlClient_ItemSelectionChanged);
             // 
             // tabPageSocialMedia
             // 
@@ -416,6 +424,7 @@
             this.Controls.Add(this.tabControlMain);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControlMain.ResumeLayout(false);
             this.tabPageInit.ResumeLayout(false);
             this.tabPageInit.PerformLayout();

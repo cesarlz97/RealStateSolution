@@ -33,7 +33,7 @@
             this.textBoxPasswordConfirm = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxUser = new System.Windows.Forms.TextBox();
-            this.labelConfirmPassword = new System.Windows.Forms.Label();
+            this.labelPasswordConfirm = new System.Windows.Forms.Label();
             this.linkLabelRegister = new System.Windows.Forms.LinkLabel();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labeUser = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
             this.groupBoxLogin.Controls.Add(this.textBoxPasswordConfirm);
             this.groupBoxLogin.Controls.Add(this.textBoxPassword);
             this.groupBoxLogin.Controls.Add(this.textBoxUser);
-            this.groupBoxLogin.Controls.Add(this.labelConfirmPassword);
+            this.groupBoxLogin.Controls.Add(this.labelPasswordConfirm);
             this.groupBoxLogin.Controls.Add(this.linkLabelRegister);
             this.groupBoxLogin.Controls.Add(this.labelPassword);
             this.groupBoxLogin.Controls.Add(this.labeUser);
@@ -67,6 +67,7 @@
             this.buttonLoginRegister.TabIndex = 8;
             this.buttonLoginRegister.Text = "Entrar";
             this.buttonLoginRegister.UseVisualStyleBackColor = true;
+            this.buttonLoginRegister.Click += new System.EventHandler(this.buttonLoginRegister_Click);
             // 
             // textBoxPasswordConfirm
             // 
@@ -92,14 +93,14 @@
             // 
             // labelConfirmPassword
             // 
-            this.labelConfirmPassword.AutoSize = true;
-            this.labelConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConfirmPassword.Location = new System.Drawing.Point(150, 202);
-            this.labelConfirmPassword.Name = "labelConfirmPassword";
-            this.labelConfirmPassword.Size = new System.Drawing.Size(127, 13);
-            this.labelConfirmPassword.TabIndex = 4;
-            this.labelConfirmPassword.Text = "Confirmar contraseña";
-            this.labelConfirmPassword.Visible = false;
+            this.labelPasswordConfirm.AutoSize = true;
+            this.labelPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPasswordConfirm.Location = new System.Drawing.Point(150, 202);
+            this.labelPasswordConfirm.Name = "labelConfirmPassword";
+            this.labelPasswordConfirm.Size = new System.Drawing.Size(127, 13);
+            this.labelPasswordConfirm.TabIndex = 4;
+            this.labelPasswordConfirm.Text = "Confirmar contraseña";
+            this.labelPasswordConfirm.Visible = false;
             // 
             // linkLabelRegister
             // 
@@ -163,7 +164,7 @@
         private System.Windows.Forms.TextBox textBoxPasswordConfirm;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.TextBox textBoxUser;
-        private System.Windows.Forms.Label labelConfirmPassword;
+        private System.Windows.Forms.Label labelPasswordConfirm;
         private System.Windows.Forms.LinkLabel linkLabelRegister;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labeUser;
