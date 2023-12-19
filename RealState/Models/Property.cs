@@ -9,7 +9,7 @@ namespace RealState.Models
     public class Property
     {
         public int Id { get; set; }
-        public bool OwnerClientId { get; }
+        public List<int> OwnerClientsIds { get; }
         public int PropertyType { get; set; }
         public int RegimeType { get; set; }
         public string Title { get; set; }

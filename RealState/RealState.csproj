@@ -64,6 +64,12 @@
     <Compile Include="CustomControls\ExListBoxUserControl.Designer.cs">
       <DependentUpon>ExListBoxUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ClientContractsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ClientContractsForm.Designer.cs">
+      <DependentUpon>ClientContractsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,7 @@
     </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ClientSearchProfile.cs" />
+    <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Property.cs" />
     <Compile Include="Models\SocialNetworkProfile.cs" />
     <Compile Include="Models\User.cs" />
@@ -88,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientDetailForm.resx">
       <DependentUpon>ClientDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClientContractsForm.resx">
+      <DependentUpon>ClientContractsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
