@@ -1,4 +1,6 @@
-﻿using RealState.Models;
+﻿using log4net;
+using log4net.Util;
+using RealState.Models;
 using RealState.Properties;
 using System;
 using System.Collections.Generic;
@@ -14,33 +16,102 @@ namespace RealState
 {
     public partial class ClientDetailForm : Form
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private SQLiteManager _sqliteManager;
+
         private Client _client { get; set; }
 
-        public ClientDetailForm()
+        public ClientDetailForm(SQLiteManager sqliteManager, Client client)
         {
             InitializeComponent();
+            _sqliteManager = sqliteManager;
+            _client = client;
         }
 
-        public ClientDetailForm(Client client)
+        private void FillContent()
         {
-            InitializeComponent();
-            this._client = client;
+            try
+            {
+                pictureBoxImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBoxImage.Image = _client.GetProfileImage();
+
+                textBoxClientName.Text = _client.Name;
+                textBoxClientSurname.Text = _client.Surname;
+                textBoxClientPhoneNumber.Text = _client.PhoneNumber;
+                textBoxClientEmail.Text = _client.EmailAddress;
+                pictureBoxImage.Image = _client.GetProfileImage();
+
+                // Llenar listBoxContracts y listBoxSearchProfiles según la lógica de tu aplicación
+                // Por ejemplo, si Client tiene una propiedad List<Contract> y una propiedad List<ClientSearchProfile>
+                // entonces puedes hacer listBoxContracts.DataSource = _client.Contracts; y listBoxSearchProfiles.DataSource = _client.SearchProfiles;
+            }
+            catch (Exception ex)
+            {
+                Log.ErrorExt(ex);
+            }
+        }
+
+        private void UpdateItem()
+        {
+            try
+            {
+                _client.SetProfileImage(pictureBoxImage.Image);
+
+                _client.Name = textBoxClientName.Text;
+                _client.Surname = textBoxClientSurname.Text;
+                _client.PhoneNumber = textBoxClientPhoneNumber.Text;
+                _client.EmailAddress = textBoxClientEmail.Text;
+            }
+            catch (Exception ex)
+            {
+                Log.ErrorExt(ex);
+            }
+        }
+
+        private bool ValidateItem()
+        {
+            return textBoxClientName.Text.Trim() != string.Empty &&
+                textBoxClientSurname.Text.Trim() != string.Empty &&
+                textBoxClientPhoneNumber.Text.Trim() != string.Empty &&
+                textBoxClientEmail.Text.Trim() != string.Empty;
         }
 
         private void ClientDetailForm_Load(object sender, EventArgs e)
         {
-            pictureBoxImage.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.pictureBoxImage.Image = new Bitmap(Resources.cara_1);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            FillContent();
         }
 
         private void buttonSaveClient_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (!ValidateItem())
+                {
+                    MessageBox.Show("Los campos: 'Nombre', 'Apellidos', 'Telf.' e 'Email' son obligatorios",
+                        "Advertencia",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
 
+                    return;
+                }
+
+                UpdateItem();
+
+                if (_client.Id > 0)
+                    _sqliteManager.UpdateData(_client, new Dictionary<string, object> { { nameof(Client.Id), _client.Id } });
+                else
+                    _sqliteManager.InsertData(_client);
+
+                MessageBox.Show("¡Propiedad actualizada en la base de datos!",
+                        "Información",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                Log.ErrorExt(ex);
+            }
         }
     }
 }

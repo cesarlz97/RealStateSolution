@@ -45,7 +45,7 @@
             this.numericUpDownAreaBuilt = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownAreaUtil = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownAreParcel = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownKitchen = new System.Windows.Forms.NumericUpDown();
             this.comboBoxRegime = new System.Windows.Forms.ComboBox();
             this.labelRegime = new System.Windows.Forms.Label();
             this.labelType = new System.Windows.Forms.Label();
@@ -60,10 +60,10 @@
             this.checkBoxPool = new System.Windows.Forms.CheckBox();
             this.numericUpDownRoomCount = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownBathRoomCount = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownParkingCount = new System.Windows.Forms.NumericUpDown();
             this.labelHeatingSystem = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxDescription = new System.Windows.Forms.RichTextBox();
             this.labelPotentialCustomers = new System.Windows.Forms.Label();
             this.listBoxPotentialCustomers = new System.Windows.Forms.ListBox();
             this.labelEurosPrice = new System.Windows.Forms.Label();
@@ -77,10 +77,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaBuilt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaUtil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreParcel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKitchen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRoomCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBathRoomCount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParkingCount)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxImage
@@ -201,6 +201,11 @@
             // numericUpDownPrice
             // 
             this.numericUpDownPrice.Location = new System.Drawing.Point(77, 200);
+            this.numericUpDownPrice.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.numericUpDownPrice.Name = "numericUpDownPrice";
             this.numericUpDownPrice.Size = new System.Drawing.Size(88, 20);
             this.numericUpDownPrice.TabIndex = 18;
@@ -208,6 +213,11 @@
             // numericUpDownAreaBuilt
             // 
             this.numericUpDownAreaBuilt.Location = new System.Drawing.Point(77, 283);
+            this.numericUpDownAreaBuilt.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.numericUpDownAreaBuilt.Name = "numericUpDownAreaBuilt";
             this.numericUpDownAreaBuilt.Size = new System.Drawing.Size(88, 20);
             this.numericUpDownAreaBuilt.TabIndex = 19;
@@ -215,6 +225,11 @@
             // numericUpDownAreaUtil
             // 
             this.numericUpDownAreaUtil.Location = new System.Drawing.Point(77, 317);
+            this.numericUpDownAreaUtil.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.numericUpDownAreaUtil.Name = "numericUpDownAreaUtil";
             this.numericUpDownAreaUtil.Size = new System.Drawing.Size(88, 20);
             this.numericUpDownAreaUtil.TabIndex = 20;
@@ -222,16 +237,26 @@
             // numericUpDownAreParcel
             // 
             this.numericUpDownAreParcel.Location = new System.Drawing.Point(77, 351);
+            this.numericUpDownAreParcel.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.numericUpDownAreParcel.Name = "numericUpDownAreParcel";
             this.numericUpDownAreParcel.Size = new System.Drawing.Size(88, 20);
             this.numericUpDownAreParcel.TabIndex = 21;
             // 
-            // numericUpDown5
+            // numericUpDownKitchen
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(77, 385);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(88, 20);
-            this.numericUpDown5.TabIndex = 22;
+            this.numericUpDownKitchen.Location = new System.Drawing.Point(77, 385);
+            this.numericUpDownKitchen.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.numericUpDownKitchen.Name = "numericUpDownKitchen";
+            this.numericUpDownKitchen.Size = new System.Drawing.Size(88, 20);
+            this.numericUpDownKitchen.TabIndex = 22;
             // 
             // comboBoxRegime
             // 
@@ -361,12 +386,12 @@
             this.numericUpDownBathRoomCount.Size = new System.Drawing.Size(53, 20);
             this.numericUpDownBathRoomCount.TabIndex = 36;
             // 
-            // numericUpDown8
+            // numericUpDownParkingCount
             // 
-            this.numericUpDown8.Location = new System.Drawing.Point(341, 285);
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(53, 20);
-            this.numericUpDown8.TabIndex = 37;
+            this.numericUpDownParkingCount.Location = new System.Drawing.Point(341, 285);
+            this.numericUpDownParkingCount.Name = "numericUpDownParkingCount";
+            this.numericUpDownParkingCount.Size = new System.Drawing.Size(53, 20);
+            this.numericUpDownParkingCount.TabIndex = 37;
             // 
             // labelHeatingSystem
             // 
@@ -387,13 +412,13 @@
             this.Description.TabIndex = 39;
             this.Description.Text = "Descripción";
             // 
-            // richTextBox1
+            // richTextBoxDescription
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(555, 144);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(233, 93);
-            this.richTextBox1.TabIndex = 40;
-            this.richTextBox1.Text = "";
+            this.richTextBoxDescription.Location = new System.Drawing.Point(555, 144);
+            this.richTextBoxDescription.Name = "richTextBoxDescription";
+            this.richTextBoxDescription.Size = new System.Drawing.Size(233, 93);
+            this.richTextBoxDescription.TabIndex = 40;
+            this.richTextBoxDescription.Text = "";
             // 
             // labelPotentialCustomers
             // 
@@ -481,10 +506,10 @@
             this.Controls.Add(this.labelEurosPrice);
             this.Controls.Add(this.listBoxPotentialCustomers);
             this.Controls.Add(this.labelPotentialCustomers);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.richTextBoxDescription);
             this.Controls.Add(this.Description);
             this.Controls.Add(this.labelHeatingSystem);
-            this.Controls.Add(this.numericUpDown8);
+            this.Controls.Add(this.numericUpDownParkingCount);
             this.Controls.Add(this.numericUpDownBathRoomCount);
             this.Controls.Add(this.numericUpDownRoomCount);
             this.Controls.Add(this.checkBoxPool);
@@ -499,7 +524,7 @@
             this.Controls.Add(this.labelType);
             this.Controls.Add(this.labelRegime);
             this.Controls.Add(this.comboBoxRegime);
-            this.Controls.Add(this.numericUpDown5);
+            this.Controls.Add(this.numericUpDownKitchen);
             this.Controls.Add(this.numericUpDownAreParcel);
             this.Controls.Add(this.numericUpDownAreaUtil);
             this.Controls.Add(this.numericUpDownAreaBuilt);
@@ -525,10 +550,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaBuilt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaUtil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreParcel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKitchen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRoomCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBathRoomCount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParkingCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -553,7 +578,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownAreaBuilt;
         private System.Windows.Forms.NumericUpDown numericUpDownAreaUtil;
         private System.Windows.Forms.NumericUpDown numericUpDownAreParcel;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown numericUpDownKitchen;
         private System.Windows.Forms.ComboBox comboBoxRegime;
         private System.Windows.Forms.Label labelRegime;
         private System.Windows.Forms.Label labelType;
@@ -568,10 +593,10 @@
         private System.Windows.Forms.CheckBox checkBoxPool;
         private System.Windows.Forms.NumericUpDown numericUpDownRoomCount;
         private System.Windows.Forms.NumericUpDown numericUpDownBathRoomCount;
-        private System.Windows.Forms.NumericUpDown numericUpDown8;
+        private System.Windows.Forms.NumericUpDown numericUpDownParkingCount;
         private System.Windows.Forms.Label labelHeatingSystem;
         private System.Windows.Forms.Label Description;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxDescription;
         private System.Windows.Forms.Label labelPotentialCustomers;
         private System.Windows.Forms.ListBox listBoxPotentialCustomers;
         private System.Windows.Forms.Label labelEurosPrice;

@@ -11,6 +11,7 @@ namespace RealState.Models
         public int Id { get; set; }
         public int ClientId { get; set; }
         public string Name { get; set; }
+        public int PropertyType { get; set; }
         public int RegimeType { get; set; }
         public DateTime AgeMax { get; set; }
         public int SizeMin { get; set; }

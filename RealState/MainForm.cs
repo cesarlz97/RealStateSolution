@@ -1,4 +1,5 @@
-﻿using RealState.CustomControls;
+﻿using log4net;
+using RealState.CustomControls;
 using RealState.Models;
 using RealState.Properties;
 using System;
@@ -15,15 +16,24 @@ namespace RealState
 {
     public partial class MainForm : Form
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private SQLiteManager _sqliteManager;
+
         private List<Property> PropertyList { get; set; }
         private List<Client> ClientList { get; set; }
         
-        public MainForm()
+        public MainForm(SQLiteManager sqliteManager)
         {
             InitializeComponent();
-            
-            GenerateTestProperties();
-            GenerateTestClients();
+
+            _sqliteManager = sqliteManager;
+
+            //GenerateTestProperties();
+            //_sqliteManager.InsertData(PropertyList);
+
+            //GenerateTestClients();
+            //_sqliteManager.InsertData(ClientList);
         }
 
         private void GenerateTestProperties()
@@ -44,9 +54,7 @@ namespace RealState
                 HasAirConditioning = true,
                 HasPool = true,
                 HeatingSystemType = 1,
-                ImageGalery = new List<string>(),
-                ImageProfile = string.Empty,
-                IsPublished = false,
+                //ImageGalery = new List<string>(),
                 ParkingCount = 1,
                 Price = 140000,
                 PropertyType = 1,
@@ -55,6 +63,8 @@ namespace RealState
                 Title = "Casa luminosa en la calle princial"
 
             };
+
+            property.SetProfileImage(new Bitmap(Resources.casa_1));
 
             PropertyList.Add(property);
         }
@@ -73,6 +83,8 @@ namespace RealState
                 
             };
 
+            client.SetProfileImage(new Bitmap(Resources.cara_1));
+
             ClientSearchProfile clientSearchProfile = new ClientSearchProfile()
             {
                 Id = 1,
@@ -89,13 +101,16 @@ namespace RealState
                 
             };
 
-            client.SearchProfiles.Add(clientSearchProfile);
+            //client.SearchProfiles.Add(clientSearchProfile);
 
             ClientList.Add(client);
         }
 
-        private void PopulatePropiertiesTab()
+        private void PopulatePropiertiesTab(int? limit = null, int? offset = null)
         {
+            exListBoxUserControlBuilding.Items.Clear();
+
+            PropertyList = _sqliteManager.ReadData<Property>(limit: limit, offset: offset);
             foreach (Property property in PropertyList)
             {
                 string details = string.Format(
@@ -106,45 +121,51 @@ namespace RealState
                     property.AreaUtil,
                     property.Price);
 
-                Image image = new Bitmap(Resources.casa_1);
-
-                ExListBoxItem exListBoxItem = new ExListBoxItem(property.Id, property.Title, details, image);
+                ExListBoxItem exListBoxItem = new ExListBoxItem(property.Id, property.Title, details, property.GetProfileImage());
 
                 this.exListBoxUserControlBuilding.Items.Add(exListBoxItem);
             }
         }
 
-        private void PopulateClientsTab()
+        private void PopulateClientsTab(int? limit = null, int? offset = null)
         {
+            exListBoxUserControlClient.Items.Clear();
+
+            ClientList = _sqliteManager.ReadData<Client>(limit: limit, offset: offset);
             foreach (Client client in ClientList)
             {
                 string fullName = string.Format("{0} {1}", client.Name, client.Surname);
                 string details = string.Format(
                     "Email: {0} \n" +
-                    "Teléfono: {1} m2 \n" +
-                    "Perfil: {2}",
+                    "Teléfono: {1} \n",
                     client.EmailAddress,
-                    client.PhoneNumber,
-                    "Comprador");
+                    client.PhoneNumber);
 
-                Image image = new Bitmap(Resources.cara_1);
-
-                ExListBoxItem exListBoxItem = new ExListBoxItem(client.Id, fullName, details, image);
+                ExListBoxItem exListBoxItem = new ExListBoxItem(client.Id, fullName, details, client.GetProfileImage());
 
                 this.exListBoxUserControlClient.Items.Add(exListBoxItem);
             }
         }
 
+        private void RefreshContent()
+        {
+            PopulatePropiertiesTab(limit: 10);
+            PopulateClientsTab(limit: 10);
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
-            PopulatePropiertiesTab();
-            PopulateClientsTab();
+            RefreshContent();
         }
 
         private void ExListBoxUserControlBuilding_ItemSelectionChanged(object sender, EventArgs e)
         {
-            BuildingDetailForm buildingDetailForm = new BuildingDetailForm(PropertyList[exListBoxUserControlBuilding.SelectedIndex]);
-            buildingDetailForm.Closed += (s, args) => this.Show();
+            BuildingDetailForm buildingDetailForm = new BuildingDetailForm(_sqliteManager, PropertyList[exListBoxUserControlBuilding.SelectedIndex]);
+            buildingDetailForm.Closed += (s, args) =>
+            {
+                RefreshContent();
+                this.Show();
+            };
 
             this.Hide();
             buildingDetailForm.Show();
@@ -152,8 +173,12 @@ namespace RealState
 
         private void ExListBoxUserControlClient_ItemSelectionChanged(object sender, EventArgs e)
         {
-            ClientDetailForm clientDetailForm = new ClientDetailForm(ClientList[exListBoxUserControlClient.SelectedIndex]);
-            clientDetailForm.Closed += (s, args) => this.Show();
+            ClientDetailForm clientDetailForm = new ClientDetailForm(_sqliteManager, ClientList[exListBoxUserControlClient.SelectedIndex]);
+            clientDetailForm.Closed += (s, args) =>
+            {
+                RefreshContent();
+                this.Show();
+            };
 
             this.Hide();
             clientDetailForm.Show();
@@ -161,8 +186,12 @@ namespace RealState
 
         private void buttonNewBuidling_Click(object sender, EventArgs e)
         {
-            BuildingDetailForm buildingDetailForm = new BuildingDetailForm();
-            buildingDetailForm.Closed += (s, args) => this.Show();
+            BuildingDetailForm buildingDetailForm = new BuildingDetailForm(_sqliteManager, new Property());
+            buildingDetailForm.Closed += (s, args) =>
+            {
+                RefreshContent();
+                this.Show();
+            };
 
             this.Hide();
             buildingDetailForm.Show();
@@ -170,8 +199,12 @@ namespace RealState
 
         private void buttonNewClient_Click(object sender, EventArgs e)
         {
-            ClientDetailForm clientDetailForm = new ClientDetailForm();
-            clientDetailForm.Closed += (s, args) => this.Show();
+            ClientDetailForm clientDetailForm = new ClientDetailForm(_sqliteManager, new Client());
+            clientDetailForm.Closed += (s, args) =>
+            {
+                RefreshContent();
+                this.Show();
+            };
 
             this.Hide();
             clientDetailForm.Show();

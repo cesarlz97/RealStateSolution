@@ -73,6 +73,7 @@
             // 
             this.textBoxPasswordConfirm.Location = new System.Drawing.Point(283, 199);
             this.textBoxPasswordConfirm.Name = "textBoxPasswordConfirm";
+            this.textBoxPasswordConfirm.PasswordChar = '*';
             this.textBoxPasswordConfirm.Size = new System.Drawing.Size(200, 20);
             this.textBoxPasswordConfirm.TabIndex = 7;
             this.textBoxPasswordConfirm.Visible = false;
@@ -81,6 +82,7 @@
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(283, 165);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(200, 20);
             this.textBoxPassword.TabIndex = 6;
             // 
@@ -91,12 +93,12 @@
             this.textBoxUser.Size = new System.Drawing.Size(200, 20);
             this.textBoxUser.TabIndex = 5;
             // 
-            // labelConfirmPassword
+            // labelPasswordConfirm
             // 
             this.labelPasswordConfirm.AutoSize = true;
             this.labelPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPasswordConfirm.Location = new System.Drawing.Point(150, 202);
-            this.labelPasswordConfirm.Name = "labelConfirmPassword";
+            this.labelPasswordConfirm.Name = "labelPasswordConfirm";
             this.labelPasswordConfirm.Size = new System.Drawing.Size(127, 13);
             this.labelPasswordConfirm.TabIndex = 4;
             this.labelPasswordConfirm.Text = "Confirmar contraseña";
@@ -151,6 +153,7 @@
             this.Controls.Add(this.groupBoxLogin);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.Shown += new System.EventHandler(this.LoginForm_Shown);
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();
             this.ResumeLayout(false);

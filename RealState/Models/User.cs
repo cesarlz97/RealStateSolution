@@ -13,21 +13,24 @@ namespace RealState.Models
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
 
-        public User(string userName, string userPassword)
+        public User() { }
+
+        public User(string userName, string passwordHash)
         {
             UserName = userName;
-            PasswordHash = CalculatePasswordHash(userPassword);
+            //PasswordHash = CalculatePasswordHash(userPassword)
+            PasswordHash = passwordHash;
         }
 
-        private string CalculatePasswordHash(string password)
-        {
-            //Create a byte array from source data.
-            byte[] tmpSource = ASCIIEncoding.ASCII.GetBytes(password);
+        //private string CalculatePasswordHash(string password)
+        //{
+        //    //Create a byte array from source data.
+        //    byte[] tmpSource = ASCIIEncoding.ASCII.GetBytes(password);
             
-            //Compute hash based on source data.
-            byte[] tmpHash = new MD5CryptoServiceProvider().ComputeHash(tmpSource);
+        //    //Compute hash based on source data.
+        //    byte[] tmpHash = new MD5CryptoServiceProvider().ComputeHash(tmpSource);
 
-            return Convert.ToBase64String(tmpHash);
-        }
+        //    return Convert.ToBase64String(tmpHash);
+        //}
     }
 }
