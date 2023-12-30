@@ -43,6 +43,8 @@
             this.buttonSaveClient = new System.Windows.Forms.Button();
             this.labelSearchProfiles = new System.Windows.Forms.Label();
             this.listBoxSearchProfiles = new System.Windows.Forms.ListBox();
+            this.labelProperties = new System.Windows.Forms.Label();
+            this.listBoxProperties = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +133,7 @@
             // 
             this.labelContracts.AutoSize = true;
             this.labelContracts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelContracts.Location = new System.Drawing.Point(507, 9);
+            this.labelContracts.Location = new System.Drawing.Point(221, 285);
             this.labelContracts.Name = "labelContracts";
             this.labelContracts.Size = new System.Drawing.Size(88, 20);
             this.labelContracts.TabIndex = 53;
@@ -140,9 +142,9 @@
             // listBoxContracts
             // 
             this.listBoxContracts.FormattingEnabled = true;
-            this.listBoxContracts.Location = new System.Drawing.Point(511, 42);
+            this.listBoxContracts.Location = new System.Drawing.Point(225, 308);
             this.listBoxContracts.Name = "listBoxContracts";
-            this.listBoxContracts.Size = new System.Drawing.Size(280, 394);
+            this.listBoxContracts.Size = new System.Drawing.Size(563, 108);
             this.listBoxContracts.TabIndex = 54;
             // 
             // buttonSaveClient
@@ -159,7 +161,7 @@
             // 
             this.labelSearchProfiles.AutoSize = true;
             this.labelSearchProfiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSearchProfiles.Location = new System.Drawing.Point(221, 12);
+            this.labelSearchProfiles.Location = new System.Drawing.Point(221, 9);
             this.labelSearchProfiles.Name = "labelSearchProfiles";
             this.labelSearchProfiles.Size = new System.Drawing.Size(178, 20);
             this.labelSearchProfiles.TabIndex = 56;
@@ -168,16 +170,36 @@
             // listBoxSearchProfiles
             // 
             this.listBoxSearchProfiles.FormattingEnabled = true;
-            this.listBoxSearchProfiles.Location = new System.Drawing.Point(225, 42);
+            this.listBoxSearchProfiles.Location = new System.Drawing.Point(225, 32);
             this.listBoxSearchProfiles.Name = "listBoxSearchProfiles";
-            this.listBoxSearchProfiles.Size = new System.Drawing.Size(280, 394);
+            this.listBoxSearchProfiles.Size = new System.Drawing.Size(563, 108);
             this.listBoxSearchProfiles.TabIndex = 57;
+            // 
+            // labelProperties
+            // 
+            this.labelProperties.AutoSize = true;
+            this.labelProperties.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProperties.Location = new System.Drawing.Point(221, 147);
+            this.labelProperties.Name = "labelProperties";
+            this.labelProperties.Size = new System.Drawing.Size(92, 20);
+            this.labelProperties.TabIndex = 58;
+            this.labelProperties.Text = "Inmuebles";
+            // 
+            // listBoxProperties
+            // 
+            this.listBoxProperties.FormattingEnabled = true;
+            this.listBoxProperties.Location = new System.Drawing.Point(225, 170);
+            this.listBoxProperties.Name = "listBoxProperties";
+            this.listBoxProperties.Size = new System.Drawing.Size(563, 108);
+            this.listBoxProperties.TabIndex = 59;
             // 
             // ClientDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBoxProperties);
+            this.Controls.Add(this.labelProperties);
             this.Controls.Add(this.listBoxSearchProfiles);
             this.Controls.Add(this.labelSearchProfiles);
             this.Controls.Add(this.buttonSaveClient);
@@ -219,5 +241,7 @@
         private System.Windows.Forms.Button buttonSaveClient;
         private System.Windows.Forms.Label labelSearchProfiles;
         private System.Windows.Forms.ListBox listBoxSearchProfiles;
+        private System.Windows.Forms.Label labelProperties;
+        private System.Windows.Forms.ListBox listBoxProperties;
     }
 }

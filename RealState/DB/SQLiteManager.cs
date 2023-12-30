@@ -25,6 +25,90 @@ public class SQLiteManager
         }
     }
 
+    #region Methods for dynamic entitys
+
+    public void UpsertData(List<Dictionary<string, object>> entities, string tableName, List<string> primaryKeys)
+    {
+        if (entities == null || entities.Count == 0)
+        {
+            // No hay datos para actualizar o insertar
+            return;
+        }
+
+        using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
+        {
+            connection.Open();
+
+            foreach (var entity in entities)
+            {
+                // Construir la consulta SELECT para verificar si la entidad ya existe
+                string selectQuery = $"SELECT COUNT(*) FROM {tableName} WHERE {GetCompositePrimaryKeyCondition(entity, primaryKeys)}";
+
+                using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, connection))
+                {
+                    // Limpiar parámetros y agregar uno nuevo al comando SELECT
+                    selectCommand.Parameters.AddRange(entity.Select(kv => new SQLiteParameter($"@{kv.Key}", kv.Value)).ToArray());
+
+                    int existingCount = Convert.ToInt32(selectCommand.ExecuteScalar());
+
+                    if (existingCount > 0)
+                    {
+                        // La entidad ya existe, llamar al método de actualización
+                        UpdateData(entity, tableName, primaryKeys, connection);
+                    }
+                    else
+                    {
+                        // La entidad no existe, llamar al método de inserción
+                        InsertData(entity, tableName, connection);
+                    }
+                }
+            }
+        }
+    }
+
+    private void UpdateData(Dictionary<string, object> entity, string tableName, List<string> primaryKeys, SQLiteConnection connection)
+    {
+        // Construir la consulta UPDATE
+        string updateColumns = string.Join(", ", entity.Keys.Where(k => !primaryKeys.Contains(k)).Select(k => $"{k} = @{k}"));
+        string updateCondition = GetCompositePrimaryKeyCondition(entity, primaryKeys);
+        string updateQuery = $"UPDATE {tableName} SET {updateColumns} WHERE {updateCondition}";
+
+        using (SQLiteCommand updateCommand = new SQLiteCommand(updateQuery, connection))
+        {
+            // Limpiar parámetros y asignar valores a los parámetros
+            updateCommand.Parameters.AddRange(entity.Select(kv => new SQLiteParameter($"@{kv.Key}", kv.Value)).ToArray());
+
+            // Ejecutar la consulta UPDATE
+            updateCommand.ExecuteNonQuery();
+        }
+    }
+
+    private void InsertData(Dictionary<string, object> entity, string tableName, SQLiteConnection connection)
+    {
+        // Construir la consulta INSERT
+        string insertColumns = string.Join(", ", entity.Keys);
+        string insertValues = string.Join(", ", entity.Keys.Select(k => $"@{k}"));
+        string insertQuery = $"INSERT INTO {tableName} ({insertColumns}) VALUES ({insertValues})";
+
+        using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, connection))
+        {
+            // Limpiar parámetros y asignar valores a los parámetros
+            insertCommand.Parameters.AddRange(entity.Select(kv => new SQLiteParameter($"@{kv.Key}", kv.Value)).ToArray());
+
+            // Ejecutar la consulta INSERT
+            insertCommand.ExecuteNonQuery();
+        }
+    }
+
+    private string GetCompositePrimaryKeyCondition(Dictionary<string, object> entity, List<string> primaryKeys)
+    {
+        // Construir la condición WHERE para la clave primaria compuesta
+        return string.Join(" AND ", primaryKeys.Select(key => $"{key} = @{key}"));
+    }
+
+
+    #endregion
+
     public void InsertData<T>(T entity)
     {
         using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
@@ -114,7 +198,7 @@ public class SQLiteManager
             using (SQLiteCommand command = new SQLiteCommand(BuildSelectQuery<T>(whereClauses, joinClauses), connection))
             {
                 AddWhereParameters(command, whereClauses);
-                AddJoinClauses(command, joinClauses);
+                //AddJoinClauses(command, joinClauses);
 
                 // Agregar cláusulas de paginación si se especifican
                 if (limit.HasValue)
@@ -238,9 +322,14 @@ public class SQLiteManager
         }
     }
 
-    private string GetTableName<T>()
+    public string GetTableName<T>()
     {
-        return typeof(T).Name + "s"; // Assuming table names are pluralized class names
+        string typeName = typeof(T).Name;
+
+        if (typeName.EndsWith("y"))
+            return typeName.Remove(typeName.Length - 1) + "ies";
+        else
+            return typeName + "s";
     }
 
     private string BuildCreateTableQuery<T>()

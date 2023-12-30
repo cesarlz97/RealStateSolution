@@ -127,7 +127,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\ClientSearchProfile.cs" />
+    <Compile Include="Models\SearchProfile.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Property.cs" />
     <Compile Include="Models\SocialNetworkProfile.cs" />

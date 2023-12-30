@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -30,10 +31,9 @@ namespace RealState
             _sqliteManager = sqliteManager;
 
             //GenerateTestProperties();
-            //_sqliteManager.InsertData(PropertyList);
-
             //GenerateTestClients();
-            //_sqliteManager.InsertData(ClientList);
+            //GeneratePropertyOwners();
+            //GenerateTestSearchProfiles();
         }
 
         private void GenerateTestProperties()
@@ -67,6 +67,8 @@ namespace RealState
             property.SetProfileImage(new Bitmap(Resources.casa_1));
 
             PropertyList.Add(property);
+
+            _sqliteManager.InsertData(PropertyList);
         }
 
         private void GenerateTestClients()
@@ -85,7 +87,15 @@ namespace RealState
 
             client.SetProfileImage(new Bitmap(Resources.cara_1));
 
-            ClientSearchProfile clientSearchProfile = new ClientSearchProfile()
+            ClientList.Add(client);
+
+            _sqliteManager.InsertData(ClientList);
+        }
+
+        private void GenerateTestSearchProfiles()
+        {
+
+            SearchProfile clientSearchProfile = new SearchProfile()
             {
                 Id = 1,
                 ClientId = 1,
@@ -98,12 +108,25 @@ namespace RealState
                 RegimeType = 1,
                 RoomMin = 3,
                 SizeMin = 100,
-                
+
             };
 
-            //client.SearchProfiles.Add(clientSearchProfile);
+            _sqliteManager.InsertData(clientSearchProfile);
+        }
 
-            ClientList.Add(client);
+        private void GeneratePropertyOwners()
+        {
+            List<Dictionary<string, object>> propertyOwners = new List<Dictionary<string, object>>
+            {
+                new Dictionary<string, object>
+                {
+                    { "PropertyId", 1 },
+                    { "ClientId", 1 },
+                    { "PercentageOwnership", 100.0 }
+                },
+            };
+
+            _sqliteManager.UpsertData(propertyOwners, "PropertyOwners", new List<string> { "PropertyId", "ClientId" });
         }
 
         private void PopulatePropiertiesTab(int? limit = null, int? offset = null)

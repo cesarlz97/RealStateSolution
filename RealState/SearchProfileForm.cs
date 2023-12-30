@@ -19,9 +19,9 @@ namespace RealState
 
         private SQLiteManager _sqliteManager;
 
-        private ClientSearchProfile _clientSearchProfile { get; set; }
+        private SearchProfile _clientSearchProfile { get; set; }
 
-        public SearchProfileForm(SQLiteManager sqliteManager, ClientSearchProfile clientSearchProfile)
+        public SearchProfileForm(SQLiteManager sqliteManager, SearchProfile clientSearchProfile)
         {
             InitializeComponent();
             this._sqliteManager = sqliteManager;
@@ -98,7 +98,7 @@ namespace RealState
                 UpdateItem();
 
                 if (_clientSearchProfile.Id > 0)
-                    _sqliteManager.UpdateData(_clientSearchProfile, new Dictionary<string, object> { { nameof(ClientSearchProfile.Id), _clientSearchProfile.Id } });
+                    _sqliteManager.UpdateData(_clientSearchProfile, new Dictionary<string, object> { { nameof(SearchProfile.Id), _clientSearchProfile.Id } });
                 else
                     _sqliteManager.InsertData(_clientSearchProfile);
 

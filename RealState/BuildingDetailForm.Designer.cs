@@ -72,6 +72,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonSaveBuilding = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listBoxPropertyOwners = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaBuilt)).BeginInit();
@@ -179,14 +181,14 @@
             // 
             this.textBoxTitle.Location = new System.Drawing.Point(341, 47);
             this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.Size = new System.Drawing.Size(447, 20);
+            this.textBoxTitle.Size = new System.Drawing.Size(200, 20);
             this.textBoxTitle.TabIndex = 15;
             // 
             // textBoxAddress
             // 
             this.textBoxAddress.Location = new System.Drawing.Point(341, 78);
             this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(447, 20);
+            this.textBoxAddress.Size = new System.Drawing.Size(200, 20);
             this.textBoxAddress.TabIndex = 16;
             // 
             // labelAddress
@@ -406,7 +408,7 @@
             // 
             this.Description.AutoSize = true;
             this.Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Description.Location = new System.Drawing.Point(551, 113);
+            this.Description.Location = new System.Drawing.Point(551, 12);
             this.Description.Name = "Description";
             this.Description.Size = new System.Drawing.Size(103, 20);
             this.Description.TabIndex = 39;
@@ -414,7 +416,7 @@
             // 
             // richTextBoxDescription
             // 
-            this.richTextBoxDescription.Location = new System.Drawing.Point(555, 144);
+            this.richTextBoxDescription.Location = new System.Drawing.Point(555, 45);
             this.richTextBoxDescription.Name = "richTextBoxDescription";
             this.richTextBoxDescription.Size = new System.Drawing.Size(233, 93);
             this.richTextBoxDescription.TabIndex = 40;
@@ -424,7 +426,7 @@
             // 
             this.labelPotentialCustomers.AutoSize = true;
             this.labelPotentialCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPotentialCustomers.Location = new System.Drawing.Point(551, 253);
+            this.labelPotentialCustomers.Location = new System.Drawing.Point(551, 275);
             this.labelPotentialCustomers.Name = "labelPotentialCustomers";
             this.labelPotentialCustomers.Size = new System.Drawing.Size(171, 20);
             this.labelPotentialCustomers.TabIndex = 41;
@@ -433,9 +435,9 @@
             // listBoxPotentialCustomers
             // 
             this.listBoxPotentialCustomers.FormattingEnabled = true;
-            this.listBoxPotentialCustomers.Location = new System.Drawing.Point(555, 285);
+            this.listBoxPotentialCustomers.Location = new System.Drawing.Point(555, 298);
             this.listBoxPotentialCustomers.Name = "listBoxPotentialCustomers";
-            this.listBoxPotentialCustomers.Size = new System.Drawing.Size(233, 121);
+            this.listBoxPotentialCustomers.Size = new System.Drawing.Size(233, 108);
             this.listBoxPotentialCustomers.TabIndex = 43;
             // 
             // labelEurosPrice
@@ -493,11 +495,31 @@
             this.buttonSaveBuilding.UseVisualStyleBackColor = true;
             this.buttonSaveBuilding.Click += new System.EventHandler(this.buttonSaveBuilding_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(551, 144);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 20);
+            this.label5.TabIndex = 51;
+            this.label5.Text = "Propietarios";
+            // 
+            // listBoxPropertyOwners
+            // 
+            this.listBoxPropertyOwners.FormattingEnabled = true;
+            this.listBoxPropertyOwners.Location = new System.Drawing.Point(555, 167);
+            this.listBoxPropertyOwners.Name = "listBoxPropertyOwners";
+            this.listBoxPropertyOwners.Size = new System.Drawing.Size(233, 95);
+            this.listBoxPropertyOwners.TabIndex = 52;
+            // 
             // BuildingDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBoxPropertyOwners);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonSaveBuilding);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -605,5 +627,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonSaveBuilding;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listBoxPropertyOwners;
     }
 }

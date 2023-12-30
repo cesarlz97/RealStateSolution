@@ -24,11 +24,14 @@ namespace RealState
 
         private Property _property { get; set; }
 
+        private List<Client> _propertyOwners { get; set; }
+
         public BuildingDetailForm(SQLiteManager sqliteManager, Property property)
         {
             InitializeComponent();
             this._property = property;
             this._sqliteManager = sqliteManager;
+            this._propertyOwners = new List<Client>();
         }
 
         private void FillContent()
@@ -55,11 +58,31 @@ namespace RealState
                 checkBoxAirConditioning.Checked = _property.HasAirConditioning;
                 checkBoxPool.Checked = _property.HasPool;
                 richTextBoxDescription.Text = _property.Description;
-                // Asigna valores para los demás controles...
+
+                LoadPropertyOwners();
             }
             catch (Exception ex)
             {
                 Log.ErrorExt(ex);
+            }
+        }
+
+        private void LoadPropertyOwners()
+        {
+            List<Client> propertyOwners = _sqliteManager.ReadData<Client>(
+                joinClauses: new Dictionary<string, string>
+                {
+                    { "PropertyOwners", $"{nameof(Client)}s.{nameof(Client.Id)} = PropertyOwners.ClientId" }
+                },
+                whereClauses: new Dictionary<string, object> { { "PropertyId", _property.Id } }
+            );
+
+            listBoxPropertyOwners.Items.Clear();
+
+            foreach (Client owner in propertyOwners)
+            {
+                _propertyOwners.Add(owner);
+                listBoxPropertyOwners.Items.Add($"{owner.Name} {owner.Surname}");
             }
         }
 

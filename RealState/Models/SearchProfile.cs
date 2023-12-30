@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RealState.Models
 {
-    public class ClientSearchProfile
+    public class SearchProfile
     {
         public int Id { get; set; }
         public int ClientId { get; set; }
@@ -21,6 +21,6 @@ namespace RealState.Models
         public int ParkingMin { get; set; }
         public bool Pool { get; set; }
 
-        public ClientSearchProfile() { }
+        public SearchProfile() { }
     }
 }

@@ -21,6 +21,9 @@ namespace RealState
         private SQLiteManager _sqliteManager;
 
         private Client _client { get; set; }
+        private List<SearchProfile> _clientSearchProfiles { get; set; }
+        private List<Contract> _clientContracts { get; set; }
+        private List<Property> _clientProperties { get; set; }
 
         public ClientDetailForm(SQLiteManager sqliteManager, Client client)
         {
@@ -42,6 +45,9 @@ namespace RealState
                 textBoxClientEmail.Text = _client.EmailAddress;
                 pictureBoxImage.Image = _client.GetProfileImage();
 
+                PopulateSearchProfiles();
+                PopulateContracts();
+                PopulateProperties();
                 // Llenar listBoxContracts y listBoxSearchProfiles según la lógica de tu aplicación
                 // Por ejemplo, si Client tiene una propiedad List<Contract> y una propiedad List<ClientSearchProfile>
                 // entonces puedes hacer listBoxContracts.DataSource = _client.Contracts; y listBoxSearchProfiles.DataSource = _client.SearchProfiles;
@@ -50,6 +56,72 @@ namespace RealState
             {
                 Log.ErrorExt(ex);
             }
+        }
+
+        private void PopulateSearchProfiles()
+        {
+            Dictionary<string, object> whereClauses = new Dictionary<string, object>() { { nameof(SearchProfile.ClientId), _client.Id } };
+            _clientSearchProfiles = _sqliteManager.ReadData<SearchProfile>(whereClauses: whereClauses);
+
+            listBoxSearchProfiles.Items.Clear();
+            foreach (SearchProfile clientSearchProfile in _clientSearchProfiles)
+            {
+                listBoxSearchProfiles.Items.Add(clientSearchProfile.Name);
+            }
+        }
+
+        private void PopulateContracts()
+        {
+            List<Contract> contractsAsBuyer = _sqliteManager.ReadData<Contract>(
+                joinClauses: new Dictionary<string, string>
+                {
+                    { "BuyersBoughtPercentage", $"{_sqliteManager.GetTableName<Contract>()}.{nameof(Contract.Id)} = BuyersBoughtPercentage.ContractId" }
+                },
+                whereClauses: new Dictionary<string, object> { { "ClientId", _client.Id } }
+            );
+
+            List<Contract> contractsAsSeller = _sqliteManager.ReadData<Contract>(
+                joinClauses: new Dictionary<string, string>
+                {
+                    { "SellersSoldPercentage", $"{_sqliteManager.GetTableName<Contract>()}.{nameof(Contract.Id)} = SellersSoldPercentage.ContractId" }
+                },
+                whereClauses: new Dictionary<string, object> { { "ClientId", _client.Id } }
+            );
+
+            _clientContracts = new List<Contract>();
+            listBoxContracts.Items.Clear();
+
+            foreach (Contract contract in contractsAsBuyer)
+            {
+                _clientContracts.Add(contract);
+                listBoxContracts.Items.Add(string.Format("{0} - {1}", contract.ContractType == 0 ? "Comprador" : "Arrendatario", contract.Name));
+            }
+
+            foreach (Contract contract in contractsAsSeller)
+            {
+                _clientContracts.Add(contract);
+                listBoxContracts.Items.Add(string.Format("{0} - {1}", contract.ContractType == 0 ? "Vendedor" : "Arrendador", contract.Name));
+            }
+
+        }
+
+        private void PopulateProperties()
+        {
+            _clientProperties = _sqliteManager.ReadData<Property>(
+                joinClauses: new Dictionary<string, string>
+                {
+                    { "PropertyOwners", $"{_sqliteManager.GetTableName<Property>()}.{nameof(Property.Id)} = PropertyOwners.PropertyId" }
+                },
+                whereClauses: new Dictionary<string, object> { { "ClientId", _client.Id } }
+            );
+
+            listBoxProperties.Items.Clear();
+
+            foreach (Property property in _clientProperties)
+            {
+                listBoxProperties.Items.Add(property.Title);
+            }
+
         }
 
         private void UpdateItem()
