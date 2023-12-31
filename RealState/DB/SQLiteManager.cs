@@ -239,11 +239,66 @@ public class SQLiteManager
 
         if (whereClauses != null && whereClauses.Any())
         {
-            query += " WHERE " + string.Join(" AND ", whereClauses.Select(kv => $"{kv.Key} = @{kv.Key}"));
+            //query += " WHERE " + string.Join(" AND ", whereClauses.Select(kv => $"{kv.Key} {(kv.Value.ToString().StartsWith("%") && kv.Value.ToString().EndsWith("%") ? "LIKE" : "=")} @{kv.Key}"));
+            List<string> comparisonConditions = BuildComparisonConditions(whereClauses);
+            query += " WHERE " + string.Join(" AND ", comparisonConditions);
         }
 
         return query;
     }
+
+    private List<string> BuildComparisonConditions(Dictionary<string, object> whereClauses)
+    {
+        List<string> conditions = new List<string>();
+
+        Dictionary<string, object> modifiedWhereClauses = new Dictionary<string, object>();
+
+        foreach (var condition in whereClauses)
+        {
+            string operatorSymbol = "=";
+
+            if (condition.Value is null)
+            {
+                // Handle NULL values
+                conditions.Add($"{condition.Key} IS NULL");
+            }
+            else if (condition.Value is string stringValue)
+            {
+                if (stringValue.StartsWith(">="))
+                {
+                    // Handle greater than or equal
+                    operatorSymbol = ">=";
+                    modifiedWhereClauses[condition.Key] = stringValue.Substring(2);
+                }
+                else if (stringValue.StartsWith("<="))
+                {
+                    // Handle less than or equal
+                    operatorSymbol = "<=";
+                    modifiedWhereClauses[condition.Key] = stringValue.Substring(2);
+                }
+                else if (stringValue.StartsWith(">"))
+                {
+                    // Handle greater than
+                    operatorSymbol = ">";
+                    modifiedWhereClauses[condition.Key] = stringValue.Substring(1);
+                }
+                else if (stringValue.StartsWith("<"))
+                {
+                    // Handle less than
+                    operatorSymbol = "<";
+                    modifiedWhereClauses[condition.Key] = stringValue.Substring(1);
+                }
+            }
+
+            conditions.Add($"{condition.Key} {operatorSymbol} @{condition.Key}");
+        }
+
+        foreach (var modifiedClause in modifiedWhereClauses)
+            whereClauses[modifiedClause.Key] = modifiedClause.Value;
+
+        return conditions;
+    }
+
 
     private void AddJoinClauses(SQLiteCommand command, Dictionary<string, string> joinClauses)
     {
@@ -301,12 +356,12 @@ public class SQLiteManager
         }
     }
 
-    public void DeleteData<T>(int id, string tableName)
+    public void DeleteData<T>(int id)
     {
         using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
         {
             connection.Open();
-            using (SQLiteCommand command = new SQLiteCommand($"DELETE FROM {tableName} WHERE Id = @Id;", connection))
+            using (SQLiteCommand command = new SQLiteCommand($"DELETE FROM {GetTableName<T>()} WHERE Id = @Id;", connection))
             {
                 command.Parameters.AddWithValue("@Id", id);
                 command.ExecuteNonQuery();
@@ -366,15 +421,15 @@ public class SQLiteManager
         return query;
     }
 
-    private string BuildSelectQuery<T>(Dictionary<string, object> whereClauses)
-    {
-        string query = $"SELECT * FROM {GetTableName<T>()}";
-        if (whereClauses != null && whereClauses.Any())
-        {
-            query += " WHERE " + string.Join(" AND ", whereClauses.Select(kv => $"{kv.Key} = @{kv.Key}"));
-        }
-        return query;
-    }
+    //private string BuildSelectQuery<T>(Dictionary<string, object> whereClauses)
+    //{
+    //    string query = $"SELECT * FROM {GetTableName<T>()}";
+    //    if (whereClauses != null && whereClauses.Any())
+    //    {
+    //        query += " WHERE " + string.Join(" AND ", whereClauses.Select(kv => $"{kv.Key} = @{kv.Key}"));
+    //    }
+    //    return query;
+    //}
 
     private string BuildUpdateQuery<T>(Dictionary<string, object> whereClauses)
     {
@@ -394,6 +449,34 @@ public class SQLiteManager
         }
         return query;
     }
+
+    public int CountRecords<T>(Dictionary<string, object> whereClauses = null)
+    {
+        using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
+        {
+            connection.Open();
+
+            using (SQLiteCommand countCommand = new SQLiteCommand(connection))
+            {
+                string tableName = GetTableName<T>();
+                string countQuery = $"SELECT COUNT(*) FROM {tableName}";
+
+                if (whereClauses != null && whereClauses.Any())
+                {
+                    countQuery += " WHERE " + string.Join(" AND ", whereClauses.Select(kv => $"{kv.Key} {(kv.Value.ToString().StartsWith("%") && kv.Value.ToString().EndsWith("%") ? "LIKE" : "=")} @{kv.Key}"));
+
+                    // Agregar parámetros si se proporcionan
+                    countCommand.Parameters.AddRange(whereClauses.Select(kv => new SQLiteParameter($"@{kv.Key}", kv.Value)).ToArray());
+                }
+
+                countCommand.CommandText = countQuery;
+
+                int recordCount = Convert.ToInt32(countCommand.ExecuteScalar());
+                return recordCount;
+            }
+        }
+    }
+
 
     private void AddParameters<T>(SQLiteCommand command, T entity)
     {

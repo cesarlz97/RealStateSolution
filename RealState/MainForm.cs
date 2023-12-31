@@ -21,9 +21,6 @@ namespace RealState
 
         private SQLiteManager _sqliteManager;
 
-        private List<Property> PropertyList { get; set; }
-        private List<Client> ClientList { get; set; }
-        
         public MainForm(SQLiteManager sqliteManager)
         {
             InitializeComponent();
@@ -38,7 +35,7 @@ namespace RealState
 
         private void GenerateTestProperties()
         {
-            PropertyList = new List<Property>();
+            List<Property> propertyList = new List<Property>();
 
             Property property = new Property()
             {
@@ -66,14 +63,14 @@ namespace RealState
 
             property.SetProfileImage(new Bitmap(Resources.casa_1));
 
-            PropertyList.Add(property);
+            propertyList.Add(property);
 
-            _sqliteManager.InsertData(PropertyList);
+            _sqliteManager.InsertData(propertyList);
         }
 
         private void GenerateTestClients()
         {
-            ClientList = new List<Client>();
+            List<Client> clientList = new List<Client>();
 
             Client client = new Client()
             {
@@ -87,9 +84,9 @@ namespace RealState
 
             client.SetProfileImage(new Bitmap(Resources.cara_1));
 
-            ClientList.Add(client);
+            clientList.Add(client);
 
-            _sqliteManager.InsertData(ClientList);
+            _sqliteManager.InsertData(clientList);
         }
 
         private void GenerateTestSearchProfiles()
@@ -129,51 +126,10 @@ namespace RealState
             _sqliteManager.UpsertData(propertyOwners, "PropertyOwners", new List<string> { "PropertyId", "ClientId" });
         }
 
-        private void PopulatePropiertiesTab(int? limit = null, int? offset = null)
-        {
-            exListBoxUserControlBuilding.Items.Clear();
-
-            PropertyList = _sqliteManager.ReadData<Property>(limit: limit, offset: offset);
-            foreach (Property property in PropertyList)
-            {
-                string details = string.Format(
-                    "Antiguedad: {0} años \n" +
-                    "Superficie: {1} m2 \n" +
-                    "Precio: {2} €",
-                    property.GetAge(),
-                    property.AreaUtil,
-                    property.Price);
-
-                ExListBoxItem exListBoxItem = new ExListBoxItem(property.Id, property.Title, details, property.GetProfileImage());
-
-                this.exListBoxUserControlBuilding.Items.Add(exListBoxItem);
-            }
-        }
-
-        private void PopulateClientsTab(int? limit = null, int? offset = null)
-        {
-            exListBoxUserControlClient.Items.Clear();
-
-            ClientList = _sqliteManager.ReadData<Client>(limit: limit, offset: offset);
-            foreach (Client client in ClientList)
-            {
-                string fullName = string.Format("{0} {1}", client.Name, client.Surname);
-                string details = string.Format(
-                    "Email: {0} \n" +
-                    "Teléfono: {1} \n",
-                    client.EmailAddress,
-                    client.PhoneNumber);
-
-                ExListBoxItem exListBoxItem = new ExListBoxItem(client.Id, fullName, details, client.GetProfileImage());
-
-                this.exListBoxUserControlClient.Items.Add(exListBoxItem);
-            }
-        }
-
         private void RefreshContent()
         {
-            PopulatePropiertiesTab(limit: 10);
-            PopulateClientsTab(limit: 10);
+            this.propertySelectorUserControl.Init(_sqliteManager);
+            this.clientSelectorUserControl.Init(_sqliteManager);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -181,9 +137,11 @@ namespace RealState
             RefreshContent();
         }
 
-        private void ExListBoxUserControlBuilding_ItemSelectionChanged(object sender, EventArgs e)
+        #region Property controls handlers
+
+        private void buttonPropertyNew_Click(object sender, EventArgs e)
         {
-            BuildingDetailForm buildingDetailForm = new BuildingDetailForm(_sqliteManager, PropertyList[exListBoxUserControlBuilding.SelectedIndex]);
+            PropertyDetailForm buildingDetailForm = new PropertyDetailForm(_sqliteManager, new Property());
             buildingDetailForm.Closed += (s, args) =>
             {
                 RefreshContent();
@@ -194,22 +152,13 @@ namespace RealState
             buildingDetailForm.Show();
         }
 
-        private void ExListBoxUserControlClient_ItemSelectionChanged(object sender, EventArgs e)
+        private void buttonPropertyDetail_Click(object sender, EventArgs e)
         {
-            ClientDetailForm clientDetailForm = new ClientDetailForm(_sqliteManager, ClientList[exListBoxUserControlClient.SelectedIndex]);
-            clientDetailForm.Closed += (s, args) =>
-            {
-                RefreshContent();
-                this.Show();
-            };
+            Property selectedProperty = propertySelectorUserControl.GetSelectedItem();
+            if (selectedProperty == null)
+                return;
 
-            this.Hide();
-            clientDetailForm.Show();
-        }
-
-        private void buttonNewBuidling_Click(object sender, EventArgs e)
-        {
-            BuildingDetailForm buildingDetailForm = new BuildingDetailForm(_sqliteManager, new Property());
+            PropertyDetailForm buildingDetailForm = new PropertyDetailForm(_sqliteManager, selectedProperty);
             buildingDetailForm.Closed += (s, args) =>
             {
                 RefreshContent();
@@ -220,7 +169,28 @@ namespace RealState
             buildingDetailForm.Show();
         }
 
-        private void buttonNewClient_Click(object sender, EventArgs e)
+        private void buttonPropertyDelete_Click(object sender, EventArgs e)
+        {
+            Property selectedProperty = propertySelectorUserControl.GetSelectedItem();
+            if (selectedProperty == null)
+                return;
+
+            var confirmResult = MessageBox.Show("¿Estás seguro de que deseas eliminar esta propiedad?",
+                                     "Confirmar borrado",
+                                     MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                _sqliteManager.DeleteData<Property>(selectedProperty.Id);
+                RefreshContent();
+            }
+        }
+
+        #endregion
+
+        #region Client controls handlers
+
+        private void buttonClientNew_Click(object sender, EventArgs e)
         {
             ClientDetailForm clientDetailForm = new ClientDetailForm(_sqliteManager, new Client());
             clientDetailForm.Closed += (s, args) =>
@@ -232,5 +202,42 @@ namespace RealState
             this.Hide();
             clientDetailForm.Show();
         }
+
+        private void buttonClientDetail_Click(object sender, EventArgs e)
+        {
+            Client selectedClient = clientSelectorUserControl.GetSelectedItem();
+            if (selectedClient == null)
+                return;
+
+            ClientDetailForm clientDetailForm = new ClientDetailForm(_sqliteManager, selectedClient);
+            clientDetailForm.Closed += (s, args) =>
+            {
+                RefreshContent();
+                this.Show();
+            };
+
+            this.Hide();
+            clientDetailForm.Show();
+        }
+
+        private void buttonClientDelete_Click(object sender, EventArgs e)
+        {
+            Client selectedClient = clientSelectorUserControl.GetSelectedItem();
+            if (selectedClient == null)
+                return;
+
+            var confirmResult = MessageBox.Show("¿Estás seguro de que deseas eliminar este cliente?",
+                                     "Confirmar borrado",
+                                     MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                _sqliteManager.DeleteData<Client>(selectedClient.Id);
+                RefreshContent();
+            }
+        }
+
+        #endregion
+
     }
 }

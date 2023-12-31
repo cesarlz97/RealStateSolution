@@ -1,6 +1,6 @@
 ﻿namespace RealState
 {
-    partial class BuildingDetailForm
+    partial class PropertyDetailForm
     {
         /// <summary>
         /// Required designer variable.
@@ -512,6 +512,7 @@
             this.listBoxPropertyOwners.Name = "listBoxPropertyOwners";
             this.listBoxPropertyOwners.Size = new System.Drawing.Size(233, 95);
             this.listBoxPropertyOwners.TabIndex = 52;
+            this.listBoxPropertyOwners.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxPropertyOwners_MouseDoubleClick);
             // 
             // BuildingDetailForm
             // 

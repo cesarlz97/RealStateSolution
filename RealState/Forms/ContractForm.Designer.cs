@@ -1,6 +1,6 @@
 ﻿namespace RealState.Forms
 {
-    partial class ClientContractsForm
+    partial class ContractForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.labelContractType = new System.Windows.Forms.Label();
             this.comboBoxContractType = new System.Windows.Forms.ComboBox();
             this.labelProperty = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxPropertyTitle = new System.Windows.Forms.TextBox();
             this.buttonSelectProperty = new System.Windows.Forms.Button();
             this.labelSellers = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -91,36 +91,40 @@
             // comboBoxContractType
             // 
             this.comboBoxContractType.FormattingEnabled = true;
+            this.comboBoxContractType.Items.AddRange(new object[] {
+            "Compra/Venta",
+            "Alquiler"});
             this.comboBoxContractType.Location = new System.Drawing.Point(531, 102);
             this.comboBoxContractType.Name = "comboBoxContractType";
-            this.comboBoxContractType.Size = new System.Drawing.Size(257, 21);
+            this.comboBoxContractType.Size = new System.Drawing.Size(261, 21);
             this.comboBoxContractType.TabIndex = 4;
             // 
             // labelProperty
             // 
             this.labelProperty.AutoSize = true;
-            this.labelProperty.Location = new System.Drawing.Point(440, 50);
+            this.labelProperty.Location = new System.Drawing.Point(440, 32);
             this.labelProperty.Name = "labelProperty";
             this.labelProperty.Size = new System.Drawing.Size(55, 13);
             this.labelProperty.TabIndex = 5;
             this.labelProperty.Text = "Propiedad";
             // 
-            // textBox1
+            // textBoxPropertyTitle
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(531, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(257, 20);
-            this.textBox1.TabIndex = 6;
+            this.textBoxPropertyTitle.Enabled = false;
+            this.textBoxPropertyTitle.Location = new System.Drawing.Point(443, 48);
+            this.textBoxPropertyTitle.Name = "textBoxPropertyTitle";
+            this.textBoxPropertyTitle.Size = new System.Drawing.Size(349, 20);
+            this.textBoxPropertyTitle.TabIndex = 6;
             // 
             // buttonSelectProperty
             // 
-            this.buttonSelectProperty.Location = new System.Drawing.Point(658, 73);
+            this.buttonSelectProperty.Location = new System.Drawing.Point(662, 73);
             this.buttonSelectProperty.Name = "buttonSelectProperty";
             this.buttonSelectProperty.Size = new System.Drawing.Size(130, 23);
             this.buttonSelectProperty.TabIndex = 7;
             this.buttonSelectProperty.Text = "Seleccionar propiedad";
             this.buttonSelectProperty.UseVisualStyleBackColor = true;
+            this.buttonSelectProperty.Click += new System.EventHandler(this.buttonSelectProperty_Click);
             // 
             // labelSellers
             // 
@@ -226,7 +230,7 @@
             this.buttonSave.Text = "Guardar";
             this.buttonSave.UseVisualStyleBackColor = true;
             // 
-            // ClientContractsForm
+            // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -244,14 +248,14 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.labelSellers);
             this.Controls.Add(this.buttonSelectProperty);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxPropertyTitle);
             this.Controls.Add(this.labelProperty);
             this.Controls.Add(this.comboBoxContractType);
             this.Controls.Add(this.labelContractType);
             this.Controls.Add(this.labelContractDetails);
             this.Controls.Add(this.labelContracts);
             this.Controls.Add(this.listBoxContracts);
-            this.Name = "ClientContractsForm";
+            this.Name = "ContractForm";
             this.Text = "ClientContractsForm";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
@@ -267,7 +271,7 @@
         private System.Windows.Forms.Label labelContractType;
         private System.Windows.Forms.ComboBox comboBoxContractType;
         private System.Windows.Forms.Label labelProperty;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxPropertyTitle;
         private System.Windows.Forms.Button buttonSelectProperty;
         private System.Windows.Forms.Label labelSellers;
         private System.Windows.Forms.ListBox listBox1;

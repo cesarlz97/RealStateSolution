@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace RealState
 {
-    public partial class BuildingDetailForm : Form
+    public partial class PropertyDetailForm : Form
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -26,7 +26,7 @@ namespace RealState
 
         private List<Client> _propertyOwners { get; set; }
 
-        public BuildingDetailForm(SQLiteManager sqliteManager, Property property)
+        public PropertyDetailForm(SQLiteManager sqliteManager, Property property)
         {
             InitializeComponent();
             this._property = property;
@@ -158,6 +158,23 @@ namespace RealState
             {
                 Log.ErrorExt(ex);
             }
+        }
+
+        void listBoxPropertyOwners_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.listBoxPropertyOwners.IndexFromPoint(e.Location);
+            if (index == System.Windows.Forms.ListBox.NoMatches)
+                return;
+
+            ClientDetailForm clientDetailForm = new ClientDetailForm(_sqliteManager, _propertyOwners[index]);
+            clientDetailForm.Closed += (s, args) =>
+            {
+                FillContent();
+                this.Show();
+            };
+
+            this.Hide();
+            clientDetailForm.Show();
         }
     }
 }

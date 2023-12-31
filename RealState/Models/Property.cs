@@ -65,7 +65,7 @@ namespace RealState.Models
 
         public Image GetProfileImage()
         {
-            if (ImageProfile == string.Empty)
+            if (string.IsNullOrWhiteSpace(ImageProfile))
                 return null;
 
             byte[] imageBytes = Convert.FromBase64String(ImageProfile);

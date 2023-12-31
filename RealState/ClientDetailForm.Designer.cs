@@ -59,9 +59,11 @@
             // 
             // pictureBoxImage
             // 
+            this.pictureBoxImage.Image = global::RealState.Properties.Resources.Client_Default_Profile_Image;
             this.pictureBoxImage.Location = new System.Drawing.Point(12, 12);
             this.pictureBoxImage.Name = "pictureBoxImage";
             this.pictureBoxImage.Size = new System.Drawing.Size(176, 126);
+            this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage.TabIndex = 2;
             this.pictureBoxImage.TabStop = false;
             // 
@@ -146,6 +148,7 @@
             this.listBoxContracts.Name = "listBoxContracts";
             this.listBoxContracts.Size = new System.Drawing.Size(563, 108);
             this.listBoxContracts.TabIndex = 54;
+            this.listBoxContracts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxContracts_MouseDoubleClick);
             // 
             // buttonSaveClient
             // 
@@ -174,6 +177,7 @@
             this.listBoxSearchProfiles.Name = "listBoxSearchProfiles";
             this.listBoxSearchProfiles.Size = new System.Drawing.Size(563, 108);
             this.listBoxSearchProfiles.TabIndex = 57;
+            this.listBoxSearchProfiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxSearchProfiles_MouseDoubleClick);
             // 
             // labelProperties
             // 
@@ -192,6 +196,7 @@
             this.listBoxProperties.Name = "listBoxProperties";
             this.listBoxProperties.Size = new System.Drawing.Size(563, 108);
             this.listBoxProperties.TabIndex = 59;
+            this.listBoxProperties.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxProperties_MouseDoubleClick);
             // 
             // ClientDetailForm
             // 

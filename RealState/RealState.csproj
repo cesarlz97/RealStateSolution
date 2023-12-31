@@ -89,11 +89,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuildingDetailForm.cs">
+    <Compile Include="PropertyDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BuildingDetailForm.Designer.cs">
-      <DependentUpon>BuildingDetailForm.cs</DependentUpon>
+    <Compile Include="PropertyDetailForm.Designer.cs">
+      <DependentUpon>PropertyDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientDetailForm.cs">
       <SubType>Form</SubType>
@@ -101,18 +101,30 @@
     <Compile Include="ClientDetailForm.Designer.cs">
       <DependentUpon>ClientDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\ClientSelectorUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\ClientSelectorUserControl.Designer.cs">
+      <DependentUpon>ClientSelectorUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\ExListBoxUserControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomControls\ExListBoxUserControl.Designer.cs">
       <DependentUpon>ExListBoxUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\PropertySelectorUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PropertySelectorUserControl.Designer.cs">
+      <DependentUpon>PropertySelectorUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DB\SQLiteManager.cs" />
-    <Compile Include="Forms\ClientContractsForm.cs">
+    <Compile Include="Forms\ContractForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ClientContractsForm.Designer.cs">
-      <DependentUpon>ClientContractsForm.cs</DependentUpon>
+    <Compile Include="Forms\ContractForm.Designer.cs">
+      <DependentUpon>ContractForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -134,20 +146,32 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertySelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PropertySelectorForm.Designer.cs">
+      <DependentUpon>PropertySelectorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SearchProfileForm.Designer.cs">
       <DependentUpon>SearchProfileForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BuildingDetailForm.resx">
-      <DependentUpon>BuildingDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="PropertyDetailForm.resx">
+      <DependentUpon>PropertyDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientDetailForm.resx">
       <DependentUpon>ClientDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ClientContractsForm.resx">
-      <DependentUpon>ClientContractsForm.cs</DependentUpon>
+    <EmbeddedResource Include="CustomControls\ClientSelectorUserControl.resx">
+      <DependentUpon>ClientSelectorUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\PropertySelectorUserControl.resx">
+      <DependentUpon>PropertySelectorUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContractForm.resx">
+      <DependentUpon>ContractForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -165,6 +189,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="PropertySelectorForm.resx">
+      <DependentUpon>PropertySelectorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchProfileForm.resx">
       <DependentUpon>SearchProfileForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +217,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cara_1.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Client_Default_Profile_Image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

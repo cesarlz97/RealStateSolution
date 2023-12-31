@@ -19,29 +19,33 @@ namespace RealState
 
         private SQLiteManager _sqliteManager;
 
-        private SearchProfile _clientSearchProfile { get; set; }
+        private SearchProfile _searchProfile { get; set; }
+
+        private List<Property> _propertiesMatching;
 
         public SearchProfileForm(SQLiteManager sqliteManager, SearchProfile clientSearchProfile)
         {
             InitializeComponent();
             this._sqliteManager = sqliteManager;
-            this._clientSearchProfile = clientSearchProfile;
+            this._searchProfile = clientSearchProfile;
         }
 
         private void FillContent()
         {
             try
             {
-                textBoxName.Text = _clientSearchProfile.Name;
-                numericUpDownAreaMin.Value = _clientSearchProfile.SizeMin;
-                numericUpDownPriceMax.Value = _clientSearchProfile.PriceMax;
-                comboBoxBuildingRegime.SelectedValue = _clientSearchProfile.RegimeType;
-                numericUpDownParkingCount.Value = _clientSearchProfile.ParkingMin;
-                numericUpDownBathRoomCount.Value = _clientSearchProfile.BathroomMin;
-                numericUpDownRoomMin.Value = _clientSearchProfile.RoomMin;
-                checkBoxPool.Checked = _clientSearchProfile.Pool;
-                dateTimePickerBuildingMaxAge.Value = _clientSearchProfile.AgeMax;
-                comboBoxBuildingType.SelectedIndex = _clientSearchProfile.PropertyType;
+                textBoxName.Text = _searchProfile.Name;
+                numericUpDownAreaMin.Value = _searchProfile.SizeMin;
+                numericUpDownPriceMax.Value = _searchProfile.PriceMax;
+                comboBoxBuildingRegime.SelectedIndex = _searchProfile.RegimeType;
+                numericUpDownParkingCount.Value = _searchProfile.ParkingMin;
+                numericUpDownBathRoomCount.Value = _searchProfile.BathroomMin;
+                numericUpDownRoomMin.Value = _searchProfile.RoomMin;
+                checkBoxPool.Checked = _searchProfile.Pool;
+                dateTimePickerBuildingMaxAge.Value = _searchProfile.AgeMax;
+                comboBoxBuildingType.SelectedIndex = _searchProfile.PropertyType;
+
+                SearchMatchingProperties();
             }
             catch (Exception ex)
             {
@@ -54,16 +58,16 @@ namespace RealState
         {
             try
             {
-                _clientSearchProfile.Name = textBoxName.Text;
-                _clientSearchProfile.SizeMin = (int)numericUpDownAreaMin.Value;
-                _clientSearchProfile.PriceMax = (int)numericUpDownPriceMax.Value;
-                _clientSearchProfile.RegimeType = (int)comboBoxBuildingRegime.SelectedValue;
-                _clientSearchProfile.ParkingMin = (int)numericUpDownParkingCount.Value;
-                _clientSearchProfile.BathroomMin = (int)numericUpDownBathRoomCount.Value;
-                _clientSearchProfile.RoomMin = (int)numericUpDownRoomMin.Value;
-                _clientSearchProfile.Pool = checkBoxPool.Checked;
-                _clientSearchProfile.AgeMax = dateTimePickerBuildingMaxAge.Value;
-                _clientSearchProfile.PropertyType = (int)comboBoxBuildingType.SelectedIndex;
+                _searchProfile.Name = textBoxName.Text;
+                _searchProfile.SizeMin = (int)numericUpDownAreaMin.Value;
+                _searchProfile.PriceMax = (int)numericUpDownPriceMax.Value;
+                _searchProfile.RegimeType = (int)comboBoxBuildingRegime.SelectedIndex;
+                _searchProfile.ParkingMin = (int)numericUpDownParkingCount.Value;
+                _searchProfile.BathroomMin = (int)numericUpDownBathRoomCount.Value;
+                _searchProfile.RoomMin = (int)numericUpDownRoomMin.Value;
+                _searchProfile.Pool = checkBoxPool.Checked;
+                _searchProfile.AgeMax = dateTimePickerBuildingMaxAge.Value;
+                _searchProfile.PropertyType = (int)comboBoxBuildingType.SelectedIndex;
             }
             catch (Exception ex)
             {
@@ -74,6 +78,27 @@ namespace RealState
         private bool ValidateItem()
         {
             return textBoxName.Text.Trim() != string.Empty;
+        }
+
+        private void SearchMatchingProperties()
+        {
+            Dictionary<string, object> whereClauses = new Dictionary<string, object>()
+            { 
+                { nameof(Property.PropertyType), _searchProfile.PropertyType },
+                { nameof(Property.RegimeType), _searchProfile.RegimeType },
+                { nameof(Property.DeedTime), $">={_searchProfile.AgeMax.ToString("yyyy-MM-dd HH:mm:ss")}" },
+                { nameof(Property.BathroomCount), $">={_searchProfile.BathroomMin}" },
+                { nameof(Property.ParkingCount), $">={_searchProfile.ParkingMin}" },
+                { nameof(Property.AreaUtil), $">={_searchProfile.SizeMin}" },
+                { nameof(Property.HasPool), _searchProfile.Pool },
+                { nameof(Property.Price), $"<={_searchProfile.PriceMax}" },
+            };
+
+            _propertiesMatching = _sqliteManager.ReadData<Property>(limit: 100, whereClauses: whereClauses);
+
+            listBoxPropertiesMatching.Items.Clear();
+            foreach (var property in _propertiesMatching)
+                listBoxPropertiesMatching.Items.Add(property.Title);
         }
 
         private void SearchProfileForm_Load(object sender, EventArgs e)
@@ -97,20 +122,39 @@ namespace RealState
 
                 UpdateItem();
 
-                if (_clientSearchProfile.Id > 0)
-                    _sqliteManager.UpdateData(_clientSearchProfile, new Dictionary<string, object> { { nameof(SearchProfile.Id), _clientSearchProfile.Id } });
+                if (_searchProfile.Id > 0)
+                    _sqliteManager.UpdateData(_searchProfile, new Dictionary<string, object> { { nameof(SearchProfile.Id), _searchProfile.Id } });
                 else
-                    _sqliteManager.InsertData(_clientSearchProfile);
+                    _sqliteManager.InsertData(_searchProfile);
 
-                MessageBox.Show("¡Propiedad actualizada en la base de datos!",
+                MessageBox.Show("¡Perfil de búsqueda actualizado!",
                         "Información",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
+
+                SearchMatchingProperties();
             }
             catch (Exception ex)
             {
                 Log.ErrorExt(ex);
             }
+        }
+
+        void listBoxPropertiesMatching_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.listBoxPropertiesMatching.IndexFromPoint(e.Location);
+            if (index == System.Windows.Forms.ListBox.NoMatches)
+                return;
+
+            PropertyDetailForm propertyDetailForm = new PropertyDetailForm(_sqliteManager, _propertiesMatching[index]);
+            propertyDetailForm.Closed += (s, args) =>
+            {
+                FillContent();
+                this.Show();
+            };
+
+            this.Hide();
+            propertyDetailForm.Show();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using log4net;
 using log4net.Util;
+using RealState.Forms;
 using RealState.Models;
 using RealState.Properties;
 using System;
@@ -36,14 +37,13 @@ namespace RealState
         {
             try
             {
-                pictureBoxImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBoxImage.Image = _client.GetProfileImage();
+                Image profileImage = _client.GetProfileImage();
+                if (profileImage != null) pictureBoxImage.Image = profileImage;
 
                 textBoxClientName.Text = _client.Name;
                 textBoxClientSurname.Text = _client.Surname;
                 textBoxClientPhoneNumber.Text = _client.PhoneNumber;
                 textBoxClientEmail.Text = _client.EmailAddress;
-                pictureBoxImage.Image = _client.GetProfileImage();
 
                 PopulateSearchProfiles();
                 PopulateContracts();
@@ -184,6 +184,57 @@ namespace RealState
             {
                 Log.ErrorExt(ex);
             }
+        }
+
+        void listBoxSearchProfiles_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.listBoxSearchProfiles.IndexFromPoint(e.Location);
+            if (index == System.Windows.Forms.ListBox.NoMatches)
+                return;
+
+            SearchProfileForm searchProfileForm = new SearchProfileForm(_sqliteManager, _clientSearchProfiles[index]);
+            searchProfileForm.Closed += (s, args) =>
+            {
+                FillContent();
+                this.Show();
+            };
+
+            this.Hide();
+            searchProfileForm.Show();
+        }
+
+        void listBoxProperties_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.listBoxProperties.IndexFromPoint(e.Location);
+            if (index == System.Windows.Forms.ListBox.NoMatches)
+                return;
+
+            PropertyDetailForm propertyDetailForm = new PropertyDetailForm(_sqliteManager, _clientProperties[index]);
+            propertyDetailForm.Closed += (s, args) =>
+            {
+                FillContent();
+                this.Show();
+            };
+
+            this.Hide();
+            propertyDetailForm.Show();
+        }
+
+        void listBoxContracts_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.listBoxContracts.IndexFromPoint(e.Location);
+            if (index == System.Windows.Forms.ListBox.NoMatches)
+                return;
+
+            ContractForm contractForm = new ContractForm(_sqliteManager, _clientContracts[index]);
+            contractForm.Closed += (s, args) =>
+            {
+                FillContent();
+                this.Show();
+            };
+
+            this.Hide();
+            contractForm.Show();
         }
     }
 }

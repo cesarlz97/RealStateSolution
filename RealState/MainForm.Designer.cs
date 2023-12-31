@@ -36,21 +36,15 @@
             this.linkLabelSelectTab = new System.Windows.Forms.LinkLabel();
             this.labelWelcomeTilte = new System.Windows.Forms.Label();
             this.tabPageBuildings = new System.Windows.Forms.TabPage();
-            this.buttonNewBuidling = new System.Windows.Forms.Button();
-            this.buttonPaginationPreviousBuilding = new System.Windows.Forms.Button();
-            this.labelPaginationBuilding = new System.Windows.Forms.Label();
-            this.buttonPaginationNextBuilding = new System.Windows.Forms.Button();
-            this.exListBoxUserControlBuilding = new RealState.CustomControls.ExListBoxUserControl();
-            this.textBoxSearchBuilding = new System.Windows.Forms.TextBox();
-            this.labelSearchBuilding = new System.Windows.Forms.Label();
+            this.panelProperties = new System.Windows.Forms.Panel();
+            this.buttonPropertyNew = new System.Windows.Forms.Button();
+            this.buttonPropertyDetail = new System.Windows.Forms.Button();
+            this.buttonPropertyDelete = new System.Windows.Forms.Button();
             this.tabPageClients = new System.Windows.Forms.TabPage();
-            this.buttonNewClient = new System.Windows.Forms.Button();
-            this.buttonPaginationPreviousClient = new System.Windows.Forms.Button();
-            this.labelPaginationClient = new System.Windows.Forms.Label();
-            this.buttonPaginationNextClient = new System.Windows.Forms.Button();
-            this.textBoxSearchClient = new System.Windows.Forms.TextBox();
-            this.labelSearchClient = new System.Windows.Forms.Label();
-            this.exListBoxUserControlClient = new RealState.CustomControls.ExListBoxUserControl();
+            this.panelClients = new System.Windows.Forms.Panel();
+            this.buttonClientNew = new System.Windows.Forms.Button();
+            this.buttonClientDetail = new System.Windows.Forms.Button();
+            this.buttonClientDelete = new System.Windows.Forms.Button();
             this.tabPageSocialMedia = new System.Windows.Forms.TabPage();
             this.listViewInstagramPublishedBuildings = new System.Windows.Forms.ListView();
             this.labelPublishedBuildings = new System.Windows.Forms.Label();
@@ -64,11 +58,15 @@
             this.labelCredentials = new System.Windows.Forms.Label();
             this.labelInstagramProfile = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.propertySelectorUserControl = new RealState.CustomControls.PropertySelectorUserControl();
+            this.clientSelectorUserControl = new RealState.CustomControls.ClientSelectorUserControl();
             this.tabControlMain.SuspendLayout();
             this.tabPageInit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.tabPageBuildings.SuspendLayout();
+            this.panelProperties.SuspendLayout();
             this.tabPageClients.SuspendLayout();
+            this.panelClients.SuspendLayout();
             this.tabPageSocialMedia.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +79,7 @@
             this.tabControlMain.Location = new System.Drawing.Point(12, 12);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(776, 426);
+            this.tabControlMain.Size = new System.Drawing.Size(776, 457);
             this.tabControlMain.TabIndex = 0;
             // 
             // tabPageInit
@@ -92,7 +90,7 @@
             this.tabPageInit.Location = new System.Drawing.Point(4, 22);
             this.tabPageInit.Name = "tabPageInit";
             this.tabPageInit.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInit.Size = new System.Drawing.Size(768, 400);
+            this.tabPageInit.Size = new System.Drawing.Size(768, 431);
             this.tabPageInit.TabIndex = 3;
             this.tabPageInit.Text = "Inicio";
             this.tabPageInit.UseVisualStyleBackColor = true;
@@ -129,165 +127,109 @@
             // 
             // tabPageBuildings
             // 
-            this.tabPageBuildings.Controls.Add(this.buttonNewBuidling);
-            this.tabPageBuildings.Controls.Add(this.buttonPaginationPreviousBuilding);
-            this.tabPageBuildings.Controls.Add(this.labelPaginationBuilding);
-            this.tabPageBuildings.Controls.Add(this.buttonPaginationNextBuilding);
-            this.tabPageBuildings.Controls.Add(this.exListBoxUserControlBuilding);
-            this.tabPageBuildings.Controls.Add(this.textBoxSearchBuilding);
-            this.tabPageBuildings.Controls.Add(this.labelSearchBuilding);
+            this.tabPageBuildings.Controls.Add(this.panelProperties);
             this.tabPageBuildings.Location = new System.Drawing.Point(4, 22);
             this.tabPageBuildings.Name = "tabPageBuildings";
             this.tabPageBuildings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBuildings.Size = new System.Drawing.Size(768, 400);
+            this.tabPageBuildings.Size = new System.Drawing.Size(768, 431);
             this.tabPageBuildings.TabIndex = 0;
             this.tabPageBuildings.Text = "Inmuebles";
             this.tabPageBuildings.UseVisualStyleBackColor = true;
             // 
-            // buttonNewBuidling
+            // panelProperties
             // 
-            this.buttonNewBuidling.Location = new System.Drawing.Point(687, 351);
-            this.buttonNewBuidling.Name = "buttonNewBuidling";
-            this.buttonNewBuidling.Size = new System.Drawing.Size(75, 23);
-            this.buttonNewBuidling.TabIndex = 6;
-            this.buttonNewBuidling.Text = "Nuevo";
-            this.buttonNewBuidling.UseVisualStyleBackColor = true;
-            this.buttonNewBuidling.Click += new System.EventHandler(this.buttonNewBuidling_Click);
+            this.panelProperties.Controls.Add(this.propertySelectorUserControl);
+            this.panelProperties.Controls.Add(this.buttonPropertyNew);
+            this.panelProperties.Controls.Add(this.buttonPropertyDetail);
+            this.panelProperties.Controls.Add(this.buttonPropertyDelete);
+            this.panelProperties.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelProperties.Location = new System.Drawing.Point(3, 3);
+            this.panelProperties.Name = "panelProperties";
+            this.panelProperties.Size = new System.Drawing.Size(762, 425);
+            this.panelProperties.TabIndex = 10;
             // 
-            // buttonPaginationPreviousBuilding
+            // buttonPropertyNew
             // 
-            this.buttonPaginationPreviousBuilding.Location = new System.Drawing.Point(286, 351);
-            this.buttonPaginationPreviousBuilding.Name = "buttonPaginationPreviousBuilding";
-            this.buttonPaginationPreviousBuilding.Size = new System.Drawing.Size(75, 23);
-            this.buttonPaginationPreviousBuilding.TabIndex = 5;
-            this.buttonPaginationPreviousBuilding.Text = "<<";
-            this.buttonPaginationPreviousBuilding.UseVisualStyleBackColor = true;
+            this.buttonPropertyNew.Location = new System.Drawing.Point(600, 399);
+            this.buttonPropertyNew.Name = "buttonPropertyNew";
+            this.buttonPropertyNew.Size = new System.Drawing.Size(75, 23);
+            this.buttonPropertyNew.TabIndex = 6;
+            this.buttonPropertyNew.Text = "Nuevo";
+            this.buttonPropertyNew.UseVisualStyleBackColor = true;
+            this.buttonPropertyNew.Click += new System.EventHandler(this.buttonPropertyNew_Click);
             // 
-            // labelPaginationBuilding
+            // buttonPropertyDetail
             // 
-            this.labelPaginationBuilding.AutoSize = true;
-            this.labelPaginationBuilding.Location = new System.Drawing.Point(367, 356);
-            this.labelPaginationBuilding.Name = "labelPaginationBuilding";
-            this.labelPaginationBuilding.Size = new System.Drawing.Size(34, 13);
-            this.labelPaginationBuilding.TabIndex = 4;
-            this.labelPaginationBuilding.Text = "1 - 10";
+            this.buttonPropertyDetail.Location = new System.Drawing.Point(681, 399);
+            this.buttonPropertyDetail.Name = "buttonPropertyDetail";
+            this.buttonPropertyDetail.Size = new System.Drawing.Size(75, 23);
+            this.buttonPropertyDetail.TabIndex = 8;
+            this.buttonPropertyDetail.Text = "Detalle";
+            this.buttonPropertyDetail.UseVisualStyleBackColor = true;
+            this.buttonPropertyDetail.Click += new System.EventHandler(this.buttonPropertyDetail_Click);
             // 
-            // buttonPaginationNextBuilding
+            // buttonPropertyDelete
             // 
-            this.buttonPaginationNextBuilding.Location = new System.Drawing.Point(407, 351);
-            this.buttonPaginationNextBuilding.Name = "buttonPaginationNextBuilding";
-            this.buttonPaginationNextBuilding.Size = new System.Drawing.Size(75, 23);
-            this.buttonPaginationNextBuilding.TabIndex = 3;
-            this.buttonPaginationNextBuilding.Text = ">>";
-            this.buttonPaginationNextBuilding.UseVisualStyleBackColor = true;
-            // 
-            // exListBoxUserControlBuilding
-            // 
-            this.exListBoxUserControlBuilding.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.exListBoxUserControlBuilding.FormattingEnabled = true;
-            this.exListBoxUserControlBuilding.ItemHeight = 66;
-            this.exListBoxUserControlBuilding.Location = new System.Drawing.Point(6, 32);
-            this.exListBoxUserControlBuilding.Name = "exListBoxUserControlBuilding";
-            this.exListBoxUserControlBuilding.Size = new System.Drawing.Size(756, 300);
-            this.exListBoxUserControlBuilding.TabIndex = 2;
-            this.exListBoxUserControlBuilding.SelectedValueChanged += new System.EventHandler(this.ExListBoxUserControlBuilding_ItemSelectionChanged);
-            // 
-            // textBoxSearchBuilding
-            // 
-            this.textBoxSearchBuilding.Location = new System.Drawing.Point(210, 6);
-            this.textBoxSearchBuilding.Name = "textBoxSearchBuilding";
-            this.textBoxSearchBuilding.Size = new System.Drawing.Size(375, 20);
-            this.textBoxSearchBuilding.TabIndex = 1;
-            // 
-            // labelSearchBuilding
-            // 
-            this.labelSearchBuilding.AutoSize = true;
-            this.labelSearchBuilding.Location = new System.Drawing.Point(146, 9);
-            this.labelSearchBuilding.Name = "labelSearchBuilding";
-            this.labelSearchBuilding.Size = new System.Drawing.Size(58, 13);
-            this.labelSearchBuilding.TabIndex = 0;
-            this.labelSearchBuilding.Text = "Búsqueda:";
+            this.buttonPropertyDelete.Location = new System.Drawing.Point(6, 399);
+            this.buttonPropertyDelete.Name = "buttonPropertyDelete";
+            this.buttonPropertyDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonPropertyDelete.TabIndex = 9;
+            this.buttonPropertyDelete.Text = "Eliminar";
+            this.buttonPropertyDelete.UseVisualStyleBackColor = true;
+            this.buttonPropertyDelete.Click += new System.EventHandler(this.buttonPropertyDelete_Click);
             // 
             // tabPageClients
             // 
-            this.tabPageClients.Controls.Add(this.buttonNewClient);
-            this.tabPageClients.Controls.Add(this.buttonPaginationPreviousClient);
-            this.tabPageClients.Controls.Add(this.labelPaginationClient);
-            this.tabPageClients.Controls.Add(this.buttonPaginationNextClient);
-            this.tabPageClients.Controls.Add(this.textBoxSearchClient);
-            this.tabPageClients.Controls.Add(this.labelSearchClient);
-            this.tabPageClients.Controls.Add(this.exListBoxUserControlClient);
+            this.tabPageClients.Controls.Add(this.panelClients);
             this.tabPageClients.Location = new System.Drawing.Point(4, 22);
             this.tabPageClients.Name = "tabPageClients";
             this.tabPageClients.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageClients.Size = new System.Drawing.Size(768, 400);
+            this.tabPageClients.Size = new System.Drawing.Size(768, 431);
             this.tabPageClients.TabIndex = 1;
             this.tabPageClients.Text = "Clientes";
             this.tabPageClients.UseVisualStyleBackColor = true;
             // 
-            // buttonNewClient
+            // panelClients
             // 
-            this.buttonNewClient.Location = new System.Drawing.Point(687, 351);
-            this.buttonNewClient.Name = "buttonNewClient";
-            this.buttonNewClient.Size = new System.Drawing.Size(75, 23);
-            this.buttonNewClient.TabIndex = 13;
-            this.buttonNewClient.Text = "Nuevo";
-            this.buttonNewClient.UseVisualStyleBackColor = true;
-            this.buttonNewClient.Click += new System.EventHandler(this.buttonNewClient_Click);
+            this.panelClients.Controls.Add(this.buttonClientNew);
+            this.panelClients.Controls.Add(this.buttonClientDetail);
+            this.panelClients.Controls.Add(this.buttonClientDelete);
+            this.panelClients.Controls.Add(this.clientSelectorUserControl);
+            this.panelClients.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelClients.Location = new System.Drawing.Point(3, 3);
+            this.panelClients.Name = "panelClients";
+            this.panelClients.Size = new System.Drawing.Size(762, 425);
+            this.panelClients.TabIndex = 0;
             // 
-            // buttonPaginationPreviousClient
+            // buttonClientNew
             // 
-            this.buttonPaginationPreviousClient.Location = new System.Drawing.Point(286, 351);
-            this.buttonPaginationPreviousClient.Name = "buttonPaginationPreviousClient";
-            this.buttonPaginationPreviousClient.Size = new System.Drawing.Size(75, 23);
-            this.buttonPaginationPreviousClient.TabIndex = 12;
-            this.buttonPaginationPreviousClient.Text = "<<";
-            this.buttonPaginationPreviousClient.UseVisualStyleBackColor = true;
+            this.buttonClientNew.Location = new System.Drawing.Point(600, 399);
+            this.buttonClientNew.Name = "buttonClientNew";
+            this.buttonClientNew.Size = new System.Drawing.Size(75, 23);
+            this.buttonClientNew.TabIndex = 10;
+            this.buttonClientNew.Text = "Nuevo";
+            this.buttonClientNew.UseVisualStyleBackColor = true;
+            this.buttonClientNew.Click += new System.EventHandler(this.buttonClientNew_Click);
             // 
-            // labelPaginationClient
+            // buttonClientDetail
             // 
-            this.labelPaginationClient.AutoSize = true;
-            this.labelPaginationClient.Location = new System.Drawing.Point(367, 356);
-            this.labelPaginationClient.Name = "labelPaginationClient";
-            this.labelPaginationClient.Size = new System.Drawing.Size(34, 13);
-            this.labelPaginationClient.TabIndex = 11;
-            this.labelPaginationClient.Text = "1 - 10";
+            this.buttonClientDetail.Location = new System.Drawing.Point(681, 399);
+            this.buttonClientDetail.Name = "buttonClientDetail";
+            this.buttonClientDetail.Size = new System.Drawing.Size(75, 23);
+            this.buttonClientDetail.TabIndex = 11;
+            this.buttonClientDetail.Text = "Detalle";
+            this.buttonClientDetail.UseVisualStyleBackColor = true;
+            this.buttonClientDetail.Click += new System.EventHandler(this.buttonClientDetail_Click);
             // 
-            // buttonPaginationNextClient
+            // buttonClientDelete
             // 
-            this.buttonPaginationNextClient.Location = new System.Drawing.Point(407, 351);
-            this.buttonPaginationNextClient.Name = "buttonPaginationNextClient";
-            this.buttonPaginationNextClient.Size = new System.Drawing.Size(75, 23);
-            this.buttonPaginationNextClient.TabIndex = 10;
-            this.buttonPaginationNextClient.Text = ">>";
-            this.buttonPaginationNextClient.UseVisualStyleBackColor = true;
-            // 
-            // textBoxSearchClient
-            // 
-            this.textBoxSearchClient.Location = new System.Drawing.Point(210, 6);
-            this.textBoxSearchClient.Name = "textBoxSearchClient";
-            this.textBoxSearchClient.Size = new System.Drawing.Size(375, 20);
-            this.textBoxSearchClient.TabIndex = 8;
-            // 
-            // labelSearchClient
-            // 
-            this.labelSearchClient.AutoSize = true;
-            this.labelSearchClient.Location = new System.Drawing.Point(146, 9);
-            this.labelSearchClient.Name = "labelSearchClient";
-            this.labelSearchClient.Size = new System.Drawing.Size(58, 13);
-            this.labelSearchClient.TabIndex = 7;
-            this.labelSearchClient.Text = "Búsqueda:";
-            // 
-            // exListBoxUserControlClient
-            // 
-            this.exListBoxUserControlClient.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.exListBoxUserControlClient.FormattingEnabled = true;
-            this.exListBoxUserControlClient.ItemHeight = 66;
-            this.exListBoxUserControlClient.Location = new System.Drawing.Point(6, 32);
-            this.exListBoxUserControlClient.Name = "exListBoxUserControlClient";
-            this.exListBoxUserControlClient.Size = new System.Drawing.Size(756, 300);
-            this.exListBoxUserControlClient.TabIndex = 9;
-            this.exListBoxUserControlClient.SelectedValueChanged += new System.EventHandler(this.ExListBoxUserControlClient_ItemSelectionChanged);
+            this.buttonClientDelete.Location = new System.Drawing.Point(6, 399);
+            this.buttonClientDelete.Name = "buttonClientDelete";
+            this.buttonClientDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonClientDelete.TabIndex = 12;
+            this.buttonClientDelete.Text = "Eliminar";
+            this.buttonClientDelete.UseVisualStyleBackColor = true;
+            this.buttonClientDelete.Click += new System.EventHandler(this.buttonClientDelete_Click);
             // 
             // tabPageSocialMedia
             // 
@@ -305,7 +247,7 @@
             this.tabPageSocialMedia.Location = new System.Drawing.Point(4, 22);
             this.tabPageSocialMedia.Name = "tabPageSocialMedia";
             this.tabPageSocialMedia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSocialMedia.Size = new System.Drawing.Size(768, 400);
+            this.tabPageSocialMedia.Size = new System.Drawing.Size(768, 431);
             this.tabPageSocialMedia.TabIndex = 2;
             this.tabPageSocialMedia.Text = "RRSS";
             this.tabPageSocialMedia.UseVisualStyleBackColor = true;
@@ -416,11 +358,25 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // propertySelectorUserControl
+            // 
+            this.propertySelectorUserControl.Location = new System.Drawing.Point(6, 7);
+            this.propertySelectorUserControl.Name = "propertySelectorUserControl";
+            this.propertySelectorUserControl.Size = new System.Drawing.Size(750, 380);
+            this.propertySelectorUserControl.TabIndex = 7;
+            // 
+            // clientSelectorUserControl
+            // 
+            this.clientSelectorUserControl.Location = new System.Drawing.Point(6, 7);
+            this.clientSelectorUserControl.Name = "clientSelectorUserControl";
+            this.clientSelectorUserControl.Size = new System.Drawing.Size(750, 380);
+            this.clientSelectorUserControl.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 481);
             this.Controls.Add(this.tabControlMain);
             this.Name = "MainForm";
             this.Text = "MainForm";
@@ -430,9 +386,9 @@
             this.tabPageInit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.tabPageBuildings.ResumeLayout(false);
-            this.tabPageBuildings.PerformLayout();
+            this.panelProperties.ResumeLayout(false);
             this.tabPageClients.ResumeLayout(false);
-            this.tabPageClients.PerformLayout();
+            this.panelClients.ResumeLayout(false);
             this.tabPageSocialMedia.ResumeLayout(false);
             this.tabPageSocialMedia.PerformLayout();
             this.ResumeLayout(false);
@@ -443,22 +399,8 @@
 
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabPageBuildings;
-        private System.Windows.Forms.TabPage tabPageClients;
         private System.Windows.Forms.TabPage tabPageSocialMedia;
-        private System.Windows.Forms.TextBox textBoxSearchBuilding;
-        private System.Windows.Forms.Label labelSearchBuilding;
-        private System.Windows.Forms.Button buttonPaginationPreviousBuilding;
-        private System.Windows.Forms.Label labelPaginationBuilding;
-        private System.Windows.Forms.Button buttonPaginationNextBuilding;
-        private CustomControls.ExListBoxUserControl exListBoxUserControlBuilding;
-        private System.Windows.Forms.Button buttonNewBuidling;
-        private System.Windows.Forms.Button buttonNewClient;
-        private System.Windows.Forms.Button buttonPaginationPreviousClient;
-        private System.Windows.Forms.Label labelPaginationClient;
-        private System.Windows.Forms.Button buttonPaginationNextClient;
-        private CustomControls.ExListBoxUserControl exListBoxUserControlClient;
-        private System.Windows.Forms.TextBox textBoxSearchClient;
-        private System.Windows.Forms.Label labelSearchClient;
+        private System.Windows.Forms.Button buttonPropertyNew;
         private System.Windows.Forms.ListView listViewInstagramPublishedBuildings;
         private System.Windows.Forms.Label labelPublishedBuildings;
         private System.Windows.Forms.CheckBox checkBoxPublishAutomatic;
@@ -475,5 +417,15 @@
         private System.Windows.Forms.Label labelWelcomeTilte;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
+        private CustomControls.PropertySelectorUserControl propertySelectorUserControl;
+        private System.Windows.Forms.Button buttonPropertyDelete;
+        private System.Windows.Forms.Button buttonPropertyDetail;
+        private System.Windows.Forms.TabPage tabPageClients;
+        private System.Windows.Forms.Panel panelClients;
+        private System.Windows.Forms.Panel panelProperties;
+        private System.Windows.Forms.Button buttonClientNew;
+        private System.Windows.Forms.Button buttonClientDetail;
+        private System.Windows.Forms.Button buttonClientDelete;
+        private CustomControls.ClientSelectorUserControl clientSelectorUserControl;
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.listBoxPropertiesMatching = new System.Windows.Forms.ListBox();
+            this.labelInterestingBuildings = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
@@ -52,8 +54,6 @@
             this.comboBoxBuildingType = new System.Windows.Forms.ComboBox();
             this.labelBuildingType = new System.Windows.Forms.Label();
             this.labelSearchProfile = new System.Windows.Forms.Label();
-            this.listBoxRelatedBuildings = new System.Windows.Forms.ListBox();
-            this.labelInterestingBuildings = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPriceMax)).BeginInit();
@@ -64,7 +64,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.listBoxRelatedBuildings);
+            this.panel1.Controls.Add(this.listBoxPropertiesMatching);
             this.panel1.Controls.Add(this.labelInterestingBuildings);
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Controls.Add(this.textBoxName);
@@ -95,6 +95,25 @@
             this.panel1.Size = new System.Drawing.Size(800, 450);
             this.panel1.TabIndex = 0;
             // 
+            // listBoxPropertiesMatching
+            // 
+            this.listBoxPropertiesMatching.FormattingEnabled = true;
+            this.listBoxPropertiesMatching.Location = new System.Drawing.Point(386, 44);
+            this.listBoxPropertiesMatching.Name = "listBoxPropertiesMatching";
+            this.listBoxPropertiesMatching.Size = new System.Drawing.Size(402, 394);
+            this.listBoxPropertiesMatching.TabIndex = 77;
+            this.listBoxPropertiesMatching.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxPropertiesMatching_MouseDoubleClick);
+            // 
+            // labelInterestingBuildings
+            // 
+            this.labelInterestingBuildings.AutoSize = true;
+            this.labelInterestingBuildings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInterestingBuildings.Location = new System.Drawing.Point(382, 11);
+            this.labelInterestingBuildings.Name = "labelInterestingBuildings";
+            this.labelInterestingBuildings.Size = new System.Drawing.Size(177, 20);
+            this.labelInterestingBuildings.TabIndex = 76;
+            this.labelInterestingBuildings.Text = "Inmuebles de interés";
+            // 
             // buttonSave
             // 
             this.buttonSave.Location = new System.Drawing.Point(18, 415);
@@ -124,7 +143,7 @@
             // labelMeters
             // 
             this.labelMeters.AutoSize = true;
-            this.labelMeters.Location = new System.Drawing.Point(175, 300);
+            this.labelMeters.Location = new System.Drawing.Point(212, 300);
             this.labelMeters.Name = "labelMeters";
             this.labelMeters.Size = new System.Drawing.Size(21, 13);
             this.labelMeters.TabIndex = 72;
@@ -133,7 +152,7 @@
             // labelEurosPrice
             // 
             this.labelEurosPrice.AutoSize = true;
-            this.labelEurosPrice.Location = new System.Drawing.Point(175, 358);
+            this.labelEurosPrice.Location = new System.Drawing.Point(212, 358);
             this.labelEurosPrice.Name = "labelEurosPrice";
             this.labelEurosPrice.Size = new System.Drawing.Size(13, 13);
             this.labelEurosPrice.TabIndex = 71;
@@ -152,8 +171,13 @@
             // numericUpDownAreaMin
             // 
             this.numericUpDownAreaMin.Location = new System.Drawing.Point(116, 298);
+            this.numericUpDownAreaMin.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.numericUpDownAreaMin.Name = "numericUpDownAreaMin";
-            this.numericUpDownAreaMin.Size = new System.Drawing.Size(53, 20);
+            this.numericUpDownAreaMin.Size = new System.Drawing.Size(90, 20);
             this.numericUpDownAreaMin.TabIndex = 69;
             // 
             // labelAreaMin
@@ -168,8 +192,13 @@
             // numericUpDownPriceMax
             // 
             this.numericUpDownPriceMax.Location = new System.Drawing.Point(116, 356);
+            this.numericUpDownPriceMax.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.numericUpDownPriceMax.Name = "numericUpDownPriceMax";
-            this.numericUpDownPriceMax.Size = new System.Drawing.Size(53, 20);
+            this.numericUpDownPriceMax.Size = new System.Drawing.Size(90, 20);
             this.numericUpDownPriceMax.TabIndex = 67;
             // 
             // labelPriceMax
@@ -183,6 +212,7 @@
             // 
             // comboBoxBuildingRegime
             // 
+            this.comboBoxBuildingRegime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBuildingRegime.FormattingEnabled = true;
             this.comboBoxBuildingRegime.Items.AddRange(new object[] {
             "Alquiler",
@@ -204,6 +234,11 @@
             // numericUpDownParkingCount
             // 
             this.numericUpDownParkingCount.Location = new System.Drawing.Point(116, 266);
+            this.numericUpDownParkingCount.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.numericUpDownParkingCount.Name = "numericUpDownParkingCount";
             this.numericUpDownParkingCount.Size = new System.Drawing.Size(53, 20);
             this.numericUpDownParkingCount.TabIndex = 63;
@@ -211,6 +246,11 @@
             // numericUpDownBathRoomCount
             // 
             this.numericUpDownBathRoomCount.Location = new System.Drawing.Point(116, 234);
+            this.numericUpDownBathRoomCount.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.numericUpDownBathRoomCount.Name = "numericUpDownBathRoomCount";
             this.numericUpDownBathRoomCount.Size = new System.Drawing.Size(53, 20);
             this.numericUpDownBathRoomCount.TabIndex = 62;
@@ -218,6 +258,11 @@
             // numericUpDownRoomMin
             // 
             this.numericUpDownRoomMin.Location = new System.Drawing.Point(116, 198);
+            this.numericUpDownRoomMin.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.numericUpDownRoomMin.Name = "numericUpDownRoomMin";
             this.numericUpDownRoomMin.Size = new System.Drawing.Size(53, 20);
             this.numericUpDownRoomMin.TabIndex = 61;
@@ -268,6 +313,7 @@
             // 
             // comboBoxBuildingType
             // 
+            this.comboBoxBuildingType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBuildingType.FormattingEnabled = true;
             this.comboBoxBuildingType.Items.AddRange(new object[] {
             "Casa",
@@ -295,24 +341,6 @@
             this.labelSearchProfile.Size = new System.Drawing.Size(159, 20);
             this.labelSearchProfile.TabIndex = 53;
             this.labelSearchProfile.Text = "Perfil de búsqueda";
-            // 
-            // listBoxRelatedBuildings
-            // 
-            this.listBoxRelatedBuildings.FormattingEnabled = true;
-            this.listBoxRelatedBuildings.Location = new System.Drawing.Point(386, 44);
-            this.listBoxRelatedBuildings.Name = "listBoxRelatedBuildings";
-            this.listBoxRelatedBuildings.Size = new System.Drawing.Size(402, 394);
-            this.listBoxRelatedBuildings.TabIndex = 77;
-            // 
-            // labelInterestingBuildings
-            // 
-            this.labelInterestingBuildings.AutoSize = true;
-            this.labelInterestingBuildings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInterestingBuildings.Location = new System.Drawing.Point(382, 11);
-            this.labelInterestingBuildings.Name = "labelInterestingBuildings";
-            this.labelInterestingBuildings.Size = new System.Drawing.Size(177, 20);
-            this.labelInterestingBuildings.TabIndex = 76;
-            this.labelInterestingBuildings.Text = "Inmuebles de interés";
             // 
             // SearchProfileForm
             // 
@@ -360,7 +388,7 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.ListBox listBoxRelatedBuildings;
+        private System.Windows.Forms.ListBox listBoxPropertiesMatching;
         private System.Windows.Forms.Label labelInterestingBuildings;
     }
 }
