@@ -1,4 +1,6 @@
-﻿namespace RealState
+﻿using RealState.Models;
+
+namespace RealState
 {
     partial class MainForm
     {
@@ -37,6 +39,7 @@
             this.labelWelcomeTilte = new System.Windows.Forms.Label();
             this.tabPageBuildings = new System.Windows.Forms.TabPage();
             this.panelProperties = new System.Windows.Forms.Panel();
+            this.propertySelectorUserControl = new RealState.CustomControls.ItemSelectorUserControl<Property>();
             this.buttonPropertyNew = new System.Windows.Forms.Button();
             this.buttonPropertyDetail = new System.Windows.Forms.Button();
             this.buttonPropertyDelete = new System.Windows.Forms.Button();
@@ -45,6 +48,7 @@
             this.buttonClientNew = new System.Windows.Forms.Button();
             this.buttonClientDetail = new System.Windows.Forms.Button();
             this.buttonClientDelete = new System.Windows.Forms.Button();
+            this.clientSelectorUserControl = new RealState.CustomControls.ItemSelectorUserControl<Client>();
             this.tabPageSocialMedia = new System.Windows.Forms.TabPage();
             this.listViewInstagramPublishedBuildings = new System.Windows.Forms.ListView();
             this.labelPublishedBuildings = new System.Windows.Forms.Label();
@@ -58,8 +62,6 @@
             this.labelCredentials = new System.Windows.Forms.Label();
             this.labelInstagramProfile = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.propertySelectorUserControl = new RealState.CustomControls.PropertySelectorUserControl();
-            this.clientSelectorUserControl = new RealState.CustomControls.ClientSelectorUserControl();
             this.tabControlMain.SuspendLayout();
             this.tabPageInit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -148,6 +150,13 @@
             this.panelProperties.Size = new System.Drawing.Size(762, 425);
             this.panelProperties.TabIndex = 10;
             // 
+            // propertySelectorUserControl
+            // 
+            this.propertySelectorUserControl.Location = new System.Drawing.Point(6, 7);
+            this.propertySelectorUserControl.Name = "propertySelectorUserControl";
+            this.propertySelectorUserControl.Size = new System.Drawing.Size(750, 380);
+            this.propertySelectorUserControl.TabIndex = 7;
+            // 
             // buttonPropertyNew
             // 
             this.buttonPropertyNew.Location = new System.Drawing.Point(600, 399);
@@ -230,6 +239,13 @@
             this.buttonClientDelete.Text = "Eliminar";
             this.buttonClientDelete.UseVisualStyleBackColor = true;
             this.buttonClientDelete.Click += new System.EventHandler(this.buttonClientDelete_Click);
+            // 
+            // clientSelectorUserControl
+            // 
+            this.clientSelectorUserControl.Location = new System.Drawing.Point(6, 7);
+            this.clientSelectorUserControl.Name = "clientSelectorUserControl";
+            this.clientSelectorUserControl.Size = new System.Drawing.Size(750, 380);
+            this.clientSelectorUserControl.TabIndex = 0;
             // 
             // tabPageSocialMedia
             // 
@@ -358,20 +374,6 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // propertySelectorUserControl
-            // 
-            this.propertySelectorUserControl.Location = new System.Drawing.Point(6, 7);
-            this.propertySelectorUserControl.Name = "propertySelectorUserControl";
-            this.propertySelectorUserControl.Size = new System.Drawing.Size(750, 380);
-            this.propertySelectorUserControl.TabIndex = 7;
-            // 
-            // clientSelectorUserControl
-            // 
-            this.clientSelectorUserControl.Location = new System.Drawing.Point(6, 7);
-            this.clientSelectorUserControl.Name = "clientSelectorUserControl";
-            this.clientSelectorUserControl.Size = new System.Drawing.Size(750, 380);
-            this.clientSelectorUserControl.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,6 +381,7 @@
             this.ClientSize = new System.Drawing.Size(800, 481);
             this.Controls.Add(this.tabControlMain);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControlMain.ResumeLayout(false);
@@ -417,7 +420,7 @@
         private System.Windows.Forms.Label labelWelcomeTilte;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
-        private CustomControls.PropertySelectorUserControl propertySelectorUserControl;
+        private CustomControls.ItemSelectorUserControl<Property> propertySelectorUserControl;
         private System.Windows.Forms.Button buttonPropertyDelete;
         private System.Windows.Forms.Button buttonPropertyDetail;
         private System.Windows.Forms.TabPage tabPageClients;
@@ -426,6 +429,6 @@
         private System.Windows.Forms.Button buttonClientNew;
         private System.Windows.Forms.Button buttonClientDetail;
         private System.Windows.Forms.Button buttonClientDelete;
-        private CustomControls.ClientSelectorUserControl clientSelectorUserControl;
+        private CustomControls.ItemSelectorUserControl<Client> clientSelectorUserControl;
     }
 }

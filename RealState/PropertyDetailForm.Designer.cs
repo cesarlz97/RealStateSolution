@@ -74,6 +74,12 @@
             this.buttonSaveBuilding = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.listBoxPropertyOwners = new System.Windows.Forms.ListBox();
+            this.buttonAddOwner = new System.Windows.Forms.Button();
+            this.buttonDeleteOwner = new System.Windows.Forms.Button();
+            this.listBoxContracts = new System.Windows.Forms.ListBox();
+            this.labelContracts = new System.Windows.Forms.Label();
+            this.buttonAddContract = new System.Windows.Forms.Button();
+            this.buttonDeleteContract = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaBuilt)).BeginInit();
@@ -87,7 +93,7 @@
             // 
             // pictureBoxImage
             // 
-            this.pictureBoxImage.Location = new System.Drawing.Point(12, 12);
+            this.pictureBoxImage.Location = new System.Drawing.Point(12, 47);
             this.pictureBoxImage.Name = "pictureBoxImage";
             this.pictureBoxImage.Size = new System.Drawing.Size(176, 126);
             this.pictureBoxImage.TabIndex = 0;
@@ -95,7 +101,7 @@
             // 
             // SelectImage
             // 
-            this.SelectImage.Location = new System.Drawing.Point(37, 144);
+            this.SelectImage.Location = new System.Drawing.Point(41, 181);
             this.SelectImage.Name = "SelectImage";
             this.SelectImage.Size = new System.Drawing.Size(128, 23);
             this.SelectImage.TabIndex = 1;
@@ -106,7 +112,7 @@
             // 
             this.labelPrice.AutoSize = true;
             this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrice.Location = new System.Drawing.Point(12, 197);
+            this.labelPrice.Location = new System.Drawing.Point(8, 228);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(59, 20);
             this.labelPrice.TabIndex = 2;
@@ -116,7 +122,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 250);
+            this.label2.Location = new System.Drawing.Point(12, 307);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 20);
             this.label2.TabIndex = 4;
@@ -125,7 +131,7 @@
             // labelAreaBuilt
             // 
             this.labelAreaBuilt.AutoSize = true;
-            this.labelAreaBuilt.Location = new System.Drawing.Point(14, 285);
+            this.labelAreaBuilt.Location = new System.Drawing.Point(13, 338);
             this.labelAreaBuilt.Name = "labelAreaBuilt";
             this.labelAreaBuilt.Size = new System.Drawing.Size(59, 13);
             this.labelAreaBuilt.TabIndex = 5;
@@ -134,7 +140,7 @@
             // labelAreaUtil
             // 
             this.labelAreaUtil.AutoSize = true;
-            this.labelAreaUtil.Location = new System.Drawing.Point(14, 319);
+            this.labelAreaUtil.Location = new System.Drawing.Point(13, 364);
             this.labelAreaUtil.Name = "labelAreaUtil";
             this.labelAreaUtil.Size = new System.Drawing.Size(22, 13);
             this.labelAreaUtil.TabIndex = 7;
@@ -143,7 +149,7 @@
             // labelAreaParcel
             // 
             this.labelAreaParcel.AutoSize = true;
-            this.labelAreaParcel.Location = new System.Drawing.Point(14, 353);
+            this.labelAreaParcel.Location = new System.Drawing.Point(13, 390);
             this.labelAreaParcel.Name = "labelAreaParcel";
             this.labelAreaParcel.Size = new System.Drawing.Size(43, 13);
             this.labelAreaParcel.TabIndex = 9;
@@ -152,7 +158,7 @@
             // labelAreaKitchen
             // 
             this.labelAreaKitchen.AutoSize = true;
-            this.labelAreaKitchen.Location = new System.Drawing.Point(14, 387);
+            this.labelAreaKitchen.Location = new System.Drawing.Point(13, 416);
             this.labelAreaKitchen.Name = "labelAreaKitchen";
             this.labelAreaKitchen.Size = new System.Drawing.Size(40, 13);
             this.labelAreaKitchen.TabIndex = 10;
@@ -186,7 +192,7 @@
             // 
             // textBoxAddress
             // 
-            this.textBoxAddress.Location = new System.Drawing.Point(341, 78);
+            this.textBoxAddress.Location = new System.Drawing.Point(341, 73);
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(200, 20);
             this.textBoxAddress.TabIndex = 16;
@@ -194,7 +200,7 @@
             // labelAddress
             // 
             this.labelAddress.AutoSize = true;
-            this.labelAddress.Location = new System.Drawing.Point(240, 81);
+            this.labelAddress.Location = new System.Drawing.Point(240, 76);
             this.labelAddress.Name = "labelAddress";
             this.labelAddress.Size = new System.Drawing.Size(52, 13);
             this.labelAddress.TabIndex = 17;
@@ -202,7 +208,7 @@
             // 
             // numericUpDownPrice
             // 
-            this.numericUpDownPrice.Location = new System.Drawing.Point(77, 200);
+            this.numericUpDownPrice.Location = new System.Drawing.Point(81, 257);
             this.numericUpDownPrice.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -214,7 +220,7 @@
             // 
             // numericUpDownAreaBuilt
             // 
-            this.numericUpDownAreaBuilt.Location = new System.Drawing.Point(77, 283);
+            this.numericUpDownAreaBuilt.Location = new System.Drawing.Point(81, 336);
             this.numericUpDownAreaBuilt.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -226,7 +232,7 @@
             // 
             // numericUpDownAreaUtil
             // 
-            this.numericUpDownAreaUtil.Location = new System.Drawing.Point(77, 317);
+            this.numericUpDownAreaUtil.Location = new System.Drawing.Point(81, 362);
             this.numericUpDownAreaUtil.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -238,7 +244,7 @@
             // 
             // numericUpDownAreParcel
             // 
-            this.numericUpDownAreParcel.Location = new System.Drawing.Point(77, 351);
+            this.numericUpDownAreParcel.Location = new System.Drawing.Point(81, 388);
             this.numericUpDownAreParcel.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -250,7 +256,7 @@
             // 
             // numericUpDownKitchen
             // 
-            this.numericUpDownKitchen.Location = new System.Drawing.Point(77, 385);
+            this.numericUpDownKitchen.Location = new System.Drawing.Point(81, 414);
             this.numericUpDownKitchen.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -262,11 +268,12 @@
             // 
             // comboBoxRegime
             // 
+            this.comboBoxRegime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRegime.FormattingEnabled = true;
             this.comboBoxRegime.Items.AddRange(new object[] {
             "Alquiler",
             "Compra"});
-            this.comboBoxRegime.Location = new System.Drawing.Point(341, 112);
+            this.comboBoxRegime.Location = new System.Drawing.Point(341, 99);
             this.comboBoxRegime.Name = "comboBoxRegime";
             this.comboBoxRegime.Size = new System.Drawing.Size(200, 21);
             this.comboBoxRegime.TabIndex = 23;
@@ -274,7 +281,7 @@
             // labelRegime
             // 
             this.labelRegime.AutoSize = true;
-            this.labelRegime.Location = new System.Drawing.Point(240, 115);
+            this.labelRegime.Location = new System.Drawing.Point(240, 102);
             this.labelRegime.Name = "labelRegime";
             this.labelRegime.Size = new System.Drawing.Size(49, 13);
             this.labelRegime.TabIndex = 24;
@@ -283,7 +290,7 @@
             // labelType
             // 
             this.labelType.AutoSize = true;
-            this.labelType.Location = new System.Drawing.Point(240, 149);
+            this.labelType.Location = new System.Drawing.Point(240, 129);
             this.labelType.Name = "labelType";
             this.labelType.Size = new System.Drawing.Size(28, 13);
             this.labelType.TabIndex = 25;
@@ -291,11 +298,12 @@
             // 
             // comboBoxType
             // 
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Items.AddRange(new object[] {
             "Casa",
             "Piso"});
-            this.comboBoxType.Location = new System.Drawing.Point(341, 146);
+            this.comboBoxType.Location = new System.Drawing.Point(341, 126);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(200, 21);
             this.comboBoxType.TabIndex = 26;
@@ -303,7 +311,7 @@
             // labelAge
             // 
             this.labelAge.AutoSize = true;
-            this.labelAge.Location = new System.Drawing.Point(240, 183);
+            this.labelAge.Location = new System.Drawing.Point(240, 154);
             this.labelAge.Name = "labelAge";
             this.labelAge.Size = new System.Drawing.Size(61, 13);
             this.labelAge.TabIndex = 27;
@@ -311,7 +319,7 @@
             // 
             // dateTimePickerAge
             // 
-            this.dateTimePickerAge.Location = new System.Drawing.Point(341, 183);
+            this.dateTimePickerAge.Location = new System.Drawing.Point(341, 153);
             this.dateTimePickerAge.Name = "dateTimePickerAge";
             this.dateTimePickerAge.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerAge.TabIndex = 28;
@@ -319,7 +327,7 @@
             // labelRoomCount
             // 
             this.labelRoomCount.AutoSize = true;
-            this.labelRoomCount.Location = new System.Drawing.Point(240, 217);
+            this.labelRoomCount.Location = new System.Drawing.Point(240, 181);
             this.labelRoomCount.Name = "labelRoomCount";
             this.labelRoomCount.Size = new System.Drawing.Size(69, 13);
             this.labelRoomCount.TabIndex = 29;
@@ -328,7 +336,7 @@
             // labelBathRoomCount
             // 
             this.labelBathRoomCount.AutoSize = true;
-            this.labelBathRoomCount.Location = new System.Drawing.Point(240, 255);
+            this.labelBathRoomCount.Location = new System.Drawing.Point(240, 207);
             this.labelBathRoomCount.Name = "labelBathRoomCount";
             this.labelBathRoomCount.Size = new System.Drawing.Size(37, 13);
             this.labelBathRoomCount.TabIndex = 30;
@@ -337,7 +345,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(240, 287);
+            this.label15.Location = new System.Drawing.Point(240, 233);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(85, 13);
             this.label15.TabIndex = 31;
@@ -345,11 +353,12 @@
             // 
             // comboBoxHeatingSystem
             // 
+            this.comboBoxHeatingSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxHeatingSystem.FormattingEnabled = true;
             this.comboBoxHeatingSystem.Items.AddRange(new object[] {
             "Caldera de gas",
             "Aerotermia"});
-            this.comboBoxHeatingSystem.Location = new System.Drawing.Point(341, 321);
+            this.comboBoxHeatingSystem.Location = new System.Drawing.Point(341, 257);
             this.comboBoxHeatingSystem.Name = "comboBoxHeatingSystem";
             this.comboBoxHeatingSystem.Size = new System.Drawing.Size(200, 21);
             this.comboBoxHeatingSystem.TabIndex = 32;
@@ -357,7 +366,7 @@
             // checkBoxAirConditioning
             // 
             this.checkBoxAirConditioning.AutoSize = true;
-            this.checkBoxAirConditioning.Location = new System.Drawing.Point(243, 354);
+            this.checkBoxAirConditioning.Location = new System.Drawing.Point(341, 284);
             this.checkBoxAirConditioning.Name = "checkBoxAirConditioning";
             this.checkBoxAirConditioning.Size = new System.Drawing.Size(117, 17);
             this.checkBoxAirConditioning.TabIndex = 33;
@@ -367,7 +376,7 @@
             // checkBoxPool
             // 
             this.checkBoxPool.AutoSize = true;
-            this.checkBoxPool.Location = new System.Drawing.Point(243, 388);
+            this.checkBoxPool.Location = new System.Drawing.Point(243, 286);
             this.checkBoxPool.Name = "checkBoxPool";
             this.checkBoxPool.Size = new System.Drawing.Size(60, 17);
             this.checkBoxPool.TabIndex = 34;
@@ -376,21 +385,21 @@
             // 
             // numericUpDownRoomCount
             // 
-            this.numericUpDownRoomCount.Location = new System.Drawing.Point(341, 217);
+            this.numericUpDownRoomCount.Location = new System.Drawing.Point(341, 179);
             this.numericUpDownRoomCount.Name = "numericUpDownRoomCount";
             this.numericUpDownRoomCount.Size = new System.Drawing.Size(53, 20);
             this.numericUpDownRoomCount.TabIndex = 35;
             // 
             // numericUpDownBathRoomCount
             // 
-            this.numericUpDownBathRoomCount.Location = new System.Drawing.Point(341, 253);
+            this.numericUpDownBathRoomCount.Location = new System.Drawing.Point(341, 205);
             this.numericUpDownBathRoomCount.Name = "numericUpDownBathRoomCount";
             this.numericUpDownBathRoomCount.Size = new System.Drawing.Size(53, 20);
             this.numericUpDownBathRoomCount.TabIndex = 36;
             // 
             // numericUpDownParkingCount
             // 
-            this.numericUpDownParkingCount.Location = new System.Drawing.Point(341, 285);
+            this.numericUpDownParkingCount.Location = new System.Drawing.Point(341, 231);
             this.numericUpDownParkingCount.Name = "numericUpDownParkingCount";
             this.numericUpDownParkingCount.Size = new System.Drawing.Size(53, 20);
             this.numericUpDownParkingCount.TabIndex = 37;
@@ -398,7 +407,7 @@
             // labelHeatingSystem
             // 
             this.labelHeatingSystem.AutoSize = true;
-            this.labelHeatingSystem.Location = new System.Drawing.Point(240, 324);
+            this.labelHeatingSystem.Location = new System.Drawing.Point(240, 260);
             this.labelHeatingSystem.Name = "labelHeatingSystem";
             this.labelHeatingSystem.Size = new System.Drawing.Size(63, 13);
             this.labelHeatingSystem.TabIndex = 38;
@@ -408,7 +417,7 @@
             // 
             this.Description.AutoSize = true;
             this.Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Description.Location = new System.Drawing.Point(551, 12);
+            this.Description.Location = new System.Drawing.Point(239, 316);
             this.Description.Name = "Description";
             this.Description.Size = new System.Drawing.Size(103, 20);
             this.Description.TabIndex = 39;
@@ -416,9 +425,9 @@
             // 
             // richTextBoxDescription
             // 
-            this.richTextBoxDescription.Location = new System.Drawing.Point(555, 45);
+            this.richTextBoxDescription.Location = new System.Drawing.Point(243, 339);
             this.richTextBoxDescription.Name = "richTextBoxDescription";
-            this.richTextBoxDescription.Size = new System.Drawing.Size(233, 93);
+            this.richTextBoxDescription.Size = new System.Drawing.Size(298, 108);
             this.richTextBoxDescription.TabIndex = 40;
             this.richTextBoxDescription.Text = "";
             // 
@@ -426,7 +435,7 @@
             // 
             this.labelPotentialCustomers.AutoSize = true;
             this.labelPotentialCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPotentialCustomers.Location = new System.Drawing.Point(551, 275);
+            this.labelPotentialCustomers.Location = new System.Drawing.Point(551, 316);
             this.labelPotentialCustomers.Name = "labelPotentialCustomers";
             this.labelPotentialCustomers.Size = new System.Drawing.Size(171, 20);
             this.labelPotentialCustomers.TabIndex = 41;
@@ -435,7 +444,7 @@
             // listBoxPotentialCustomers
             // 
             this.listBoxPotentialCustomers.FormattingEnabled = true;
-            this.listBoxPotentialCustomers.Location = new System.Drawing.Point(555, 298);
+            this.listBoxPotentialCustomers.Location = new System.Drawing.Point(552, 339);
             this.listBoxPotentialCustomers.Name = "listBoxPotentialCustomers";
             this.listBoxPotentialCustomers.Size = new System.Drawing.Size(233, 108);
             this.listBoxPotentialCustomers.TabIndex = 43;
@@ -443,7 +452,7 @@
             // labelEurosPrice
             // 
             this.labelEurosPrice.AutoSize = true;
-            this.labelEurosPrice.Location = new System.Drawing.Point(171, 204);
+            this.labelEurosPrice.Location = new System.Drawing.Point(175, 259);
             this.labelEurosPrice.Name = "labelEurosPrice";
             this.labelEurosPrice.Size = new System.Drawing.Size(13, 13);
             this.labelEurosPrice.TabIndex = 44;
@@ -452,7 +461,7 @@
             // labelMeters
             // 
             this.labelMeters.AutoSize = true;
-            this.labelMeters.Location = new System.Drawing.Point(171, 287);
+            this.labelMeters.Location = new System.Drawing.Point(175, 338);
             this.labelMeters.Name = "labelMeters";
             this.labelMeters.Size = new System.Drawing.Size(21, 13);
             this.labelMeters.TabIndex = 45;
@@ -461,7 +470,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(171, 321);
+            this.label1.Location = new System.Drawing.Point(175, 365);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 13);
             this.label1.TabIndex = 46;
@@ -470,7 +479,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(171, 354);
+            this.label3.Location = new System.Drawing.Point(175, 390);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(21, 13);
             this.label3.TabIndex = 47;
@@ -479,7 +488,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(171, 389);
+            this.label4.Location = new System.Drawing.Point(175, 416);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(21, 13);
             this.label4.TabIndex = 48;
@@ -487,7 +496,7 @@
             // 
             // buttonSaveBuilding
             // 
-            this.buttonSaveBuilding.Location = new System.Drawing.Point(681, 415);
+            this.buttonSaveBuilding.Location = new System.Drawing.Point(678, 462);
             this.buttonSaveBuilding.Name = "buttonSaveBuilding";
             this.buttonSaveBuilding.Size = new System.Drawing.Size(107, 23);
             this.buttonSaveBuilding.TabIndex = 50;
@@ -499,7 +508,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(551, 144);
+            this.label5.Location = new System.Drawing.Point(551, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 20);
             this.label5.TabIndex = 51;
@@ -508,17 +517,81 @@
             // listBoxPropertyOwners
             // 
             this.listBoxPropertyOwners.FormattingEnabled = true;
-            this.listBoxPropertyOwners.Location = new System.Drawing.Point(555, 167);
+            this.listBoxPropertyOwners.Location = new System.Drawing.Point(552, 43);
             this.listBoxPropertyOwners.Name = "listBoxPropertyOwners";
-            this.listBoxPropertyOwners.Size = new System.Drawing.Size(233, 95);
+            this.listBoxPropertyOwners.Size = new System.Drawing.Size(233, 108);
             this.listBoxPropertyOwners.TabIndex = 52;
             this.listBoxPropertyOwners.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxPropertyOwners_MouseDoubleClick);
             // 
-            // BuildingDetailForm
+            // buttonAddOwner
+            // 
+            this.buttonAddOwner.Location = new System.Drawing.Point(762, 14);
+            this.buttonAddOwner.Name = "buttonAddOwner";
+            this.buttonAddOwner.Size = new System.Drawing.Size(23, 23);
+            this.buttonAddOwner.TabIndex = 53;
+            this.buttonAddOwner.Text = "+";
+            this.buttonAddOwner.UseVisualStyleBackColor = true;
+            this.buttonAddOwner.Click += new System.EventHandler(this.buttonAddOwner_Click);
+            // 
+            // buttonDeleteOwner
+            // 
+            this.buttonDeleteOwner.Location = new System.Drawing.Point(733, 14);
+            this.buttonDeleteOwner.Name = "buttonDeleteOwner";
+            this.buttonDeleteOwner.Size = new System.Drawing.Size(23, 23);
+            this.buttonDeleteOwner.TabIndex = 54;
+            this.buttonDeleteOwner.Text = "-";
+            this.buttonDeleteOwner.UseVisualStyleBackColor = true;
+            this.buttonDeleteOwner.Click += new System.EventHandler(this.buttonDeleteOwner_Click);
+            // 
+            // listBoxContracts
+            // 
+            this.listBoxContracts.FormattingEnabled = true;
+            this.listBoxContracts.Location = new System.Drawing.Point(555, 193);
+            this.listBoxContracts.Name = "listBoxContracts";
+            this.listBoxContracts.Size = new System.Drawing.Size(233, 108);
+            this.listBoxContracts.TabIndex = 55;
+            // 
+            // labelContracts
+            // 
+            this.labelContracts.AutoSize = true;
+            this.labelContracts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelContracts.Location = new System.Drawing.Point(551, 170);
+            this.labelContracts.Name = "labelContracts";
+            this.labelContracts.Size = new System.Drawing.Size(88, 20);
+            this.labelContracts.TabIndex = 56;
+            this.labelContracts.Text = "Contratos";
+            // 
+            // buttonAddContract
+            // 
+            this.buttonAddContract.Location = new System.Drawing.Point(762, 164);
+            this.buttonAddContract.Name = "buttonAddContract";
+            this.buttonAddContract.Size = new System.Drawing.Size(23, 23);
+            this.buttonAddContract.TabIndex = 57;
+            this.buttonAddContract.Text = "+";
+            this.buttonAddContract.UseVisualStyleBackColor = true;
+            this.buttonAddContract.Click += new System.EventHandler(this.buttonAddContract_Click);
+            // 
+            // buttonDeleteContract
+            // 
+            this.buttonDeleteContract.Location = new System.Drawing.Point(733, 164);
+            this.buttonDeleteContract.Name = "buttonDeleteContract";
+            this.buttonDeleteContract.Size = new System.Drawing.Size(23, 23);
+            this.buttonDeleteContract.TabIndex = 58;
+            this.buttonDeleteContract.Text = "-";
+            this.buttonDeleteContract.UseVisualStyleBackColor = true;
+            this.buttonDeleteContract.Click += new System.EventHandler(this.buttonDeleteContract_Click);
+            // 
+            // PropertyDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 497);
+            this.Controls.Add(this.buttonDeleteContract);
+            this.Controls.Add(this.buttonAddContract);
+            this.Controls.Add(this.labelContracts);
+            this.Controls.Add(this.listBoxContracts);
+            this.Controls.Add(this.buttonDeleteOwner);
+            this.Controls.Add(this.buttonAddOwner);
             this.Controls.Add(this.listBoxPropertyOwners);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonSaveBuilding);
@@ -565,7 +638,7 @@
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.SelectImage);
             this.Controls.Add(this.pictureBoxImage);
-            this.Name = "BuildingDetailForm";
+            this.Name = "PropertyDetailForm";
             this.Text = "BuildingDetailForm";
             this.Load += new System.EventHandler(this.BuildingDetailForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
@@ -630,5 +703,11 @@
         private System.Windows.Forms.Button buttonSaveBuilding;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox listBoxPropertyOwners;
+        private System.Windows.Forms.Button buttonAddOwner;
+        private System.Windows.Forms.Button buttonDeleteOwner;
+        private System.Windows.Forms.ListBox listBoxContracts;
+        private System.Windows.Forms.Label labelContracts;
+        private System.Windows.Forms.Button buttonAddContract;
+        private System.Windows.Forms.Button buttonDeleteContract;
     }
 }

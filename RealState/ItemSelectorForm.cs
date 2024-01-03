@@ -1,4 +1,5 @@
 ﻿using RealState.Models;
+using RealState.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,14 +12,14 @@ using System.Windows.Forms;
 
 namespace RealState
 {
-    public partial class PropertySelectorForm : Form
+    public partial class ItemSelectorForm<T> : Form where T : IListable, new()
     {
-        public Property SelectedProperty { get { return this.propertySelectorUserControl.GetSelectedItem(); } }
+        public T SelectedItem { get { return this.itemSelectorUserControl.GetSelectedItem(); } }
         
-        public PropertySelectorForm(SQLiteManager sqliteManager)
+        public ItemSelectorForm(SQLiteManager sqliteManager)
         {
             InitializeComponent();
-            propertySelectorUserControl.Init(sqliteManager);
+            itemSelectorUserControl.Init(sqliteManager);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -26,11 +27,11 @@ namespace RealState
             this.Close();
         }
 
-        private void buttonSelectProperty_Click(object sender, EventArgs e)
+        private void buttonSelectItem_Click(object sender, EventArgs e)
         {
-            if (SelectedProperty == null)
+            if (SelectedItem == null)
             {
-                MessageBox.Show("Ninguna propiedad ha sido seleccionada",
+                MessageBox.Show("¡Ningún elemento ha sido seleccionado!",
                         "Advertencia",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);

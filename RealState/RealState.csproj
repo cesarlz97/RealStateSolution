@@ -89,6 +89,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\ItemSelectorUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\ItemSelectorUserControl.Designer.cs">
+      <DependentUpon>ItemSelectorUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Interfaces\IListable.cs" />
     <Compile Include="PropertyDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,11 +153,11 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertySelectorForm.cs">
+    <Compile Include="ItemSelectorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PropertySelectorForm.Designer.cs">
-      <DependentUpon>PropertySelectorForm.cs</DependentUpon>
+    <Compile Include="ItemSelectorForm.Designer.cs">
+      <DependentUpon>ItemSelectorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SearchProfileForm.cs">
       <SubType>Form</SubType>
@@ -158,6 +165,9 @@
     <Compile Include="SearchProfileForm.Designer.cs">
       <DependentUpon>SearchProfileForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomControls\ItemSelectorUserControl.resx">
+      <DependentUpon>ItemSelectorUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PropertyDetailForm.resx">
       <DependentUpon>PropertyDetailForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,8 +199,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="PropertySelectorForm.resx">
-      <DependentUpon>PropertySelectorForm.cs</DependentUpon>
+    <EmbeddedResource Include="ItemSelectorForm.resx">
+      <DependentUpon>ItemSelectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchProfileForm.resx">
       <DependentUpon>SearchProfileForm.cs</DependentUpon>

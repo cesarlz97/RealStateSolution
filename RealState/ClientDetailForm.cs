@@ -1,5 +1,6 @@
 ﻿using log4net;
 using log4net.Util;
+using RealState.CustomControls;
 using RealState.Forms;
 using RealState.Models;
 using RealState.Properties;
@@ -9,6 +10,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,9 +50,6 @@ namespace RealState
                 PopulateSearchProfiles();
                 PopulateContracts();
                 PopulateProperties();
-                // Llenar listBoxContracts y listBoxSearchProfiles según la lógica de tu aplicación
-                // Por ejemplo, si Client tiene una propiedad List<Contract> y una propiedad List<ClientSearchProfile>
-                // entonces puedes hacer listBoxContracts.DataSource = _client.Contracts; y listBoxSearchProfiles.DataSource = _client.SearchProfiles;
             }
             catch (Exception ex)
             {
@@ -235,6 +234,40 @@ namespace RealState
 
             this.Hide();
             contractForm.Show();
+        }
+
+        private void buttonAddSearchProfile_Click(object sender, EventArgs e)
+        {
+            SearchProfileForm searchProfileForm = new SearchProfileForm(_sqliteManager, new SearchProfile() { ClientId = _client.Id });
+            searchProfileForm.Closed += (s, args) =>
+            {
+                FillContent();
+                this.Show();
+            };
+
+            this.Hide();
+            searchProfileForm.Show();
+        }
+
+        private void buttonDeleteSearchProfile_Click(object sender, EventArgs e)
+        {
+            int index = this.listBoxSearchProfiles.SelectedIndex;
+            if (index == System.Windows.Forms.ListBox.NoMatches)
+                return;
+
+            SearchProfile selectedSearcProfile = _clientSearchProfiles[index];
+            if (selectedSearcProfile == null)
+                return;
+
+            var confirmResult = MessageBox.Show("¿Estás seguro de que deseas eliminar este perfil de búsqueda?",
+                                     "Confirmar borrado",
+                                     MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                _sqliteManager.DeleteData<SearchProfile>(selectedSearcProfile.Id);
+                FillContent();
+            }
         }
     }
 }

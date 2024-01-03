@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealState.Models.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RealState.Models
 {
-    public class Client
+    public class Client : IListable
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,11 +17,8 @@ namespace RealState.Models
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
         public string ProfileImage { get; set; }
-        //public List<ClientSearchProfile> SearchProfiles { get; set; }
-        public Client()
-        {
-            //SearchProfiles = new List<ClientSearchProfile>();
-        }
+        
+        public Client() { }
 
         public Image GetProfileImage()
         {
@@ -30,10 +28,8 @@ namespace RealState.Models
             byte[] imageBytes = Convert.FromBase64String(ProfileImage);
 
             Image image;
-            // Create a MemoryStream from the byte array
             using (MemoryStream ms = new MemoryStream(imageBytes))
             {
-                // Create an Image object from the MemoryStream
                 image = Image.FromStream(ms);
             }
 
@@ -48,18 +44,36 @@ namespace RealState.Models
                 return;
             }
 
-            // Convert the Image to a MemoryStream
             using (MemoryStream ms = new MemoryStream())
             {
-                // Save the Image to the MemoryStream in a specific format (e.g., PNG)
                 image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-
-                // Convert the MemoryStream to a byte array
                 byte[] imageBytes = ms.ToArray();
-
-                // Convert the byte array to a Base64 string
                 ProfileImage = Convert.ToBase64String(imageBytes);
             }
+        }
+
+        public int GetId()
+        {
+            return Id;
+        }
+
+        public string GetTitle()
+        {
+            return $"{Name} {Surname}";
+        }
+
+        public string GetGetails()
+        {
+            return string.Format(
+                    "Email: {0} \n" +
+                    "Teléfono: {1} \n",
+                    EmailAddress,
+                    PhoneNumber);
+        }
+
+        public string GetSearchFieldName()
+        {
+            return nameof(Surname);
         }
     }
 }

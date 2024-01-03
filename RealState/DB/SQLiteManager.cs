@@ -42,7 +42,7 @@ public class SQLiteManager
             foreach (var entity in entities)
             {
                 // Construir la consulta SELECT para verificar si la entidad ya existe
-                string selectQuery = $"SELECT COUNT(*) FROM {tableName} WHERE {GetCompositePrimaryKeyCondition(entity, primaryKeys)}";
+                string selectQuery = $"SELECT COUNT(*) FROM {tableName} WHERE {GetCompositePrimaryKeyCondition(primaryKeys)}";
 
                 using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, connection))
                 {
@@ -70,7 +70,7 @@ public class SQLiteManager
     {
         // Construir la consulta UPDATE
         string updateColumns = string.Join(", ", entity.Keys.Where(k => !primaryKeys.Contains(k)).Select(k => $"{k} = @{k}"));
-        string updateCondition = GetCompositePrimaryKeyCondition(entity, primaryKeys);
+        string updateCondition = GetCompositePrimaryKeyCondition(primaryKeys);
         string updateQuery = $"UPDATE {tableName} SET {updateColumns} WHERE {updateCondition}";
 
         using (SQLiteCommand updateCommand = new SQLiteCommand(updateQuery, connection))
@@ -100,7 +100,29 @@ public class SQLiteManager
         }
     }
 
-    private string GetCompositePrimaryKeyCondition(Dictionary<string, object> entity, List<string> primaryKeys)
+    public void DeleteData(Dictionary<string, object> entity, string tableName, List<string> primaryKeys)
+    {
+        // Construir la consulta DELETE
+        string deleteCondition = GetCompositePrimaryKeyCondition(primaryKeys);
+        string deleteQuery = $"DELETE FROM {tableName} WHERE {deleteCondition}";
+
+        using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
+        using (SQLiteCommand deleteCommand = new SQLiteCommand(deleteQuery, connection))
+        {
+            // Asignar valores a los parámetros de la condición
+            foreach (var primaryKey in primaryKeys)
+            {
+                deleteCommand.Parameters.AddWithValue($"@{primaryKey}", entity[primaryKey]);
+            }
+
+            connection.Open();
+
+            // Ejecutar la consulta DELETE
+            deleteCommand.ExecuteNonQuery();
+        }
+    }
+
+    private string GetCompositePrimaryKeyCondition(List<string> primaryKeys)
     {
         // Construir la condición WHERE para la clave primaria compuesta
         return string.Join(" AND ", primaryKeys.Select(key => $"{key} = @{key}"));
@@ -287,6 +309,10 @@ public class SQLiteManager
                     // Handle less than
                     operatorSymbol = "<";
                     modifiedWhereClauses[condition.Key] = stringValue.Substring(1);
+                }
+                else if (stringValue.StartsWith("%") && stringValue.EndsWith("%"))
+                {
+                    operatorSymbol = "LIKE";
                 }
             }
 

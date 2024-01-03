@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealState.Models.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RealState.Models
 {
-    public class Property
+    public class Property : IListable
     {
         public int Id { get; set; }
         //public List<int> OwnerClientsIds { get; }
@@ -101,6 +102,32 @@ namespace RealState.Models
                 // Convert the byte array to a Base64 string
                 ImageProfile = Convert.ToBase64String(imageBytes);
             }
+        }
+
+        public int GetId()
+        {
+            return Id;
+        }
+
+        public string GetTitle()
+        {
+            return Title;
+        }
+
+        public string GetGetails()
+        {
+            return string.Format(
+                    "Antiguedad: {0} años \n" +
+                    "Superficie: {1} m2 \n" +
+                    "Precio: {2} €",
+                    GetAge(),
+                    AreaUtil,
+                    Price);
+        }
+
+        public string GetSearchFieldName()
+        {
+            return nameof(Title);
         }
     }
 }

@@ -45,6 +45,8 @@
             this.listBoxSearchProfiles = new System.Windows.Forms.ListBox();
             this.labelProperties = new System.Windows.Forms.Label();
             this.listBoxProperties = new System.Windows.Forms.ListBox();
+            this.buttonAddSearchProfile = new System.Windows.Forms.Button();
+            this.buttonDeleteSearchProfile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,11 +200,33 @@
             this.listBoxProperties.TabIndex = 59;
             this.listBoxProperties.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxProperties_MouseDoubleClick);
             // 
+            // buttonAddSearchProfile
+            // 
+            this.buttonAddSearchProfile.Location = new System.Drawing.Point(761, 6);
+            this.buttonAddSearchProfile.Name = "buttonAddSearchProfile";
+            this.buttonAddSearchProfile.Size = new System.Drawing.Size(23, 23);
+            this.buttonAddSearchProfile.TabIndex = 60;
+            this.buttonAddSearchProfile.Text = "+";
+            this.buttonAddSearchProfile.UseVisualStyleBackColor = true;
+            this.buttonAddSearchProfile.Click += new System.EventHandler(this.buttonAddSearchProfile_Click);
+            // 
+            // buttonDeleteSearchProfile
+            // 
+            this.buttonDeleteSearchProfile.Location = new System.Drawing.Point(732, 6);
+            this.buttonDeleteSearchProfile.Name = "buttonDeleteSearchProfile";
+            this.buttonDeleteSearchProfile.Size = new System.Drawing.Size(23, 23);
+            this.buttonDeleteSearchProfile.TabIndex = 61;
+            this.buttonDeleteSearchProfile.Text = "-";
+            this.buttonDeleteSearchProfile.UseVisualStyleBackColor = true;
+            this.buttonDeleteSearchProfile.Click += new System.EventHandler(this.buttonDeleteSearchProfile_Click);
+            // 
             // ClientDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonDeleteSearchProfile);
+            this.Controls.Add(this.buttonAddSearchProfile);
             this.Controls.Add(this.listBoxProperties);
             this.Controls.Add(this.labelProperties);
             this.Controls.Add(this.listBoxSearchProfiles);
@@ -248,5 +272,7 @@
         private System.Windows.Forms.ListBox listBoxSearchProfiles;
         private System.Windows.Forms.Label labelProperties;
         private System.Windows.Forms.ListBox listBoxProperties;
+        private System.Windows.Forms.Button buttonAddSearchProfile;
+        private System.Windows.Forms.Button buttonDeleteSearchProfile;
     }
 }

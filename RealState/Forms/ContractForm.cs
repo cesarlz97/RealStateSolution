@@ -15,7 +15,12 @@ namespace RealState.Forms
     {
         private SQLiteManager _sqliteManager;
         private Contract _contract;
-        
+
+        private List<Client> _propertySellers;
+        private List<Client> _propertyBuyers;
+
+        public List<Client> PropertyOwners { private get; set; }
+
         public ContractForm(SQLiteManager sqliteManager, Contract contract)
         {
             InitializeComponent();
@@ -23,15 +28,48 @@ namespace RealState.Forms
             _contract = contract;
         }
 
+        private void FillContent()
+        {
+            if (_contract.Id > 0)
+            {
+                LoadSellers();
+                LoadBuyers();
+            }
+            else
+            {
+                SetOwnersAsSellers();
+            }
+        }
+
+        private void LoadSellers()
+        {
+
+        }
+
+        private void LoadBuyers()
+        {
+
+        }
+
+        private void SetOwnersAsSellers()
+        {
+
+        }
+
+        private void ContractForm_Load(object sender, EventArgs e)
+        {
+            FillContent();
+        }
+
         private void buttonSelectProperty_Click(object sender, EventArgs e)
         {
-            PropertySelectorForm propertySelector = new PropertySelectorForm(_sqliteManager);
+            ItemSelectorForm<Property> propertySelector = new ItemSelectorForm<Property>(_sqliteManager);
             propertySelector.Closed += (s, args) =>
             {
-                if (propertySelector.SelectedProperty != null)
+                if (propertySelector.SelectedItem != null)
                 {
-                    textBoxPropertyTitle.Text = propertySelector.SelectedProperty.Title;
-                    _contract.PropertyId = propertySelector.SelectedProperty.Id;
+                    textBoxPropertyTitle.Text = propertySelector.SelectedItem.Title;
+                    _contract.PropertyId = propertySelector.SelectedItem.Id;
                 }
 
                 this.Show();
@@ -40,5 +78,36 @@ namespace RealState.Forms
             this.Hide();
             propertySelector.Show();
         }
+
+        private void comboBoxContractType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddSeller_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDeleteSeller_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddBuyer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDeleteBuyer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
