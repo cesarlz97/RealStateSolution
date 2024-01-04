@@ -4,7 +4,6 @@ using RealState.Forms;
 using RealState.Models;
 using System;
 using System.Collections.Generic;
-//using System.Diagnostics.Contracts;
 using System.Windows.Forms;
 
 namespace RealState
@@ -67,7 +66,7 @@ namespace RealState
 
         private void PopulatePropertyOwners()
         {
-            List<Client> propertyOwners = _sqliteManager.ReadData<Client>(
+            _propertyOwners = _sqliteManager.ReadData<Client>(
                 joinClauses: new Dictionary<string, string>
                 {
                     { "PropertyOwners", $"{nameof(Client)}s.{nameof(Client.Id)} = PropertyOwners.ClientId" }
@@ -76,10 +75,8 @@ namespace RealState
             );
 
             listBoxPropertyOwners.Items.Clear();
-
-            foreach (Client owner in propertyOwners)
+            foreach (Client owner in _propertyOwners)
             {
-                _propertyOwners.Add(owner);
                 listBoxPropertyOwners.Items.Add($"{owner.Name} {owner.Surname}");
             }
         }
@@ -183,7 +180,7 @@ namespace RealState
                 if (_property.Id > 0)
                     _sqliteManager.UpdateData(_property, new Dictionary<string, object> { { nameof(Property.Id), _property.Id } });
                 else
-                    _sqliteManager.InsertData(_property);
+                    _property.Id = Convert.ToInt32(_sqliteManager.InsertData(_property));
 
                 MessageBox.Show("¡Propiedad actualizada en la base de datos!",
                         "Información",
@@ -213,19 +210,53 @@ namespace RealState
             clientDetailForm.Show();
         }
 
+        void listBoxContracts_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.listBoxContracts.IndexFromPoint(e.Location);
+            if (index == System.Windows.Forms.ListBox.NoMatches)
+                return;
+
+            ContractForm contractForm = new ContractForm(_sqliteManager, _propertyContracts[index]);
+            contractForm.Closed += (s, args) =>
+            {
+                FillContent();
+                this.Show();
+            };
+
+            this.Hide();
+            contractForm.Show();
+        }
+
+        void listBoxPotentialCustomers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.listBoxPotentialCustomers.IndexFromPoint(e.Location);
+            if (index == System.Windows.Forms.ListBox.NoMatches)
+                return;
+
+            ClientDetailForm clientDetailForm = new ClientDetailForm(_sqliteManager, _matchingClients[index]);
+            clientDetailForm.Closed += (s, args) =>
+            {
+                FillContent();
+                this.Show();
+            };
+
+            this.Hide();
+            clientDetailForm.Show();
+        }
+
         private void buttonAddOwner_Click(object sender, EventArgs e)
         {
-            ItemSelectorForm<Client> propertySelector = new ItemSelectorForm<Client>(_sqliteManager);
-            propertySelector.Closed += (s, args) =>
+            ItemSelectorForm<Client> clientSelector = new ItemSelectorForm<Client>(_sqliteManager);
+            clientSelector.Closed += (s, args) =>
             {
-                if (propertySelector.SelectedItem != null)
+                if (clientSelector.SelectedItem != null)
                 {
                     List<Dictionary<string, object>> propertyOwner = new List<Dictionary<string, object>>
                     {
                         new Dictionary<string, object>
                         {
                             { "PropertyId", _property.Id },
-                            { "ClientId", propertySelector.SelectedItem.Id },
+                            { "ClientId", clientSelector.SelectedItem.Id },
                             { "PercentageOwnership", 100.0 }
                         },
                     };
@@ -244,7 +275,7 @@ namespace RealState
             };
 
             this.Hide();
-            propertySelector.Show();
+            clientSelector.Show();
         }
 
         private void buttonDeleteOwner_Click(object sender, EventArgs e)
@@ -277,7 +308,8 @@ namespace RealState
         private void buttonAddContract_Click(object sender, EventArgs e)
         {
             ContractForm contractForm = new ContractForm(_sqliteManager, new Contract() { PropertyId = _property.Id });
-            contractForm.PropertyOwners = _propertyOwners;
+            contractForm.SetProperty(_property);
+            contractForm.SetContractSellers(_propertyOwners);
             contractForm.Closed += (s, args) =>
             {
                 FillContent();

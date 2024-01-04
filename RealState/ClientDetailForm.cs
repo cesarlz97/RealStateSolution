@@ -172,7 +172,7 @@ namespace RealState
                 if (_client.Id > 0)
                     _sqliteManager.UpdateData(_client, new Dictionary<string, object> { { nameof(Client.Id), _client.Id } });
                 else
-                    _sqliteManager.InsertData(_client);
+                    _client.Id = Convert.ToInt32(_sqliteManager.InsertData(_client));
 
                 MessageBox.Show("¡Propiedad actualizada en la base de datos!",
                         "Información",

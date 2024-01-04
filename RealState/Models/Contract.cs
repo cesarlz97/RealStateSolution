@@ -15,5 +15,9 @@ namespace RealState.Models
         public int Amount { get; set; }
         public DateTime SignatureDate { get; set; }
 
+        public Contract()
+        {
+            SignatureDate = DateTime.Parse("01/01/2000");
+        }
     }
 }

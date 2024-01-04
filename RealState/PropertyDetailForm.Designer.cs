@@ -272,7 +272,7 @@
             this.comboBoxRegime.FormattingEnabled = true;
             this.comboBoxRegime.Items.AddRange(new object[] {
             "Alquiler",
-            "Compra"});
+            "Compra/Venta"});
             this.comboBoxRegime.Location = new System.Drawing.Point(341, 99);
             this.comboBoxRegime.Name = "comboBoxRegime";
             this.comboBoxRegime.Size = new System.Drawing.Size(200, 21);
@@ -448,6 +448,7 @@
             this.listBoxPotentialCustomers.Name = "listBoxPotentialCustomers";
             this.listBoxPotentialCustomers.Size = new System.Drawing.Size(233, 108);
             this.listBoxPotentialCustomers.TabIndex = 43;
+            this.listBoxPotentialCustomers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxPotentialCustomers_MouseDoubleClick);
             // 
             // labelEurosPrice
             // 
@@ -550,6 +551,7 @@
             this.listBoxContracts.Name = "listBoxContracts";
             this.listBoxContracts.Size = new System.Drawing.Size(233, 108);
             this.listBoxContracts.TabIndex = 55;
+            this.listBoxContracts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxContracts_MouseDoubleClick);
             // 
             // labelContracts
             // 

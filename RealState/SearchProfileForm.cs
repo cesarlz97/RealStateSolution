@@ -125,7 +125,7 @@ namespace RealState
                 if (_searchProfile.Id > 0)
                     _sqliteManager.UpdateData(_searchProfile, new Dictionary<string, object> { { nameof(SearchProfile.Id), _searchProfile.Id } });
                 else
-                    _sqliteManager.InsertData(_searchProfile);
+                    _searchProfile.Id = Convert.ToInt32(_sqliteManager.InsertData(_searchProfile));
 
                 MessageBox.Show("¡Perfil de búsqueda actualizado!",
                         "Información",

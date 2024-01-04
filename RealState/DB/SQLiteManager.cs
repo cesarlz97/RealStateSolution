@@ -131,7 +131,7 @@ public class SQLiteManager
 
     #endregion
 
-    public void InsertData<T>(T entity)
+    public long InsertData<T>(T entity)
     {
         using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
         {
@@ -140,6 +140,7 @@ public class SQLiteManager
             {
                 AddParameters(command, entity);
                 command.ExecuteNonQuery();
+                return connection.LastInsertRowId;
             }
         }
     }
