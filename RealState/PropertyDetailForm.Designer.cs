@@ -641,6 +641,7 @@
             this.Controls.Add(this.SelectImage);
             this.Controls.Add(this.pictureBoxImage);
             this.Name = "PropertyDetailForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BuildingDetailForm";
             this.Load += new System.EventHandler(this.BuildingDetailForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();

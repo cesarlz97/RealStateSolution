@@ -53,6 +53,7 @@ namespace RealState
             // 
             this.itemSelectorUserControl.Location = new System.Drawing.Point(26, 12);
             this.itemSelectorUserControl.Name = "itemSelectorUserControl1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.itemSelectorUserControl.Size = new System.Drawing.Size(750, 380);
             this.itemSelectorUserControl.TabIndex = 0;
             // 

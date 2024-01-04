@@ -349,6 +349,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Name = "SearchProfileForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearchProfileForm";
             this.Load += new System.EventHandler(this.SearchProfileForm_Load);
             this.panel1.ResumeLayout(false);

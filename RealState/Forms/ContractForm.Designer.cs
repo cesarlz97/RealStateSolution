@@ -286,6 +286,7 @@
             this.Controls.Add(this.labelContractType);
             this.Controls.Add(this.labelContractDetails);
             this.Name = "ContractForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientContractsForm";
             this.Load += new System.EventHandler(this.ContractForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).EndInit();

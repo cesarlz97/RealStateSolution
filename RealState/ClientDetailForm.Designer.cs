@@ -245,6 +245,7 @@
             this.Controls.Add(this.SelectImage);
             this.Controls.Add(this.pictureBoxImage);
             this.Name = "ClientDetailForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientDetailForm";
             this.Load += new System.EventHandler(this.ClientDetailForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
