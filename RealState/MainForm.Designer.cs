@@ -50,17 +50,23 @@ namespace RealState
             this.buttonClientDelete = new System.Windows.Forms.Button();
             this.clientSelectorUserControl = new RealState.CustomControls.ItemSelectorUserControl<Client>();
             this.tabPageSocialMedia = new System.Windows.Forms.TabPage();
-            this.listViewInstagramPublishedBuildings = new System.Windows.Forms.ListView();
-            this.labelPublishedBuildings = new System.Windows.Forms.Label();
-            this.checkBoxPublishAutomatic = new System.Windows.Forms.CheckBox();
-            this.labelInstagramConfiguration = new System.Windows.Forms.Label();
-            this.buttonSaveInstagramCredentials = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.labelInstagramPassword = new System.Windows.Forms.Label();
-            this.labelInstagramUser = new System.Windows.Forms.Label();
+            this.buttonPublishPropertyOnTwitter = new System.Windows.Forms.Button();
+            this.labelSelectedPropertyTitle = new System.Windows.Forms.Label();
+            this.labelSelectedProperty = new System.Windows.Forms.Label();
+            this.buttonSelectPropertyToPublish = new System.Windows.Forms.Button();
+            this.textBoxTwitterAccessTokenSecret = new System.Windows.Forms.TextBox();
+            this.labelTwitterAccessTokenSecret = new System.Windows.Forms.Label();
+            this.textBoxTwitterAccessToken = new System.Windows.Forms.TextBox();
+            this.labelTwitterAccessToken = new System.Windows.Forms.Label();
+            this.listViewTwitterPublishedBuildings = new System.Windows.Forms.ListView();
+            this.labelTwitterPublishedProperties = new System.Windows.Forms.Label();
+            this.buttonSaveTwitterCredentials = new System.Windows.Forms.Button();
+            this.textBoxTwitterApiKeySecret = new System.Windows.Forms.TextBox();
+            this.textBoxTwitterApiKey = new System.Windows.Forms.TextBox();
+            this.labelTwitterApiKeySecret = new System.Windows.Forms.Label();
+            this.labelTwitterApiKey = new System.Windows.Forms.Label();
             this.labelCredentials = new System.Windows.Forms.Label();
-            this.labelInstagramProfile = new System.Windows.Forms.Label();
+            this.labelTwitterProfile = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControlMain.SuspendLayout();
             this.tabPageInit.SuspendLayout();
@@ -249,17 +255,23 @@ namespace RealState
             // 
             // tabPageSocialMedia
             // 
-            this.tabPageSocialMedia.Controls.Add(this.listViewInstagramPublishedBuildings);
-            this.tabPageSocialMedia.Controls.Add(this.labelPublishedBuildings);
-            this.tabPageSocialMedia.Controls.Add(this.checkBoxPublishAutomatic);
-            this.tabPageSocialMedia.Controls.Add(this.labelInstagramConfiguration);
-            this.tabPageSocialMedia.Controls.Add(this.buttonSaveInstagramCredentials);
-            this.tabPageSocialMedia.Controls.Add(this.textBox2);
-            this.tabPageSocialMedia.Controls.Add(this.textBox1);
-            this.tabPageSocialMedia.Controls.Add(this.labelInstagramPassword);
-            this.tabPageSocialMedia.Controls.Add(this.labelInstagramUser);
+            this.tabPageSocialMedia.Controls.Add(this.buttonPublishPropertyOnTwitter);
+            this.tabPageSocialMedia.Controls.Add(this.labelSelectedPropertyTitle);
+            this.tabPageSocialMedia.Controls.Add(this.labelSelectedProperty);
+            this.tabPageSocialMedia.Controls.Add(this.buttonSelectPropertyToPublish);
+            this.tabPageSocialMedia.Controls.Add(this.textBoxTwitterAccessTokenSecret);
+            this.tabPageSocialMedia.Controls.Add(this.labelTwitterAccessTokenSecret);
+            this.tabPageSocialMedia.Controls.Add(this.textBoxTwitterAccessToken);
+            this.tabPageSocialMedia.Controls.Add(this.labelTwitterAccessToken);
+            this.tabPageSocialMedia.Controls.Add(this.listViewTwitterPublishedBuildings);
+            this.tabPageSocialMedia.Controls.Add(this.labelTwitterPublishedProperties);
+            this.tabPageSocialMedia.Controls.Add(this.buttonSaveTwitterCredentials);
+            this.tabPageSocialMedia.Controls.Add(this.textBoxTwitterApiKeySecret);
+            this.tabPageSocialMedia.Controls.Add(this.textBoxTwitterApiKey);
+            this.tabPageSocialMedia.Controls.Add(this.labelTwitterApiKeySecret);
+            this.tabPageSocialMedia.Controls.Add(this.labelTwitterApiKey);
             this.tabPageSocialMedia.Controls.Add(this.labelCredentials);
-            this.tabPageSocialMedia.Controls.Add(this.labelInstagramProfile);
+            this.tabPageSocialMedia.Controls.Add(this.labelTwitterProfile);
             this.tabPageSocialMedia.Location = new System.Drawing.Point(4, 22);
             this.tabPageSocialMedia.Name = "tabPageSocialMedia";
             this.tabPageSocialMedia.Padding = new System.Windows.Forms.Padding(3);
@@ -268,85 +280,137 @@ namespace RealState
             this.tabPageSocialMedia.Text = "RRSS";
             this.tabPageSocialMedia.UseVisualStyleBackColor = true;
             // 
-            // listViewInstagramPublishedBuildings
+            // buttonPublishPropertyOnTwitter
             // 
-            this.listViewInstagramPublishedBuildings.HideSelection = false;
-            this.listViewInstagramPublishedBuildings.Location = new System.Drawing.Point(367, 108);
-            this.listViewInstagramPublishedBuildings.Name = "listViewInstagramPublishedBuildings";
-            this.listViewInstagramPublishedBuildings.Size = new System.Drawing.Size(382, 126);
-            this.listViewInstagramPublishedBuildings.TabIndex = 10;
-            this.listViewInstagramPublishedBuildings.UseCompatibleStateImageBehavior = false;
+            this.buttonPublishPropertyOnTwitter.Location = new System.Drawing.Point(173, 321);
+            this.buttonPublishPropertyOnTwitter.Name = "buttonPublishPropertyOnTwitter";
+            this.buttonPublishPropertyOnTwitter.Size = new System.Drawing.Size(75, 23);
+            this.buttonPublishPropertyOnTwitter.TabIndex = 18;
+            this.buttonPublishPropertyOnTwitter.Text = "Publicar";
+            this.buttonPublishPropertyOnTwitter.UseVisualStyleBackColor = true;
+            this.buttonPublishPropertyOnTwitter.Click += new System.EventHandler(this.buttonPublishPropertyOnTwitter_Click);
             // 
-            // labelPublishedBuildings
+            // labelSelectedPropertyTitle
             // 
-            this.labelPublishedBuildings.AutoSize = true;
-            this.labelPublishedBuildings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPublishedBuildings.Location = new System.Drawing.Point(364, 66);
-            this.labelPublishedBuildings.Name = "labelPublishedBuildings";
-            this.labelPublishedBuildings.Size = new System.Drawing.Size(160, 13);
-            this.labelPublishedBuildings.TabIndex = 9;
-            this.labelPublishedBuildings.Text = "INMUEBLES PUBLICADOS";
+            this.labelSelectedPropertyTitle.AutoSize = true;
+            this.labelSelectedPropertyTitle.Location = new System.Drawing.Point(28, 295);
+            this.labelSelectedPropertyTitle.Name = "labelSelectedPropertyTitle";
+            this.labelSelectedPropertyTitle.Size = new System.Drawing.Size(47, 13);
+            this.labelSelectedPropertyTitle.TabIndex = 17;
+            this.labelSelectedPropertyTitle.Text = "Ninguna";
             // 
-            // checkBoxPublishAutomatic
+            // labelSelectedProperty
             // 
-            this.checkBoxPublishAutomatic.AutoSize = true;
-            this.checkBoxPublishAutomatic.Location = new System.Drawing.Point(30, 251);
-            this.checkBoxPublishAutomatic.Name = "checkBoxPublishAutomatic";
-            this.checkBoxPublishAutomatic.Size = new System.Drawing.Size(198, 17);
-            this.checkBoxPublishAutomatic.TabIndex = 8;
-            this.checkBoxPublishAutomatic.Text = "Publicar inmuebles automáticamente";
-            this.checkBoxPublishAutomatic.UseVisualStyleBackColor = true;
+            this.labelSelectedProperty.AutoSize = true;
+            this.labelSelectedProperty.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSelectedProperty.Location = new System.Drawing.Point(28, 267);
+            this.labelSelectedProperty.Name = "labelSelectedProperty";
+            this.labelSelectedProperty.Size = new System.Drawing.Size(147, 13);
+            this.labelSelectedProperty.TabIndex = 16;
+            this.labelSelectedProperty.Text = "Propiedad seleccionada:";
             // 
-            // labelInstagramConfiguration
+            // buttonSelectPropertyToPublish
             // 
-            this.labelInstagramConfiguration.AutoSize = true;
-            this.labelInstagramConfiguration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInstagramConfiguration.Location = new System.Drawing.Point(28, 221);
-            this.labelInstagramConfiguration.Name = "labelInstagramConfiguration";
-            this.labelInstagramConfiguration.Size = new System.Drawing.Size(109, 13);
-            this.labelInstagramConfiguration.TabIndex = 7;
-            this.labelInstagramConfiguration.Text = "CONFIGURACIÓN";
+            this.buttonSelectPropertyToPublish.Location = new System.Drawing.Point(30, 321);
+            this.buttonSelectPropertyToPublish.Name = "buttonSelectPropertyToPublish";
+            this.buttonSelectPropertyToPublish.Size = new System.Drawing.Size(137, 23);
+            this.buttonSelectPropertyToPublish.TabIndex = 15;
+            this.buttonSelectPropertyToPublish.Text = "Seleccionar propiedad";
+            this.buttonSelectPropertyToPublish.UseVisualStyleBackColor = true;
+            this.buttonSelectPropertyToPublish.Click += new System.EventHandler(this.buttonSelectPropertyToPublish_Click);
             // 
-            // buttonSaveInstagramCredentials
+            // textBoxTwitterAccessTokenSecret
             // 
-            this.buttonSaveInstagramCredentials.Location = new System.Drawing.Point(193, 173);
-            this.buttonSaveInstagramCredentials.Name = "buttonSaveInstagramCredentials";
-            this.buttonSaveInstagramCredentials.Size = new System.Drawing.Size(75, 23);
-            this.buttonSaveInstagramCredentials.TabIndex = 6;
-            this.buttonSaveInstagramCredentials.Text = "Guardar";
-            this.buttonSaveInstagramCredentials.UseVisualStyleBackColor = true;
+            this.textBoxTwitterAccessTokenSecret.Location = new System.Drawing.Point(144, 186);
+            this.textBoxTwitterAccessTokenSecret.Name = "textBoxTwitterAccessTokenSecret";
+            this.textBoxTwitterAccessTokenSecret.Size = new System.Drawing.Size(618, 20);
+            this.textBoxTwitterAccessTokenSecret.TabIndex = 14;
             // 
-            // textBox2
+            // labelTwitterAccessTokenSecret
             // 
-            this.textBox2.Location = new System.Drawing.Point(94, 147);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(174, 20);
-            this.textBox2.TabIndex = 5;
+            this.labelTwitterAccessTokenSecret.AutoSize = true;
+            this.labelTwitterAccessTokenSecret.Location = new System.Drawing.Point(28, 189);
+            this.labelTwitterAccessTokenSecret.Name = "labelTwitterAccessTokenSecret";
+            this.labelTwitterAccessTokenSecret.Size = new System.Drawing.Size(110, 13);
+            this.labelTwitterAccessTokenSecret.TabIndex = 13;
+            this.labelTwitterAccessTokenSecret.Text = "Access Token Secret";
             // 
-            // textBox1
+            // textBoxTwitterAccessToken
             // 
-            this.textBox1.Location = new System.Drawing.Point(94, 108);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 20);
-            this.textBox1.TabIndex = 4;
+            this.textBoxTwitterAccessToken.Location = new System.Drawing.Point(144, 160);
+            this.textBoxTwitterAccessToken.Name = "textBoxTwitterAccessToken";
+            this.textBoxTwitterAccessToken.Size = new System.Drawing.Size(618, 20);
+            this.textBoxTwitterAccessToken.TabIndex = 12;
             // 
-            // labelInstagramPassword
+            // labelTwitterAccessToken
             // 
-            this.labelInstagramPassword.AutoSize = true;
-            this.labelInstagramPassword.Location = new System.Drawing.Point(27, 150);
-            this.labelInstagramPassword.Name = "labelInstagramPassword";
-            this.labelInstagramPassword.Size = new System.Drawing.Size(61, 13);
-            this.labelInstagramPassword.TabIndex = 3;
-            this.labelInstagramPassword.Text = "Contraseña";
+            this.labelTwitterAccessToken.AutoSize = true;
+            this.labelTwitterAccessToken.Location = new System.Drawing.Point(28, 163);
+            this.labelTwitterAccessToken.Name = "labelTwitterAccessToken";
+            this.labelTwitterAccessToken.Size = new System.Drawing.Size(76, 13);
+            this.labelTwitterAccessToken.TabIndex = 11;
+            this.labelTwitterAccessToken.Text = "Access Token";
             // 
-            // labelInstagramUser
+            // listViewTwitterPublishedBuildings
             // 
-            this.labelInstagramUser.AutoSize = true;
-            this.labelInstagramUser.Location = new System.Drawing.Point(28, 111);
-            this.labelInstagramUser.Name = "labelInstagramUser";
-            this.labelInstagramUser.Size = new System.Drawing.Size(43, 13);
-            this.labelInstagramUser.TabIndex = 2;
-            this.labelInstagramUser.Text = "Usuario";
+            this.listViewTwitterPublishedBuildings.HideSelection = false;
+            this.listViewTwitterPublishedBuildings.Location = new System.Drawing.Point(380, 283);
+            this.listViewTwitterPublishedBuildings.Name = "listViewTwitterPublishedBuildings";
+            this.listViewTwitterPublishedBuildings.Size = new System.Drawing.Size(382, 126);
+            this.listViewTwitterPublishedBuildings.TabIndex = 10;
+            this.listViewTwitterPublishedBuildings.UseCompatibleStateImageBehavior = false;
+            // 
+            // labelTwitterPublishedProperties
+            // 
+            this.labelTwitterPublishedProperties.AutoSize = true;
+            this.labelTwitterPublishedProperties.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTwitterPublishedProperties.Location = new System.Drawing.Point(377, 267);
+            this.labelTwitterPublishedProperties.Name = "labelTwitterPublishedProperties";
+            this.labelTwitterPublishedProperties.Size = new System.Drawing.Size(142, 13);
+            this.labelTwitterPublishedProperties.TabIndex = 9;
+            this.labelTwitterPublishedProperties.Text = "Propiedades publicadas";
+            // 
+            // buttonSaveTwitterCredentials
+            // 
+            this.buttonSaveTwitterCredentials.Location = new System.Drawing.Point(687, 212);
+            this.buttonSaveTwitterCredentials.Name = "buttonSaveTwitterCredentials";
+            this.buttonSaveTwitterCredentials.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveTwitterCredentials.TabIndex = 6;
+            this.buttonSaveTwitterCredentials.Text = "Guardar";
+            this.buttonSaveTwitterCredentials.UseVisualStyleBackColor = true;
+            this.buttonSaveTwitterCredentials.Click += new System.EventHandler(this.buttonSaveTwitterCredentials_Click);
+            // 
+            // textBoxTwitterApiKeySecret
+            // 
+            this.textBoxTwitterApiKeySecret.Location = new System.Drawing.Point(144, 134);
+            this.textBoxTwitterApiKeySecret.Name = "textBoxTwitterApiKeySecret";
+            this.textBoxTwitterApiKeySecret.Size = new System.Drawing.Size(618, 20);
+            this.textBoxTwitterApiKeySecret.TabIndex = 5;
+            // 
+            // textBoxTwitterApiKey
+            // 
+            this.textBoxTwitterApiKey.Location = new System.Drawing.Point(144, 108);
+            this.textBoxTwitterApiKey.Name = "textBoxTwitterApiKey";
+            this.textBoxTwitterApiKey.Size = new System.Drawing.Size(618, 20);
+            this.textBoxTwitterApiKey.TabIndex = 4;
+            // 
+            // labelTwitterApiKeySecret
+            // 
+            this.labelTwitterApiKeySecret.AutoSize = true;
+            this.labelTwitterApiKeySecret.Location = new System.Drawing.Point(27, 137);
+            this.labelTwitterApiKeySecret.Name = "labelTwitterApiKeySecret";
+            this.labelTwitterApiKeySecret.Size = new System.Drawing.Size(79, 13);
+            this.labelTwitterApiKeySecret.TabIndex = 3;
+            this.labelTwitterApiKeySecret.Text = "API Key Secret";
+            // 
+            // labelTwitterApiKey
+            // 
+            this.labelTwitterApiKey.AutoSize = true;
+            this.labelTwitterApiKey.Location = new System.Drawing.Point(28, 111);
+            this.labelTwitterApiKey.Name = "labelTwitterApiKey";
+            this.labelTwitterApiKey.Size = new System.Drawing.Size(45, 13);
+            this.labelTwitterApiKey.TabIndex = 2;
+            this.labelTwitterApiKey.Text = "API Key";
             // 
             // labelCredentials
             // 
@@ -358,15 +422,15 @@ namespace RealState
             this.labelCredentials.TabIndex = 1;
             this.labelCredentials.Text = "CREDENCIALES";
             // 
-            // labelInstagramProfile
+            // labelTwitterProfile
             // 
-            this.labelInstagramProfile.AutoSize = true;
-            this.labelInstagramProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInstagramProfile.Location = new System.Drawing.Point(26, 20);
-            this.labelInstagramProfile.Name = "labelInstagramProfile";
-            this.labelInstagramProfile.Size = new System.Drawing.Size(137, 24);
-            this.labelInstagramProfile.TabIndex = 0;
-            this.labelInstagramProfile.Text = "Perfil Instagram";
+            this.labelTwitterProfile.AutoSize = true;
+            this.labelTwitterProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTwitterProfile.Location = new System.Drawing.Point(26, 20);
+            this.labelTwitterProfile.Name = "labelTwitterProfile";
+            this.labelTwitterProfile.Size = new System.Drawing.Size(142, 24);
+            this.labelTwitterProfile.TabIndex = 0;
+            this.labelTwitterProfile.Text = "Perfil X (Twitter)";
             // 
             // imageList1
             // 
@@ -404,17 +468,15 @@ namespace RealState
         private System.Windows.Forms.TabPage tabPageBuildings;
         private System.Windows.Forms.TabPage tabPageSocialMedia;
         private System.Windows.Forms.Button buttonPropertyNew;
-        private System.Windows.Forms.ListView listViewInstagramPublishedBuildings;
-        private System.Windows.Forms.Label labelPublishedBuildings;
-        private System.Windows.Forms.CheckBox checkBoxPublishAutomatic;
-        private System.Windows.Forms.Label labelInstagramConfiguration;
-        private System.Windows.Forms.Button buttonSaveInstagramCredentials;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label labelInstagramPassword;
-        private System.Windows.Forms.Label labelInstagramUser;
+        private System.Windows.Forms.ListView listViewTwitterPublishedBuildings;
+        private System.Windows.Forms.Label labelTwitterPublishedProperties;
+        private System.Windows.Forms.Button buttonSaveTwitterCredentials;
+        private System.Windows.Forms.TextBox textBoxTwitterApiKeySecret;
+        private System.Windows.Forms.TextBox textBoxTwitterApiKey;
+        private System.Windows.Forms.Label labelTwitterApiKeySecret;
+        private System.Windows.Forms.Label labelTwitterApiKey;
         private System.Windows.Forms.Label labelCredentials;
-        private System.Windows.Forms.Label labelInstagramProfile;
+        private System.Windows.Forms.Label labelTwitterProfile;
         private System.Windows.Forms.TabPage tabPageInit;
         private System.Windows.Forms.LinkLabel linkLabelSelectTab;
         private System.Windows.Forms.Label labelWelcomeTilte;
@@ -430,5 +492,13 @@ namespace RealState
         private System.Windows.Forms.Button buttonClientDetail;
         private System.Windows.Forms.Button buttonClientDelete;
         private CustomControls.ItemSelectorUserControl<Client> clientSelectorUserControl;
+        private System.Windows.Forms.TextBox textBoxTwitterAccessToken;
+        private System.Windows.Forms.Label labelTwitterAccessToken;
+        private System.Windows.Forms.TextBox textBoxTwitterAccessTokenSecret;
+        private System.Windows.Forms.Label labelTwitterAccessTokenSecret;
+        private System.Windows.Forms.Button buttonSelectPropertyToPublish;
+        private System.Windows.Forms.Button buttonPublishPropertyOnTwitter;
+        private System.Windows.Forms.Label labelSelectedPropertyTitle;
+        private System.Windows.Forms.Label labelSelectedProperty;
     }
 }

@@ -28,10 +28,13 @@ namespace RealState
 
         private SQLiteManager _sqliteManager;
 
+        private User _user;
+
         public LoginForm(SQLiteManager sqliteManager)
         {
             InitializeComponent();
             _sqliteManager = sqliteManager;
+            _user = null;
         }
 
         private void linkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -70,7 +73,7 @@ namespace RealState
                 // Inicio de sesión
                 if (LoginUser())
                 {
-                    MainForm mainForm = new MainForm(_sqliteManager);
+                    MainForm mainForm = new MainForm(_sqliteManager, _user);
                     mainForm.Closed += (s, args) => this.Close();
 
                     this.Hide();
@@ -153,6 +156,7 @@ namespace RealState
                 if (users.Count > 0)
                 {
                     //MessageBox.Show("Inicio de sesión exitoso", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _user = users.First();
                     success = true;
                 }
                 else
@@ -179,7 +183,7 @@ namespace RealState
         private void LoginForm_Shown(object sender, EventArgs e)
         {
 #if DEBUG
-            MainForm mainForm = new MainForm(_sqliteManager);
+            MainForm mainForm = new MainForm(_sqliteManager, new User() { Id = 1 });
             mainForm.Closed += (s, args) => this.Close();
 
             this.Hide();
