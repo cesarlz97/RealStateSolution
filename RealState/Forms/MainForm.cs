@@ -25,7 +25,7 @@ using System.Threading.Tasks;
 //using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
-namespace RealState
+namespace RealState.Forms
 {
     public partial class MainForm : Form
     {

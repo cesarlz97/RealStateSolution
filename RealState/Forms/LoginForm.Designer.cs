@@ -1,4 +1,6 @@
-﻿namespace RealState
+﻿using RealState.Properties;
+
+namespace RealState.Forms
 {
     partial class LoginForm
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientDetailForm));
             this.groupBoxLogin = new System.Windows.Forms.GroupBox();
             this.buttonLoginRegister = new System.Windows.Forms.Button();
             this.textBoxPasswordConfirm = new System.Windows.Forms.TextBox();
@@ -151,9 +154,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBoxLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoginForm";
+            this.Text = "Login";
             this.Shown += new System.EventHandler(this.LoginForm_Shown);
             this.groupBoxLogin.ResumeLayout(false);
             this.groupBoxLogin.PerformLayout();

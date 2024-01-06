@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RealState
+namespace RealState.Forms
 {
     public partial class ClientDetailForm : Form
     {

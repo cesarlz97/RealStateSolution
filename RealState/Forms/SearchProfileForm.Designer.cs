@@ -1,4 +1,6 @@
-﻿namespace RealState
+﻿using RealState.Properties;
+
+namespace RealState.Forms
 {
     partial class SearchProfileForm
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.listBoxPropertiesMatching = new System.Windows.Forms.ListBox();
             this.labelInterestingBuildings = new System.Windows.Forms.Label();
@@ -348,9 +351,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "SearchProfileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SearchProfileForm";
+            this.Text = "Perfil de búsqueda";
             this.Load += new System.EventHandler(this.SearchProfileForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

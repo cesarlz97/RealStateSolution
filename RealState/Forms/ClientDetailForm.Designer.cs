@@ -1,4 +1,4 @@
-﻿namespace RealState
+﻿namespace RealState.Forms
 {
     partial class ClientDetailForm
     {
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientDetailForm));
             this.SelectImage = new System.Windows.Forms.Button();
-            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             this.labelClientName = new System.Windows.Forms.Label();
             this.textBoxClientName = new System.Windows.Forms.TextBox();
             this.labelSurname = new System.Windows.Forms.Label();
@@ -47,32 +47,23 @@
             this.listBoxProperties = new System.Windows.Forms.ListBox();
             this.buttonAddSearchProfile = new System.Windows.Forms.Button();
             this.buttonDeleteSearchProfile = new System.Windows.Forms.Button();
+            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.SuspendLayout();
             // 
             // SelectImage
             // 
-            this.SelectImage.Location = new System.Drawing.Point(37, 144);
+            this.SelectImage.Location = new System.Drawing.Point(38, 175);
             this.SelectImage.Name = "SelectImage";
             this.SelectImage.Size = new System.Drawing.Size(128, 23);
             this.SelectImage.TabIndex = 3;
             this.SelectImage.Text = "Seleccionar Imagen";
             this.SelectImage.UseVisualStyleBackColor = true;
             // 
-            // pictureBoxImage
-            // 
-            this.pictureBoxImage.Image = global::RealState.Properties.Resources.Client_Default_Profile_Image;
-            this.pictureBoxImage.Location = new System.Drawing.Point(12, 12);
-            this.pictureBoxImage.Name = "pictureBoxImage";
-            this.pictureBoxImage.Size = new System.Drawing.Size(176, 126);
-            this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxImage.TabIndex = 2;
-            this.pictureBoxImage.TabStop = false;
-            // 
             // labelClientName
             // 
             this.labelClientName.AutoSize = true;
-            this.labelClientName.Location = new System.Drawing.Point(12, 187);
+            this.labelClientName.Location = new System.Drawing.Point(13, 218);
             this.labelClientName.Name = "labelClientName";
             this.labelClientName.Size = new System.Drawing.Size(44, 13);
             this.labelClientName.TabIndex = 4;
@@ -80,7 +71,7 @@
             // 
             // textBoxClientName
             // 
-            this.textBoxClientName.Location = new System.Drawing.Point(67, 184);
+            this.textBoxClientName.Location = new System.Drawing.Point(68, 215);
             this.textBoxClientName.Name = "textBoxClientName";
             this.textBoxClientName.Size = new System.Drawing.Size(135, 20);
             this.textBoxClientName.TabIndex = 5;
@@ -88,7 +79,7 @@
             // labelSurname
             // 
             this.labelSurname.AutoSize = true;
-            this.labelSurname.Location = new System.Drawing.Point(12, 221);
+            this.labelSurname.Location = new System.Drawing.Point(13, 252);
             this.labelSurname.Name = "labelSurname";
             this.labelSurname.Size = new System.Drawing.Size(49, 13);
             this.labelSurname.TabIndex = 6;
@@ -97,7 +88,7 @@
             // labelClientPhoneNumber
             // 
             this.labelClientPhoneNumber.AutoSize = true;
-            this.labelClientPhoneNumber.Location = new System.Drawing.Point(12, 251);
+            this.labelClientPhoneNumber.Location = new System.Drawing.Point(13, 282);
             this.labelClientPhoneNumber.Name = "labelClientPhoneNumber";
             this.labelClientPhoneNumber.Size = new System.Drawing.Size(28, 13);
             this.labelClientPhoneNumber.TabIndex = 7;
@@ -106,7 +97,7 @@
             // labelClientEmail
             // 
             this.labelClientEmail.AutoSize = true;
-            this.labelClientEmail.Location = new System.Drawing.Point(12, 285);
+            this.labelClientEmail.Location = new System.Drawing.Point(13, 316);
             this.labelClientEmail.Name = "labelClientEmail";
             this.labelClientEmail.Size = new System.Drawing.Size(32, 13);
             this.labelClientEmail.TabIndex = 8;
@@ -114,21 +105,21 @@
             // 
             // textBoxClientSurname
             // 
-            this.textBoxClientSurname.Location = new System.Drawing.Point(67, 218);
+            this.textBoxClientSurname.Location = new System.Drawing.Point(68, 249);
             this.textBoxClientSurname.Name = "textBoxClientSurname";
             this.textBoxClientSurname.Size = new System.Drawing.Size(135, 20);
             this.textBoxClientSurname.TabIndex = 10;
             // 
             // textBoxClientPhoneNumber
             // 
-            this.textBoxClientPhoneNumber.Location = new System.Drawing.Point(67, 248);
+            this.textBoxClientPhoneNumber.Location = new System.Drawing.Point(68, 279);
             this.textBoxClientPhoneNumber.Name = "textBoxClientPhoneNumber";
             this.textBoxClientPhoneNumber.Size = new System.Drawing.Size(135, 20);
             this.textBoxClientPhoneNumber.TabIndex = 11;
             // 
             // textBoxClientEmail
             // 
-            this.textBoxClientEmail.Location = new System.Drawing.Point(67, 282);
+            this.textBoxClientEmail.Location = new System.Drawing.Point(68, 313);
             this.textBoxClientEmail.Name = "textBoxClientEmail";
             this.textBoxClientEmail.Size = new System.Drawing.Size(135, 20);
             this.textBoxClientEmail.TabIndex = 12;
@@ -154,7 +145,7 @@
             // 
             // buttonSaveClient
             // 
-            this.buttonSaveClient.Location = new System.Drawing.Point(106, 308);
+            this.buttonSaveClient.Location = new System.Drawing.Point(107, 339);
             this.buttonSaveClient.Name = "buttonSaveClient";
             this.buttonSaveClient.Size = new System.Drawing.Size(96, 23);
             this.buttonSaveClient.TabIndex = 55;
@@ -220,6 +211,16 @@
             this.buttonDeleteSearchProfile.UseVisualStyleBackColor = true;
             this.buttonDeleteSearchProfile.Click += new System.EventHandler(this.buttonDeleteSearchProfile_Click);
             // 
+            // pictureBoxImage
+            // 
+            this.pictureBoxImage.Image = global::RealState.Properties.Resources.Client_Default_Profile_Image;
+            this.pictureBoxImage.Location = new System.Drawing.Point(27, 12);
+            this.pictureBoxImage.Name = "pictureBoxImage";
+            this.pictureBoxImage.Size = new System.Drawing.Size(150, 150);
+            this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxImage.TabIndex = 2;
+            this.pictureBoxImage.TabStop = false;
+            // 
             // ClientDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,9 +245,12 @@
             this.Controls.Add(this.labelClientName);
             this.Controls.Add(this.SelectImage);
             this.Controls.Add(this.pictureBoxImage);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ClientDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ClientDetailForm";
+            this.Text = "Cliente";
             this.Load += new System.EventHandler(this.ClientDetailForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             this.ResumeLayout(false);

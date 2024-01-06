@@ -1,6 +1,6 @@
 ﻿using RealState.Models;
 
-namespace RealState
+namespace RealState.Forms
 {
     partial class MainForm
     {
@@ -444,9 +444,12 @@ namespace RealState
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 481);
             this.Controls.Add(this.tabControlMain);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "Pantalla principal";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControlMain.ResumeLayout(false);
             this.tabPageInit.ResumeLayout(false);

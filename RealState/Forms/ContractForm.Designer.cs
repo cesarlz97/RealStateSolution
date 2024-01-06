@@ -1,4 +1,6 @@
-﻿namespace RealState.Forms
+﻿using RealState.Properties;
+
+namespace RealState.Forms
 {
     partial class ContractForm
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientDetailForm));
             this.labelContractDetails = new System.Windows.Forms.Label();
             this.labelContractType = new System.Windows.Forms.Label();
             this.comboBoxContractType = new System.Windows.Forms.ComboBox();
@@ -285,9 +288,12 @@
             this.Controls.Add(this.comboBoxContractType);
             this.Controls.Add(this.labelContractType);
             this.Controls.Add(this.labelContractDetails);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ContractForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ClientContractsForm";
+            this.Text = "Contrato";
             this.Load += new System.EventHandler(this.ContractForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).EndInit();
             this.ResumeLayout(false);

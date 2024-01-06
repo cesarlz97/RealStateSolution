@@ -1,7 +1,7 @@
 ﻿using RealState.Models;
 using RealState.Models.Interfaces;
 
-namespace RealState
+namespace RealState.Forms
 {
     partial class ItemSelectorForm<T> where T : IListable, new()
     {
@@ -31,6 +31,7 @@ namespace RealState
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientDetailForm));
             this.panelItemSelector = new System.Windows.Forms.Panel();
             this.itemSelectorUserControl = new RealState.CustomControls.ItemSelectorUserControl<T>();
             this.buttonSelectItem = new System.Windows.Forms.Button();
@@ -83,8 +84,11 @@ namespace RealState
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 430);
             this.Controls.Add(this.panelItemSelector);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ItemSelectorForm";
-            this.Text = "Selecciona una propiedad";
+            this.Text = "Seleccionar elemento";
             this.panelItemSelector.ResumeLayout(false);
             this.ResumeLayout(false);
 

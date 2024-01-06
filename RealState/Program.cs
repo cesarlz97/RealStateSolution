@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealState.Forms;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace RealState
         [STAThread]
         static void Main()
         {
-            SQLiteManager sqliteManager = new SQLiteManager(ConfigurationManager.ConnectionStrings["SQLiteConnection"]?.ConnectionString);
+            SQLiteManager sqliteManager = new SQLiteManager(ConfigurationManager.ConnectionStrings["SQLiteConnectionString"]?.ConnectionString);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

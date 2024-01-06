@@ -127,6 +127,9 @@
   <data name="Client_Default_Profile_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Client_Default_Profile_Image.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icon_App" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_App.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Logo_Empresa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo_Empresa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

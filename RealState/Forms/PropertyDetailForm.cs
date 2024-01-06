@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace RealState
+namespace RealState.Forms
 {
     public partial class PropertyDetailForm : Form
     {
