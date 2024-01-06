@@ -25,7 +25,7 @@ public class SQLiteManager
         }
     }
 
-    #region Methods for dynamic entitys
+    #region Methods for dynamic entities
 
     public void UpsertData(List<Dictionary<string, object>> entities, string tableName, List<string> primaryKeys)
     {
@@ -128,7 +128,6 @@ public class SQLiteManager
         return string.Join(" AND ", primaryKeys.Select(key => $"{key} = @{key}"));
     }
 
-
     #endregion
 
     public long InsertData<T>(T entity)
@@ -167,49 +166,6 @@ public class SQLiteManager
             }
         }
     }
-
-
-    //public DataTable ReadData<T>(string tableName, Dictionary<string, object> whereClauses = null)
-    //{
-    //    DataTable dataTable = new DataTable();
-    //    using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-    //    {
-    //        connection.Open();
-    //        using (SQLiteCommand command = new SQLiteCommand(BuildSelectQuery<T>(tableName, whereClauses), connection))
-    //        {
-    //            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
-    //            {
-    //                adapter.Fill(dataTable);
-    //            }
-    //        }
-    //    }
-    //    return dataTable;
-    //}
-
-    //public List<T> ReadData<T>(Dictionary<string, object> whereClauses = null)
-    //{
-    //    List<T> result = new List<T>();
-
-    //    using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
-    //    {
-    //        connection.Open();
-    //        using (SQLiteCommand command = new SQLiteCommand(BuildSelectQuery<T>(whereClauses), connection))
-    //        {
-    //            AddWhereParameters(command, whereClauses);
-
-    //            using (SQLiteDataReader reader = command.ExecuteReader())
-    //            {
-    //                while (reader.Read())
-    //                {
-    //                    T entity = MapDataReaderToEntity<T>(reader);
-    //                    result.Add(entity);
-    //                }
-    //            }
-    //        }
-    //    }
-
-    //    return result;
-    //}
 
     public List<T> ReadData<T>(int? limit = null, int? offset = null, Dictionary<string, object> whereClauses = null, Dictionary<string, string> joinClauses = null)
     {
@@ -324,18 +280,6 @@ public class SQLiteManager
             whereClauses[modifiedClause.Key] = modifiedClause.Value;
 
         return conditions;
-    }
-
-
-    private void AddJoinClauses(SQLiteCommand command, Dictionary<string, string> joinClauses)
-    {
-        if (joinClauses != null)
-        {
-            foreach (var joinClause in joinClauses)
-            {
-                command.CommandText += $" JOIN {joinClause.Key} ON {joinClause.Value}";
-            }
-        }
     }
 
     private T MapDataReaderToEntity<T>(SQLiteDataReader reader)

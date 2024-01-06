@@ -35,6 +35,8 @@ namespace RealState.Forms
 
         private User _user;
 
+        private List<Property> _propertiesPublishedOnTwitter;
+
         public MainForm(SQLiteManager sqliteManager, User user)
         {
             InitializeComponent();
@@ -146,11 +148,28 @@ namespace RealState.Forms
             this.propertySelectorUserControl.Init(_sqliteManager);
             this.clientSelectorUserControl.Init(_sqliteManager);
             PopulateSocialNetworkProfileFields();
+            LoadPublishedProperties();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             RefreshContent();
+        }
+
+        void listBoxPropertiesPublishedOnTwitter_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.listBoxPropertiesPublishedOnTwitter.IndexFromPoint(e.Location);
+            if (index == System.Windows.Forms.ListBox.NoMatches)
+                return;
+
+            PropertyDetailForm PropertyDetailForm = new PropertyDetailForm(_sqliteManager, _propertiesPublishedOnTwitter[index]);
+            PropertyDetailForm.Closed += (s, args) =>
+            {
+                this.Show();
+            };
+
+            this.Hide();
+            PropertyDetailForm.Show();
         }
 
         #region Property controls handlers
@@ -294,7 +313,7 @@ namespace RealState.Forms
                 if (exists)
                     _sqliteManager.UpdateData(_twitterProfile, whereClauses: new Dictionary<string, object>() { { nameof(TwitterProfile.Id), _twitterProfile.Id } });
                 else
-                    _sqliteManager.InsertData(_twitterProfile);
+                    _twitterProfile.Id = (int)_sqliteManager.InsertData(_twitterProfile);
 
                 MessageBox.Show("¡Credenciales actualizadas en la base de datos!",
                         "Información",
@@ -343,12 +362,40 @@ namespace RealState.Forms
                 var response = client.SendAsync(request).Result;
                 response.EnsureSuccessStatusCode();
                 string responseContent = response.Content.ReadAsStringAsync().Result;
-                //TwitterUploadMediaResponse uploadMediaResponse = JsonSerializer.Deserialize<TwitterUploadMediaResponse>(responseContent);
+
+                RegisterPublishedPropertyInDatabase();
+
+                LoadPublishedProperties();
             }
             catch (Exception ex)
             {
                 Log.ErrorExt(ex);
             }
+        }
+
+        private void LoadPublishedProperties()
+        {
+            _propertiesPublishedOnTwitter = _sqliteManager.ReadData<Property>(
+                joinClauses: new Dictionary<string, string>
+                {
+                    { "PublishedProperties", $"{_sqliteManager.GetTableName<Property>()}.{nameof(Property.Id)} = PropertyId" }
+                },
+                whereClauses: new Dictionary<string, object> { { "TwitterProfileId", _twitterProfile.Id } }
+            );
+
+            listBoxPropertiesPublishedOnTwitter.Items.Clear();
+            foreach (var property in _propertiesPublishedOnTwitter)
+                listBoxPropertiesPublishedOnTwitter.Items.Add(property.Title);
+        }
+
+        private void RegisterPublishedPropertyInDatabase()
+        {
+            Dictionary<string,object> entity = new Dictionary<string, object>()
+            {
+                { "TwitterProfileId", _twitterProfile.Id },
+                { "PropertyId", _selectedPropertyToPublishOnTwitter.Id },
+            };
+            _sqliteManager.UpsertData(new List<Dictionary<string, object>>() { entity }, "PublishedProperties", new List<string>() { "TwitterProfileId", "PropertyId" });
         }
 
         private string UploadPropertyProfileImageToTwitter()
@@ -442,7 +489,6 @@ namespace RealState.Forms
             return result.ToString();
         }
 
-        //Generate signature
         private string GetSignature(HttpMethod httpMethod, string baseUrl, Dictionary<string, string> parameters)
         {
             // Generate parameter string

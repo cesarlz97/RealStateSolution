@@ -58,7 +58,6 @@ namespace RealState.Forms
             this.labelTwitterAccessTokenSecret = new System.Windows.Forms.Label();
             this.textBoxTwitterAccessToken = new System.Windows.Forms.TextBox();
             this.labelTwitterAccessToken = new System.Windows.Forms.Label();
-            this.listViewTwitterPublishedBuildings = new System.Windows.Forms.ListView();
             this.labelTwitterPublishedProperties = new System.Windows.Forms.Label();
             this.buttonSaveTwitterCredentials = new System.Windows.Forms.Button();
             this.textBoxTwitterApiKeySecret = new System.Windows.Forms.TextBox();
@@ -68,6 +67,7 @@ namespace RealState.Forms
             this.labelCredentials = new System.Windows.Forms.Label();
             this.labelTwitterProfile = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.listBoxPropertiesPublishedOnTwitter = new System.Windows.Forms.ListBox();
             this.tabControlMain.SuspendLayout();
             this.tabPageInit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -255,6 +255,7 @@ namespace RealState.Forms
             // 
             // tabPageSocialMedia
             // 
+            this.tabPageSocialMedia.Controls.Add(this.listBoxPropertiesPublishedOnTwitter);
             this.tabPageSocialMedia.Controls.Add(this.buttonPublishPropertyOnTwitter);
             this.tabPageSocialMedia.Controls.Add(this.labelSelectedPropertyTitle);
             this.tabPageSocialMedia.Controls.Add(this.labelSelectedProperty);
@@ -263,7 +264,6 @@ namespace RealState.Forms
             this.tabPageSocialMedia.Controls.Add(this.labelTwitterAccessTokenSecret);
             this.tabPageSocialMedia.Controls.Add(this.textBoxTwitterAccessToken);
             this.tabPageSocialMedia.Controls.Add(this.labelTwitterAccessToken);
-            this.tabPageSocialMedia.Controls.Add(this.listViewTwitterPublishedBuildings);
             this.tabPageSocialMedia.Controls.Add(this.labelTwitterPublishedProperties);
             this.tabPageSocialMedia.Controls.Add(this.buttonSaveTwitterCredentials);
             this.tabPageSocialMedia.Controls.Add(this.textBoxTwitterApiKeySecret);
@@ -351,15 +351,6 @@ namespace RealState.Forms
             this.labelTwitterAccessToken.TabIndex = 11;
             this.labelTwitterAccessToken.Text = "Access Token";
             // 
-            // listViewTwitterPublishedBuildings
-            // 
-            this.listViewTwitterPublishedBuildings.HideSelection = false;
-            this.listViewTwitterPublishedBuildings.Location = new System.Drawing.Point(380, 283);
-            this.listViewTwitterPublishedBuildings.Name = "listViewTwitterPublishedBuildings";
-            this.listViewTwitterPublishedBuildings.Size = new System.Drawing.Size(382, 126);
-            this.listViewTwitterPublishedBuildings.TabIndex = 10;
-            this.listViewTwitterPublishedBuildings.UseCompatibleStateImageBehavior = false;
-            // 
             // labelTwitterPublishedProperties
             // 
             this.labelTwitterPublishedProperties.AutoSize = true;
@@ -438,6 +429,15 @@ namespace RealState.Forms
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // listBoxPropertiesPublishedOnTwitter
+            // 
+            this.listBoxPropertiesPublishedOnTwitter.FormattingEnabled = true;
+            this.listBoxPropertiesPublishedOnTwitter.Location = new System.Drawing.Point(380, 295);
+            this.listBoxPropertiesPublishedOnTwitter.Name = "listBoxPropertiesPublishedOnTwitter";
+            this.listBoxPropertiesPublishedOnTwitter.Size = new System.Drawing.Size(382, 108);
+            this.listBoxPropertiesPublishedOnTwitter.TabIndex = 19;
+            this.listBoxPropertiesPublishedOnTwitter.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxPropertiesPublishedOnTwitter_MouseDoubleClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -471,7 +471,6 @@ namespace RealState.Forms
         private System.Windows.Forms.TabPage tabPageBuildings;
         private System.Windows.Forms.TabPage tabPageSocialMedia;
         private System.Windows.Forms.Button buttonPropertyNew;
-        private System.Windows.Forms.ListView listViewTwitterPublishedBuildings;
         private System.Windows.Forms.Label labelTwitterPublishedProperties;
         private System.Windows.Forms.Button buttonSaveTwitterCredentials;
         private System.Windows.Forms.TextBox textBoxTwitterApiKeySecret;
@@ -503,5 +502,6 @@ namespace RealState.Forms
         private System.Windows.Forms.Button buttonPublishPropertyOnTwitter;
         private System.Windows.Forms.Label labelSelectedPropertyTitle;
         private System.Windows.Forms.Label labelSelectedProperty;
+        private System.Windows.Forms.ListBox listBoxPropertiesPublishedOnTwitter;
     }
 }
