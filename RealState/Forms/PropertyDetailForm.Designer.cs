@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PropertyDetailForm));
-            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             this.SelectImage = new System.Windows.Forms.Button();
             this.labelPrice = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -81,7 +80,7 @@
             this.labelContracts = new System.Windows.Forms.Label();
             this.buttonAddContract = new System.Windows.Forms.Button();
             this.buttonDeleteContract = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
+            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaBuilt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaUtil)).BeginInit();
@@ -90,18 +89,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRoomCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBathRoomCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParkingCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBoxImage
-            // 
-            this.pictureBoxImage.Image = global::RealState.Properties.Resources.Property_Dafault_Profile_Image;
-            this.pictureBoxImage.InitialImage = null;
-            this.pictureBoxImage.Location = new System.Drawing.Point(29, 25);
-            this.pictureBoxImage.Name = "pictureBoxImage";
-            this.pictureBoxImage.Size = new System.Drawing.Size(150, 150);
-            this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxImage.TabIndex = 0;
-            this.pictureBoxImage.TabStop = false;
             // 
             // SelectImage
             // 
@@ -588,11 +577,22 @@
             this.buttonDeleteContract.UseVisualStyleBackColor = true;
             this.buttonDeleteContract.Click += new System.EventHandler(this.buttonDeleteContract_Click);
             // 
+            // pictureBoxImage
+            // 
+            this.pictureBoxImage.Image = global::RealState.Properties.Resources.Property_Dafault_Profile_Image;
+            this.pictureBoxImage.Location = new System.Drawing.Point(29, 25);
+            this.pictureBoxImage.Name = "pictureBoxImage";
+            this.pictureBoxImage.Size = new System.Drawing.Size(150, 150);
+            this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxImage.TabIndex = 59;
+            this.pictureBoxImage.TabStop = false;
+            // 
             // PropertyDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 497);
+            this.Controls.Add(this.pictureBoxImage);
             this.Controls.Add(this.buttonDeleteContract);
             this.Controls.Add(this.buttonAddContract);
             this.Controls.Add(this.labelContracts);
@@ -644,7 +644,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.SelectImage);
-            this.Controls.Add(this.pictureBoxImage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -652,7 +651,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Propiedad";
             this.Load += new System.EventHandler(this.BuildingDetailForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaBuilt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAreaUtil)).EndInit();
@@ -661,14 +659,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRoomCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBathRoomCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParkingCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBoxImage;
         private System.Windows.Forms.Button SelectImage;
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.Label label2;
@@ -720,5 +717,6 @@
         private System.Windows.Forms.Label labelContracts;
         private System.Windows.Forms.Button buttonAddContract;
         private System.Windows.Forms.Button buttonDeleteContract;
+        private System.Windows.Forms.PictureBox pictureBoxImage;
     }
 }

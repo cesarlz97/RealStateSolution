@@ -323,6 +323,7 @@ namespace RealState.Forms
             // 
             this.textBoxTwitterAccessTokenSecret.Location = new System.Drawing.Point(144, 186);
             this.textBoxTwitterAccessTokenSecret.Name = "textBoxTwitterAccessTokenSecret";
+            this.textBoxTwitterAccessTokenSecret.PasswordChar = '*';
             this.textBoxTwitterAccessTokenSecret.Size = new System.Drawing.Size(618, 20);
             this.textBoxTwitterAccessTokenSecret.TabIndex = 14;
             // 
@@ -339,6 +340,7 @@ namespace RealState.Forms
             // 
             this.textBoxTwitterAccessToken.Location = new System.Drawing.Point(144, 160);
             this.textBoxTwitterAccessToken.Name = "textBoxTwitterAccessToken";
+            this.textBoxTwitterAccessToken.PasswordChar = '*';
             this.textBoxTwitterAccessToken.Size = new System.Drawing.Size(618, 20);
             this.textBoxTwitterAccessToken.TabIndex = 12;
             // 
@@ -375,6 +377,7 @@ namespace RealState.Forms
             // 
             this.textBoxTwitterApiKeySecret.Location = new System.Drawing.Point(144, 134);
             this.textBoxTwitterApiKeySecret.Name = "textBoxTwitterApiKeySecret";
+            this.textBoxTwitterApiKeySecret.PasswordChar = '*';
             this.textBoxTwitterApiKeySecret.Size = new System.Drawing.Size(618, 20);
             this.textBoxTwitterApiKeySecret.TabIndex = 5;
             // 
@@ -382,6 +385,7 @@ namespace RealState.Forms
             // 
             this.textBoxTwitterApiKey.Location = new System.Drawing.Point(144, 108);
             this.textBoxTwitterApiKey.Name = "textBoxTwitterApiKey";
+            this.textBoxTwitterApiKey.PasswordChar = '*';
             this.textBoxTwitterApiKey.Size = new System.Drawing.Size(618, 20);
             this.textBoxTwitterApiKey.TabIndex = 4;
             // 

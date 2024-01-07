@@ -34,8 +34,8 @@ namespace RealState.Forms
         {
             try
             {
-                pictureBoxImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBoxImage.Image = _property.GetProfileImage();
+                Image profileImage = _property.GetProfileImage();
+                if (profileImage != null) pictureBoxImage.Image = profileImage;
 
                 textBoxTitle.Text = _property.Title;
                 textBoxAddress.Text = _property.Address;
