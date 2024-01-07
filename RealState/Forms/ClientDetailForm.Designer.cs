@@ -59,6 +59,7 @@
             this.SelectImage.TabIndex = 3;
             this.SelectImage.Text = "Seleccionar Imagen";
             this.SelectImage.UseVisualStyleBackColor = true;
+            this.SelectImage.Click += new System.EventHandler(this.SelectImage_Click);
             // 
             // labelClientName
             // 

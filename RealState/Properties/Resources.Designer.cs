@@ -63,26 +63,6 @@ namespace RealState.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cara_1 {
-            get {
-                object obj = ResourceManager.GetObject("cara_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap casa_1 {
-            get {
-                object obj = ResourceManager.GetObject("casa_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Client_Default_Profile_Image {
             get {
                 object obj = ResourceManager.GetObject("Client_Default_Profile_Image", resourceCulture);
@@ -106,6 +86,16 @@ namespace RealState.Properties {
         internal static System.Drawing.Bitmap Logo_Empresa {
             get {
                 object obj = ResourceManager.GetObject("Logo_Empresa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Property_Dafault_Profile_Image {
+            get {
+                object obj = ResourceManager.GetObject("Property_Dafault_Profile_Image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

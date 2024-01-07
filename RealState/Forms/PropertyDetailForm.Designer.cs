@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientDetailForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PropertyDetailForm));
             this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             this.SelectImage = new System.Windows.Forms.Button();
             this.labelPrice = new System.Windows.Forms.Label();
@@ -94,9 +94,12 @@
             // 
             // pictureBoxImage
             // 
-            this.pictureBoxImage.Location = new System.Drawing.Point(12, 47);
+            this.pictureBoxImage.Image = global::RealState.Properties.Resources.Property_Dafault_Profile_Image;
+            this.pictureBoxImage.InitialImage = null;
+            this.pictureBoxImage.Location = new System.Drawing.Point(29, 25);
             this.pictureBoxImage.Name = "pictureBoxImage";
-            this.pictureBoxImage.Size = new System.Drawing.Size(176, 126);
+            this.pictureBoxImage.Size = new System.Drawing.Size(150, 150);
+            this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage.TabIndex = 0;
             this.pictureBoxImage.TabStop = false;
             // 
@@ -108,6 +111,7 @@
             this.SelectImage.TabIndex = 1;
             this.SelectImage.Text = "Seleccionar Imagen";
             this.SelectImage.UseVisualStyleBackColor = true;
+            this.SelectImage.Click += new System.EventHandler(this.SelectImage_Click);
             // 
             // labelPrice
             // 

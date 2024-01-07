@@ -269,5 +269,35 @@ namespace RealState.Forms
                 FillContent();
             }
         }
+
+        private void SelectImage_Click(object sender, EventArgs e)
+        {
+            // Configurar el OpenFileDialog
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif;*.bmp|Todos los archivos|*.*";
+            openFileDialog.Title = "Seleccionar Imagen";
+
+            // Mostrar el cuadro de diálogo
+            DialogResult result = openFileDialog.ShowDialog();
+
+            // Verificar si el usuario seleccionó un archivo
+            if (result == DialogResult.OK)
+            {
+                // Obtener la ruta del archivo seleccionado
+                string filePath = openFileDialog.FileName;
+
+                try
+                {
+                    // Cargar la imagen en el control de imagen
+                    Image imagenSeleccionada = Image.FromFile(filePath);
+                    pictureBoxImage.Image = imagenSeleccionada;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.ErrorExt(ex);
+                }
+            }
+        }
     }
 }

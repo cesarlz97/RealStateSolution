@@ -78,7 +78,7 @@ namespace RealState.Forms
 
             };
 
-            property.SetProfileImage(new Bitmap(Resources.casa_1));
+            property.SetProfileImage(new Bitmap(Resources.Property_Dafault_Profile_Image));
 
             propertyList.Add(property);
 
@@ -92,14 +92,14 @@ namespace RealState.Forms
             Client client = new Client()
             {
                 Id = 1,
-                EmailAddress = "cesarlozanolahoz@gmail.com",
+                EmailAddress = "cesar.lozano@gmail.com",
                 Name = "César",
                 Surname = "Lozano Lahoz",
-                PhoneNumber = "618 120 458",
+                PhoneNumber = "000 000 000",
                 
             };
 
-            client.SetProfileImage(new Bitmap(Resources.cara_1));
+            client.SetProfileImage(new Bitmap(Resources.Client_Default_Profile_Image));
 
             clientList.Add(client);
 
@@ -380,7 +380,7 @@ namespace RealState.Forms
                 {
                     { "PublishedProperties", $"{_sqliteManager.GetTableName<Property>()}.{nameof(Property.Id)} = PropertyId" }
                 },
-                whereClauses: new Dictionary<string, object> { { "TwitterProfileId", _twitterProfile.Id } }
+                whereClauses: new Dictionary<string, object> { { "TwitterProfileId", _twitterProfile?.Id } }
             );
 
             listBoxPropertiesPublishedOnTwitter.Items.Clear();
