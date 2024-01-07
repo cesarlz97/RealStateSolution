@@ -5,16 +5,30 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealState", "RealState\RealState.csproj", "{884FB2AE-4AD4-47AF-8E10-BA2F3DD7167B}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RealStateInstaller", "RealStateInstaller\RealStateInstaller.vdproj", "{0D5616FE-0325-4E1D-A8C0-D0B13AEB17BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{884FB2AE-4AD4-47AF-8E10-BA2F3DD7167B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{884FB2AE-4AD4-47AF-8E10-BA2F3DD7167B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{884FB2AE-4AD4-47AF-8E10-BA2F3DD7167B}.Debug|x64.ActiveCfg = Debug|x64
+		{884FB2AE-4AD4-47AF-8E10-BA2F3DD7167B}.Debug|x64.Build.0 = Debug|x64
 		{884FB2AE-4AD4-47AF-8E10-BA2F3DD7167B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{884FB2AE-4AD4-47AF-8E10-BA2F3DD7167B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{884FB2AE-4AD4-47AF-8E10-BA2F3DD7167B}.Release|x64.ActiveCfg = Release|x64
+		{884FB2AE-4AD4-47AF-8E10-BA2F3DD7167B}.Release|x64.Build.0 = Release|x64
+		{0D5616FE-0325-4E1D-A8C0-D0B13AEB17BA}.Debug|Any CPU.ActiveCfg = Debug
+		{0D5616FE-0325-4E1D-A8C0-D0B13AEB17BA}.Debug|x64.ActiveCfg = Debug
+		{0D5616FE-0325-4E1D-A8C0-D0B13AEB17BA}.Debug|x64.Build.0 = Debug
+		{0D5616FE-0325-4E1D-A8C0-D0B13AEB17BA}.Release|Any CPU.ActiveCfg = Release
+		{0D5616FE-0325-4E1D-A8C0-D0B13AEB17BA}.Release|x64.ActiveCfg = Release
+		{0D5616FE-0325-4E1D-A8C0-D0B13AEB17BA}.Release|x64.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
