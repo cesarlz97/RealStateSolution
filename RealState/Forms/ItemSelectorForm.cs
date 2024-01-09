@@ -14,11 +14,12 @@ namespace RealState.Forms
 {
     public partial class ItemSelectorForm<T> : Form where T : IListable, new()
     {
-        public T SelectedItem { get { return this.itemSelectorUserControl.GetSelectedItem(); } }
+        public T SelectedItem { get; set; }
         
         public ItemSelectorForm(SQLiteManager sqliteManager)
         {
             InitializeComponent();
+            SelectedItem = default(T);
             itemSelectorUserControl.Init(sqliteManager);
         }
 
@@ -29,7 +30,8 @@ namespace RealState.Forms
 
         private void buttonSelectItem_Click(object sender, EventArgs e)
         {
-            if (SelectedItem == null)
+            T currentItemSelected = this.itemSelectorUserControl.GetSelectedItem();
+            if (currentItemSelected == null)
             {
                 MessageBox.Show("¡Ningún elemento ha sido seleccionado!",
                         "Advertencia",
@@ -38,7 +40,7 @@ namespace RealState.Forms
 
                 return;
             }
-
+            SelectedItem = currentItemSelected;
             this.Close();
         }
 

@@ -177,7 +177,6 @@ public class SQLiteManager
             using (SQLiteCommand command = new SQLiteCommand(BuildSelectQuery<T>(whereClauses, joinClauses), connection))
             {
                 AddWhereParameters(command, whereClauses);
-                //AddJoinClauses(command, joinClauses);
 
                 // Agregar cláusulas de paginación si se especifican
                 if (limit.HasValue)
@@ -218,7 +217,6 @@ public class SQLiteManager
 
         if (whereClauses != null && whereClauses.Any())
         {
-            //query += " WHERE " + string.Join(" AND ", whereClauses.Select(kv => $"{kv.Key} {(kv.Value.ToString().StartsWith("%") && kv.Value.ToString().EndsWith("%") ? "LIKE" : "=")} @{kv.Key}"));
             List<string> comparisonConditions = BuildComparisonConditions(whereClauses);
             query += " WHERE " + string.Join(" AND ", comparisonConditions);
         }

@@ -26,7 +26,8 @@ namespace RealState
 
             log.Debug("Application Started");
 
-            SQLiteManager sqliteManager = new SQLiteManager(ConfigurationManager.ConnectionStrings["SQLiteConnectionString"]?.ConnectionString);
+            string connectionString = ConfigurationManager.ConnectionStrings["SQLiteConnectionString"]?.ConnectionString;
+            SQLiteManager sqliteManager = new SQLiteManager(connectionString);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

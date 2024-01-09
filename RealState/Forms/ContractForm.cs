@@ -192,7 +192,9 @@ namespace RealState.Forms
                        MessageBoxButtons.OK,
                        MessageBoxIcon.Information);
 
-                        FillContent();
+                        //FillContent();
+                        PopulateSellers();
+                        PopulateBuyers();
                     }
                 }
 
@@ -220,7 +222,10 @@ namespace RealState.Forms
             if (confirmResult == DialogResult.Yes)
             {
                 _sqliteManager.DeleteData<Contract>(selectedSeller.Id);
-                FillContent();
+                _propertySellers.RemoveAt(index);
+                //FillContent();
+                PopulateSellers();
+                PopulateBuyers();
             }
         }
 
@@ -247,7 +252,9 @@ namespace RealState.Forms
                        MessageBoxButtons.OK,
                        MessageBoxIcon.Information);
 
-                        FillContent();
+                        //FillContent();
+                        PopulateSellers();
+                        PopulateBuyers();
                     }
                 }
 
@@ -275,7 +282,10 @@ namespace RealState.Forms
             if (confirmResult == DialogResult.Yes)
             {
                 _sqliteManager.DeleteData<Contract>(selectedBuyer.Id);
-                FillContent();
+                _propertyBuyers.RemoveAt(index);
+                //FillContent();
+                PopulateSellers();
+                PopulateBuyers();
             }
         }
 

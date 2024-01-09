@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RealState.Models.Client" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAAQAAAAAACAAAAQAQABAAAAAAAAAAAAgIgCAI=</HashCode>
+      <FileName>Models\Client.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RealState.Models.Contract">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAQASAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contract.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealState.Models.Property" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAMCBAAQQQBgAEAAAAAAIAAAjAAAQAACAAJigAIgCCI=</HashCode>
+      <FileName>Models\Property.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RealState.Models.SearchProfile">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAIAAgAIAAAQACAAASAAABAECAAACAAA=</HashCode>
+      <FileName>Models\SearchProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealState.Models.TwitterProfile">
+    <Position X="0.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAQAAAAAAAAAAAAAgAAAEAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TwitterProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealState.Models.User">
+    <Position X="0.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

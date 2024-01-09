@@ -174,7 +174,7 @@ namespace RealState.Forms
                 else
                     _client.Id = Convert.ToInt32(_sqliteManager.InsertData(_client));
 
-                MessageBox.Show("¡Propiedad actualizada en la base de datos!",
+                MessageBox.Show("¡Cliente actualizado en la base de datos!",
                         "Información",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);

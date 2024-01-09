@@ -36,7 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon_App.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -170,23 +171,11 @@
     <Compile Include="Forms\ClientDetailForm.Designer.cs">
       <DependentUpon>ClientDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\ClientSelectorUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\ClientSelectorUserControl.Designer.cs">
-      <DependentUpon>ClientSelectorUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls\ExListBoxUserControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomControls\ExListBoxUserControl.Designer.cs">
       <DependentUpon>ExListBoxUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\PropertySelectorUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\PropertySelectorUserControl.Designer.cs">
-      <DependentUpon>PropertySelectorUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="DB\SQLiteManager.cs" />
     <Compile Include="Forms\ContractForm.cs">
@@ -236,12 +225,6 @@
     <EmbeddedResource Include="Forms\ClientDetailForm.resx">
       <DependentUpon>ClientDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\ClientSelectorUserControl.resx">
-      <DependentUpon>ClientSelectorUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\PropertySelectorUserControl.resx">
-      <DependentUpon>PropertySelectorUserControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ContractForm.resx">
       <DependentUpon>ContractForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,6 +250,7 @@
     <EmbeddedResource Include="Forms\SearchProfileForm.resx">
       <DependentUpon>SearchProfileForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -290,9 +274,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icon_App.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Icon_App.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
